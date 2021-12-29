@@ -68,8 +68,9 @@ function createPassengerInputs() {
     passengerForm.innerHTML = "";
     for (let i = 1; i <= passengerNo.value; i++) {
       passengerForm.innerHTML = passengerForm.innerHTML +
-        `<aside class="passenger-input"><h5 class="input-header">Passenger ${i}</h5><div class="input-details"><div class="pName user-input"><label for="p${i}name">Name</label><input type="text" name="p${i}name" id="p${i}name" required></div><div class="pId user-input"><label for="p${i}id">Aadhar Id</label><input type="text" name="p${i}id" id="p${i}id" maxlength="12" minlength="12" required></div><div class="pAge user-input"><label for="p${i}age">Age</label><input type="number" name="p${i}age" id="p${i}age" min="3" max="100" required></div><div class="pHealth user-input"><a class="fitness-dialouge" href="#">Medically Fit?</a><input type="checkbox" name="p${i}health" id="p${i}health" required></div></div></aside>`;
+        `<aside class="passenger-input"><h5 class="input-header">Passenger ${i}</h5><div class="input-details"><div class="pName user-input"><label for="p${i}name">Name</label><input type="text" name="p${i}name" id="p${i}name" required></div><div class="pId user-input"><label for="p${i}id">Aadhar Id</label><input type="text" name="p${i}id" id="p${i}id" maxlength="12" minlength="12" required></div><div class="pAge user-input"><label for="p${i}age">Age</label><input type="number" name="p${i}age" id="p${i}age" min="3" max="100" required></div><div class="pGender user-input"><label for="genderType">Select Gender</label><select id="p${i}gender" class=""><option value="" Selected>--Gender--</option><option value="M">Male</option><option value="F">Female</option></select></div></div></aside>`;
     }
+    passengerForm.innerHTML += '<div class="pHealth user-input align-items-center"><a class="fitness-dialouge" href="#">All passengers Medically Fit?</a><input type="checkbox" id="health" required></div>';
   submitButtonDiv.innerHTML = '';
 }
 
@@ -105,10 +106,13 @@ function addPassenger(){
         console.log(age);
         id = document.getElementById(`p${i}id`).value;
         console.log(id);
+        gender = document.getElementById(`p${i}gender`).value;
+        console.log(gender);
         let passenger ={
             name: name,
             age: age,
-            aadharId: id
+            aadharId: id,
+            gender: gender
         }
         passengers.push(passenger);
      }

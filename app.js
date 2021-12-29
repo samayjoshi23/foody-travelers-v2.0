@@ -3,12 +3,14 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
-var bodyParser = require('body-parser')
 const AppError = require('./AppError');
-const State = require('./models/StateSchema');
 const session = require('express-session');
 
+// Schema
+const State = require('./models/StateSchema');
+const Ticket = require('./models/ticketSchema');
 
+// mongoose connection
 mongoose.connect('mongodb://localhost:27017/foody-travelers', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("CONNECTION OPEN!!!")
@@ -17,6 +19,8 @@ mongoose.connect('mongodb://localhost:27017/foody-travelers', { useNewUrlParser:
         console.log("OH NO ERROR!!!!")
         console.log(err)
     })
+
+// Use files-------
 
 const app = express();
 app.engine('ejs', ejsMate);
@@ -32,7 +36,7 @@ app.use(session({
     saveUninitialized: false
 }))
 
-
+// Middlewares
 function wrapAsync(fn) {
     return function (req, res, next) {
         fn(req, res, next).catch(e => next(e))
@@ -99,14 +103,15 @@ app.get('/states/:id/booking/ticket/payment',  wrapAsync( async(req,res)=>{
     res.render('tour/paymentPage',{state, title:'Payment', css:'paymentPage.css'});
 }));
 
-app.post('/ticket',(req,res)=>{
-    const ticket = req.body;
+app.post('/ticket', wrapAsync( async(req, res, next)=>{
+    const ticket = new Ticket(req.body);
     console.log(ticket);
+    await ticket.save();
     res.json({
         stats: 'success',
         ticket: ticket.user_Name
     });
-});
+}));
 
 
 

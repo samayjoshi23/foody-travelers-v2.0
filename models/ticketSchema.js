@@ -1,47 +1,94 @@
 const mongoose = require('mongoose');
-const user = require('./user');
-const state = require('./StateSchema');
 
 const ticketSchema = new mongoose.Schema({
-    username: {
-        type: Schema.Types.ObjectId,
-        ref: user, //userSchema for username
-    },
-    ticket_details: {
-        type: Schema.Types.ObjectId,
-        ref: state, //stateSchema for other details
-    },
-    vehicle:{
-        type: Boolean,
+    user_Id: String,
+    user_Name: String,
+    state_Name: {
+        type : String,
         required: true
     },
-    passengers: [{
-        Passenger_name: {
-            type: String,
-            required: true
-        },
-        Age: {
-            type: Number,
-            required:true,
-            min: 1,
-            max: 80,
-        },
-        gender: ['M', 'F', 'T'],
-        fitness: {
-            type: Boolean,
-            required: true
-        },
-        food_selected:[{
-            food_name: String,
-            price: Number
-        }],
-        final_bill: {
-            type: Number,
-            required: true
+    tour_Source: {
+        type: String,
+        required: true
+    },
+    base_Fare: {
+        type: Number,
+        required: true
+    },
+    date_of_Booking: {
+        type: String,
+        required: true
+    },
+    date_of_Journey:{
+        type: String,
+        required: true
+    },
+    no_of_persons: {
+        type: Number,
+        required: true
+    },
+    passenger_details: [
+        {
+            name: {
+                type:String,
+                required: true
+            },
+            age: {
+                type:Number,
+                required: true
+            },
+            aadharId: {
+                type: Number,
+                required: true
+            },
+            gender: {
+                type: String,
+                required: true
+            }
         }
-    }],
-    payment_status: {
-        type: Boolean,
+    ],
+    food_Opted: [
+        {
+            name: {
+                type: String,
+                required: true
+            },
+            Price: {
+                type: Number,
+                required: true
+            },
+            Qty: {
+                type: Number,
+                required: true
+            },
+            TotalCost: {
+                type: Number,
+                required: true
+            }
+        }
+    ],
+    food_Fare:{
+        type: Number,
+        required: true
+    },
+    vehicle_Type: {
+        type: String,
+        required: true
+    },
+    vehicle_Fare:{
+        type: Number,
+        required: true
+    },
+    pickup_State: {
+        type: String,
+        required: true
+    },
+    pickup_City: {
+        type: String,
+        required: true
+    },
+    grand_Fare: {
+        type: Number,
         required: true
     }
 });
