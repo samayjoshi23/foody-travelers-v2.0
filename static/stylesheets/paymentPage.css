@@ -1,0 +1,222 @@
+.main-container{
+    width: 90%;
+    margin: 1rem auto;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+.card-header{
+    font-family: var(--font-main-heading);
+}
+.card-body{
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    gap: 1rem;
+}
+.card-selector{
+    font-family: var(--font-content);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-types{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5em;
+    margin-bottom: 1.5em;
+}
+.card-types img{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}
+.card-name{
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0.4rem;
+    padding: 0.4em;
+    font-size: 1.2rem;
+    width: 100%;
+    cursor: pointer;
+}
+.card-name div{
+    position: absolute;
+    opacity: 0;
+    width: 12px;
+    height: 12px;
+    top:50%;
+    right: 35%;
+    transform: translateY(-50%) rotate(45deg);
+    border-right: 2px solid rgb(58, 58, 58);
+    border-top: 2px solid rgb(58, 58, 58);
+    transition: all 0.25s ease-out;
+}
+.card-name:hover div{
+    right: 10%;
+    opacity: 100;
+}
+.card-name:hover{
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.payment-card-body{
+    font-family: var(--font-sub-heading);
+}
+.payment-card{
+    width: 0%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    aspect-ratio: 3 / 1.5;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.credit-card{
+    background-color: rgb(166, 178, 212);
+}
+.debit-card{
+    background-color: rgb(247, 231, 94);
+}
+.net-banking{
+    background-color: rgb(250, 250, 250);
+    border: 1px solid rgb(218, 218, 218);
+}
+.upi{
+    background-color: rgba(183, 224, 222, 0.3);
+    border: 1px solid rgba(183, 224, 222, 0.9);
+}
+.payment-card .heading{
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.4em 2em;
+    padding-bottom: 0.1em;
+    position: absolute;
+    width: 100%;
+}
+.card-form {
+    align-self: flex-end;
+    width: 100%;
+    margin: 0em 3em;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.input-details{
+    padding: 0.4em;
+}
+.cardNo, .cardName{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.validity{
+    display: flex;
+    align-items: center;
+}
+.validitySection{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+.inputs, .input-details select{
+    padding: 0.3em 1em;
+    padding-top: 0.5em;
+    margin: 0 0.3em;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 5px;
+}
+.inputs::placeholder{
+    color: white;
+}
+.inputs:focus{
+    background-color: rgba(256,256,256,0.5);
+    border: none;
+    outline: none;
+}
+.labels, .slashSpan{
+    font-size: 1.4rem;
+}
+.card-selector a{
+    width:100%;
+}
+.paymentButton{
+    background-color: rgb(135, 236, 178);
+    width: 100%;
+    border: none;
+    padding-top: 0.6em;
+    padding-bottom: 0.4em;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.paymentButton:hover{
+    background-color: rgb(175, 241, 204);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+}
+.paymentButton:focus{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ------net banking -------------- */
+
+.bank-list{
+    margin-top: 3.5em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 1em;
+    padding: 1em;
+}
+.bank-card{
+    margin: 1rem;
+    cursor: pointer;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+.bank-card:hover{
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+}
+.bankName{
+    text-align: center;
+    width: 100%;
+    font-family: var(--font-sub-heading);
+    border-top: 2px solid rgb(212, 212, 212);
+    font-size: 1.1rem;
+    padding-top: 0.3em;
+}
+.bankImg{
+    margin: 0.2em;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* ------------------ UPI ------------------- */
+
+.upi-section{
+    padding: 8em 3em 5em 3em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ============ utility classes ============= */
+.activated-card{
+    opacity: 100;
+    display: flex;
+    width: 100%;
+    margin: 0.5rem auto;
+    padding: 2em 0;
+}
+.activated-button{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.activated-button div{
+    right: 10%;
+}

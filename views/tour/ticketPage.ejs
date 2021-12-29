@@ -1,0 +1,92 @@
+<% layout('layouts/boilerplate')%>
+
+<section id="info-card">
+    <h5 class="text-warning">Check all the details before proceeding.</h5>
+    <ul type="circle" class="pt-3">
+        <li class="warning-paragraph text-danger">These details can't be changed after clicking next and will get uploaded permanently on the ticket. Please make sure you have entered correct details before proceeding further.</li>
+        <li class="warning-paragraph text-danger">If you opt 5-seater / 7- seater there will be 1 seat reserved for driver too. This means there can only be 4 or 6 persons allowed as per the selection.</li>
+    </ul>     
+    
+</section>
+
+<main class="main-container">
+    <div class="confirm-header">
+        <h4 class="text-primary text-center p-2">Confirm Details</h4>        
+    </div>
+    <section class="ticket-details">
+        <div class="details-header">
+            <div class="details-header-left">
+                <p><strong>State Name : </strong> <span id="stateNameSpan"><%=state.state_name%></span></p>
+                <p><strong>Tour Source : </strong> <span id="tourSourceSpan"><%=state.tour_source%></span></p>
+                <p><strong>Base Fare : </strong><span id="baseFareSpan"> <%=state.base_fare%><span> (per person)</p>
+                <p><strong>Tour Duration : </strong><span id="tourDurationSpan"><%= state.duration %> <span></p>
+            </div>
+            <div class="details-header-right">
+                <p><strong>Pickup State : </strong> <span></span></p>
+                <p><strong>Pickup City : </strong> <span></span></p>
+                <p><strong>Pickup Address : </strong><span id="pickupAddressSpan"></span></p>
+            </div> 
+        </div>
+        <div class="details-data">
+            <div class="table-left">
+                <table class="data-table">
+                    <tr>
+                        <td class="data-left">User Id :</td>
+                        <td class="data-right" id="UserId">nn11ad4dIsda45646</td>
+                    </tr>
+                    <tr>
+                        <td class="data-left">User Name :</td>
+                        <td class="data-right" id="UserName">Samay Joshi</td>
+                    </tr>
+                     <tr>
+                         <td class="data-left">Date Of Booking :</td>
+                         <td class="data-right" id="dobSpan"></td>
+                     </tr>
+                    <tr>
+                        <td class="data-left">Vehicle Selected :</td>
+                        <td class="data-right" id="vehicleType"></td>
+                    </tr>
+                    <tr>
+                        <td class="data-left">Vehicle Fare :</td>
+                        <td class="data-right" id="vehicleFare"></td>
+                    </tr>
+                    <tr>
+                        <td class="data-left">Date of Journey :</td>
+                        <td class="data-right" id="doj"></td>
+                    </tr>
+                    <tr>
+                        <td class="data-left">Selected Food :</td>
+                        <td class="data-right" id="totalFoodFare"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-right">
+                <table class="data-table">
+                    <tr>
+                        <td class="data-left" id="passenger-left">Passenger List :</td>
+                        <td class="data-right">
+                            <ul id="passengerList">
+        
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data-left" id="food-left">Food List :</td>
+                        <td class="data-right">
+                            <ul id="foodList">
+        
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <label id="final-fare-lbl" style="font-family: var(--font-content);"> <strong> Final Fare: </strong><span id="grandFare"> </span></label>
+        <a href="/states/<%=state._id%>/booking/ticket/payment">
+            <button class="payBtn">Confirm and Pay</button>
+        </a>
+    </section>
+</main>
+
+
+<script src="/static/javascripts/ticketPage.js"></script>

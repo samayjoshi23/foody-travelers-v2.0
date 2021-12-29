@@ -1,0 +1,124 @@
+<% layout('layouts/boilerplate')%>
+
+    <div class="state-banner">
+        <div>
+            <div class="state-heading">
+                <h3><%= state.state_name %> </h3>
+                <p class="duration-text"><%= state.duration %> </p>
+            </div>
+        </div>
+        <div class="book-button">
+            <a href="/state/<%=state._id%>/booking">
+                <button class="booking-btn">Book</button>
+            </a>
+        </div>
+    </div>
+    <main class="main-container">
+        <section class="accordion-section">
+            <h3 class="section-heading">Tours</h3>
+            <%for(let city of state.cities){ %>
+            <div class="myAccordion">
+                <div class="accordion-card">
+                    <div class="accordion-card-header">
+                        <%= city.city_name %>
+                    </div>
+                    <div class="accordion-card-body">
+                        <div class="hotel-icon">
+                            <ion-icon name="restaurant-outline"></ion-icon>
+                        </div>
+                        <section class="hotel-section show-hotels">
+                            <div class="hotel-side">
+                                <h4 class="hotel-section-headers">Hotel</h4>
+                                <h5 class="hotel-section-titles"><%= city.city_hotel.hotel_name %> </h5>
+                                <div class="hotel-section-img-details">
+                                    <img class="img-fluid" src="<%= city.city_hotel.hotel_img %>" alt="">
+                                    <ul class="features">
+                                        <li class="feature-list">Wifi</li>
+                                        <li class="feature-list">Covid Safety Measures</li>
+                                        <li class="feature-list">Television</li>
+                                        <li class="feature-list">Air Conditioned</li>
+                                        <li class="feature-list">Pool</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="restaurant-side">
+                                <h4 class="hotel-section-headers">Restaurant</h4>
+                                <h5 class="hotel-section-titles"><%= city.city_restaurant.restaurant_name %></h5>
+                                <div class="hotel-section-img-details">
+                                    <img class="img-fluid" src="<%= city.city_restaurant.restaurant_img %>" alt="">
+                                    <ul class="features">
+                                        <li class="feature-list">Veg</li>
+                                        <li class="feature-list">Non-veg</li>
+                                        <li class="feature-list">Continental</li>
+                                        <li class="feature-list">Chinese</li>
+                                        <li class="feature-list">Sea-food (Occationally)</li>
+                                        <li class="feature-list">Covid Safety Measures</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="carousel-container">
+                            <div id="placeCarousel" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <% city.places.forEach((place, i) => {  %>
+                                        <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+                                            <img src="<%=place.img_url %> " class="d-block w-100" alt="..." />
+                                            <div class="gradient">
+                                                <div class="carousel-caption">
+                                                    <h5><%= place.place_name %> </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <%})%>
+                                </div>
+                                <% if(city.places.length > 1) {%>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#placeCarousel"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#placeCarousel"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                <% } %>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </section>
+        
+        <section class="food-section">
+            <div class="section-heading">
+                <h3>Food Chart</h3>
+            </div>
+            <% for(let food of state.state_food) { %> 
+                <div class="food-card">
+                    <div class="image-text">
+                        <img class="food-img img-fluid" src="<%= food.food_img %> " alt="">
+                        <div class="title-section">
+                            <div class="title">
+                                <h6 class="food-name"><%= food.f_name %></h6>
+                                <p>Rs: <span><%= food.price %></span></p>
+                            </div>
+                            <div class="food-type">
+                                <div class="food-color" style='background-color:<%=food.dot_color %>'> </div>
+                                <p class="food-type-text"><%= food.food_type%> </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="counter-button btn-group">
+                        <button class="counter-btn minus">-</button>
+                        <button id="foodCounter" class="counter-btn num">0</button>
+                        <button class="counter-btn plus">+</button>
+                    </div>
+                </div>
+                <% } %> 
+            <button id="calculate-food">Done Selection</button>
+        </section>
+    </main>
+
+    <script src="/static/javascripts/showState.js"></script>

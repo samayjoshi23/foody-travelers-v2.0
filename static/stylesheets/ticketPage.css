@@ -1,0 +1,241 @@
+*,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+ol {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --state-card-m-p-pc-tab: 4%;
+  --main-sections-margin-pc: 2% auto;
+  --main-sections-margin-tab: 2% auto;
+  --main-sections-width-pc: 90%;
+  --main-sections-width-tab: 95%;
+  --main-sections-width-mob: 98%;
+  --def-border-radius: 5px;
+  --def-box-shadow-lg: 1px 0 5px 0 rgb(122, 122, 122);
+  --def-box-shadow-sm: 1px 0 4px 0 rgb(172, 172, 172);
+  --def-linear-gradient-hor: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0)
+    )
+    1;
+  --def-linear-gradient-ver: linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0)
+    )
+    1;
+
+  --font-main-heading: "Bakbak One", cursive;
+  --font-sub-heading: "Baloo Bhaina 2", cursive;
+  --font-content: "Montserrat", sans-serif;
+}
+#info-card {
+  background-color: rgba(255, 255, 102, 0.2);
+  border: 1px solid rgba(255, 255, 64, 0.6);
+  border-radius: 8px;
+  box-shadow: var(--def-box-shadow-sm);
+  max-width: var(--main-sections-width-pc);
+  margin: 1rem auto;
+  padding: 1rem 2rem;
+}
+.main-container {
+  border-radius: 8px;
+  max-width: var(--main-sections-width-pc);
+  box-shadow: var(--def-box-shadow-sm);
+  margin: 1rem auto;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 238, 0, 0.2),
+    rgba(0, 255, 136, 0.2)
+  );
+}
+.ticket-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.details-header {
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-top: 2px solid rgb(207, 207, 207);
+  border-bottom: 2px solid rgb(207, 207, 207);
+  font-family: var(--font-content);
+}
+.details-header p {
+    padding: 0.2rem 0;
+}
+.details-header-right {
+    width: 35%;
+    justify-self: right;
+}
+.details-data {
+  margin: 0.5rem 0;
+  width: 100%;
+  display: flex;
+}
+.table-left,
+.table-right {
+  width: 50%;
+}
+.table-left {
+  border-right: 2px solid rgb(201, 201, 201);
+}
+.details-data table {
+  width: 100%;
+  margin: 1rem auto;
+  font-family: var(--font-content);
+}
+.data-left,
+.data-right {
+  padding: 0.3rem 0.6rem;
+  width: 50%;
+}
+.data-left {
+  font-weight: bold;
+  text-align: right;
+}
+#passenger-left,
+#food-left {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+#passengerList li,
+#foodList li {
+  list-style: none;
+}
+#final-fare-lbl{
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 2.5rem;
+    border-top: 2px solid rgb(226, 226, 226);
+    border-bottom: 2px solid rgb(226, 226, 226);
+}
+
+.payBtn {
+  background-color: rgb(64, 197, 104);
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 0.5rem;
+  padding: 0.4em 0.8em;
+  align-self: center;
+  transition: all 0.2s ease-out;
+}
+.payBtn:hover {
+  background-color: rgb(98, 204, 130);
+  box-shadow: var(--def-box-shadow-lg);
+}
+.payBtn:active {
+  border: 3px solid rgb(98, 204, 130);
+  background-color: white;
+}
+
+/* ==================== media queries ===================== */
+@media (max-width: 900px) {
+  #info-card {
+    max-width: var(--main-sections-width-tab);
+    margin: 0.8rem auto;
+    padding: 0.8rem 1.6rem;
+  }
+  .main-container {
+    max-width: var(--main-sections-width-tab);
+    margin: 0.8rem auto;
+  }
+}
+@media (max-width: 768px) {
+  .details-header-right {
+    width: 45%;
+  }
+  .data-left,
+  .data-right {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 576px) {
+  #info-card {
+    max-width: var(--main-sections-width-mob);
+    margin: 0.6rem auto;
+    padding: 0.6rem 1.2rem;
+  }
+  .main-container {
+    max-width: var(--main-sections-width-mob);
+    margin: 0.6rem auto;
+  }
+  #info-card h5 {
+    font-size: 1.2rem;
+  }
+  #info-card ul {
+    margin: 0;
+    padding-top: 0.5rem !important;
+  }
+  .warning-paragraph {
+    font-size: 0.9rem;
+  }
+  .ticket-details p,
+  .data-left,
+  .data-right {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 500px) {
+  #info-card {
+    margin: 0.6rem auto;
+    padding: 0.6rem 1.2rem;
+  }
+  .main-container {
+    margin: 0.6rem auto;
+  }
+  .details-header{
+      padding: 0.2rem;
+  }
+  .details-header-left, .details-header-right {
+    width: 49%;
+  }
+  .data-table tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.6rem 1rem;
+}
+.data-table .data-left{
+    padding: 0; 
+    border-bottom: 1px solid rgb(190, 190, 190)
+  }
+  .data-left,
+  .data-right {
+    width: 100%;
+    text-align: left;
+  }
+  .data-right {
+    padding-left: 1.5rem;
+  }
+  #passenger-left,
+  #food-left {
+    justify-content: flex-start;
+  }
+  #final-fare-lbl{
+      font-size: 0.85rem;
+  }
+  .payBtn{
+      font-size: 0.8rem;
+  }
+}

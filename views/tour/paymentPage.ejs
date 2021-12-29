@@ -1,0 +1,173 @@
+<% layout('layouts/boilerplate')%>
+
+<main class="main-container">
+    <section class="card-header d-flex justify-content-between">
+        <div class="left">
+            <h2><%= state.state_name %> </h2>
+            <p id="stateId"><%= state._id %></p>
+        </div>
+        <h3>Pay Rs. <span id="grandFare">12345</span>.00</h3>
+    </section>
+    <section class="card-body">
+        <aside class="card-selector">
+            <div class="card-types">
+                    <img class="ing-fluid" src="/static/images/payment-cards/mastercard.png" alt="master">
+                    <img class="ing-fluid" src="/static/images/payment-cards/rupay.png" alt="rupay">
+                    <img class="ing-fluid" src="/static/images/payment-cards/visa.png" alt="visa">
+            </div>
+            <div class="card-name activated-button">Credit Card
+                <div></div>
+            </div>
+            <div class="card-name">Debit Card
+                <div></div>
+            </div>
+            <div class="card-name">Net Banking
+                <div></div>
+            </div>
+            <div class="card-name">Bhim - UPI
+                <div></div>
+            </div>
+            <button class="paymentButton">Pay</button>
+        </aside>
+        <aside class="payment-card-body">
+            <div class="payment-card credit-card activated-card">
+                <h3 class="heading">Credit Card</h3>
+                <div class="card-form">
+                    <div class="input-details cardNo">
+                        <label class="labels" for="credCardNo">Card Number</label>
+                        <input class="inputs" type="text" name="credCardNo" id="credCardNo" placeholder="XXXX - XXXX - XXXX - XXXX">
+                    </div>
+                    <div class="input-details cardName">
+                        <label class="labels" for="credCardName">Card Holder's Name</label>
+                        <input class="inputs" type="text" name="credCardName" id="credCardName" maxlength="15" placeholder="Cardholder's Name">
+                    </div>
+                    <div class="input-details validitySection">
+                        <div class="validity">
+                            <label class="labels" for="credCardValidity">Valid Thru</label>
+                            <select class="options" name="CrCardmonthValidity" id="CrCardmonthValidity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <span class="slashSpan">
+                                /
+                            </span>
+                            <select class="options" name="CrCardyearValidity" id="CrCardyearValidity">
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                        <div class="input-details cvv">
+                            <label class="labels" for="credCardCvv">CVV</label>
+                            <input class="inputs" type="text" name="credCardCvv" id="credCardCvv" minlength="3" maxlength="3" placeholder="CVV">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-card debit-card">
+                <h3 class="heading">Debit Card</h3>
+                <div class="card-form">
+                    <div class="input-details cardNo">
+                        <label class="labels" for="debtCardNo">Card Number</label>
+                        <input class="inputs" type="text" name="debtCardNo" id="debtCardNo" placeholder="XXXX - XXXX - XXXX - XXXX">
+                    </div>
+                    <div class="input-details cardName">
+                        <label class="labels" for="debtCardName">Card Holder's Name</label>
+                        <input class="inputs" type="text" name="debtCardName" id="debtCardName" maxlength="15" placeholder="Cardholder's Name">
+                    </div>
+                    <div class="input-details validitySection">
+                        <div class="validity">
+                            <label class="labels" for="debtCardValidity">Valid Thru</label>
+                            <select class="options" name="debtdmonthValidity" id="debtmonthValidity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <span class="slashSpan">
+                                /
+                            </span>
+                            <select class="options" name="debtYearValidity" id="debtYearValidity">
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                        <div class="input-details cvv">
+                            <label class="labels" for="debtCardCvv">CVV</label>
+                            <input class="inputs" type="text" name="debtCardCvv" id="debtCardCvv" minlength="3" maxlength="3" placeholder="CVV">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-card net-banking">
+                <h3 class="heading">Supported banks in Net Banking</h3>
+                <div class="bank-list">
+                    <div class="bank-card">
+                        <img class="bankImg img-fluid" src="/static/images/payment-cards/axisBank.jpg" alt="">
+                        <p class="bankName">Axis Bank</p>
+                    </div>
+                    <div class="bank-card">
+                        <img class="bankImg img-fluid" src="/static/images/payment-cards/bob.jpg" alt="">
+                        <p class="bankName">Bank Of Baroda</p>
+                    </div>
+                    <div class="bank-card">
+                        <img class="bankImg img-fluid" src="/static/images/payment-cards/hdfcBank.jpg" alt="">
+                        <p class="bankName">HDFC Bank</p>
+                    </div>
+                    <div class="bank-card">
+                        <img class="bankImg img-fluid" src="/static/images/payment-cards/iciciBank.jpg" alt="">
+                        <p class="bankName">ICICI Bank</p>
+                    </div>
+                    <div class="bank-card">
+                        <img class="bankImg img-fluid" src="/static/images/payment-cards/pnb.jpg" alt="">
+                        <p class="bankName">Punjab National Bank</p>
+                    </div>
+                    <div class="bank-card">
+                        <img class="bankImg img-fluid" src="/static/images/payment-cards/sbiBank.jpg" alt="">
+                        <p class="bankName">State Bank Of India</p>
+                    </div>
+                    <div class="bank-card">
+                        <img class="bankImg img-fluid" src="/static/images/payment-cards/syndicateBant.jpg" alt="">
+                        <p class="bankName">Syndicate Bank</p>
+                    </div>
+                    <div class="bank-card">
+                        <img class="bankImg img-fluid" src="/static/images/payment-cards/unionBank.jpg" alt="">
+                        <p class="bankName">Union Bank of India</p>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-card upi">
+                <h3 class="heading">UPI (Unified Payment Interface)</h3>
+                <div class="upi-section">
+                    <label class="labels" for="upiInput">Enete UPI/ VPA/ Bhim Upi Address: </label>
+                    <input type="text" name="" id="upiInput" class="inputs" placeholder="Enter UPI here">
+                    <p class="pt-3 text-primary ml-5 text-center">*We support Google pay, BHIM UPI, PhonePe, Amazon Pay and Paytm too.*</p>
+                </div>
+            </div>
+        </aside>
+    </section>
+</main>
+
+
+<script src="/static/javascripts/paymentPage.js"></script>

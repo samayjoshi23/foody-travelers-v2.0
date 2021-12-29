@@ -1,0 +1,6 @@
+.vscode/
+node_modules/
+New_folder/
+abc.html
+static/images/Places/*.txt
+static/images/*.txt

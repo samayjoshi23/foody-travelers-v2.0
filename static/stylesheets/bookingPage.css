@@ -1,0 +1,246 @@
+/* ******************************* Filter Area ******************************** */
+.filter-area{
+    display: grid;
+    padding: 0.5rem 1rem;
+    grid-template-columns: repeat(6, 2fr);
+    gap: 0.5rem;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  .filter-area div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .filter-area .preSelected-values{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .filter-area div label{
+    align-self: center;
+    text-align: center;
+    font-weight: 500;
+  }
+  .filter-area div input,select,button{
+    margin: 0.25em 0;
+    padding: 0.3em 0.5em;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: white;
+  }
+  .filter-area div input:focus,select:focus,button:focus{
+    box-shadow: var(--def-box-shadow-sm);
+    outline: none;
+  }
+  #reset{
+    font-weight: bold;
+    border: 2px solid orange;
+    background-color: rgb(255, 240, 213);
+    transition: all 0.3s ease-out;
+  }
+  #go{
+    font-weight: bold;
+    border: 2px solid rgb(12, 180, 88);
+    transition: all 0.3s ease-out;
+    background-color: rgb(153, 221, 184);
+  }
+  #reset:hover{
+    box-shadow: var(--def-box-shadow-sm);
+    background-color: orange;
+  }
+  #go:hover{
+    box-shadow: var(--def-box-shadow-sm);
+    background-color: rgb(12, 180, 88);
+  }
+  
+  
+  /* ================ passenger details =================== */
+  .input-area{
+    max-width: 95%;
+    margin: 1em auto;
+  }
+  .input-area h2{
+    padding-bottom: 0.65em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  form{
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+  }
+  #submit-btn{
+    min-height: 40vh;
+  }
+  .passenger-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .input-header{
+    padding: 0.5em;
+    margin: 0.5em;
+    width: 15%;
+  }
+  .input-details{
+    border-left: 2px solid rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    align-items: center;
+    padding: 0.5em;
+    margin: 0.5em;
+  }
+  .user-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5em;
+  }
+  .user-input input{
+    padding: 0.2em 0.4em;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: white;
+  }
+  .user-input input:focus{
+    box-shadow: var(--def-box-shadow-sm);
+    outline: none;
+  }
+  input[type=checkbox]{
+    width: 15px;
+    height: 15px;
+  }
+  .user-input a{
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(102, 102, 102);
+  }
+  input[type=submit]{
+    font-weight: bold;
+    margin-top: 1em;
+    padding: 0.4em 2em;
+    border-radius: 5px;
+    border: 2px solid rgb(12, 180, 88);
+    align-self: center;
+    transition: all 0.3s ease;
+    background-color: rgb(153, 221, 184);
+  }
+  input[type=submit]:hover{
+    box-shadow: var(--def-box-shadow-sm);
+    background-color:rgb(12, 180, 88);
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  /* ============ Media queries ============== */
+  @media (max-width: 900px) {
+    .filter-area{
+      padding: 0.15rem 0.4rem;
+      grid-template-columns: 3fr 2fr 1fr 3fr 1fr 2fr;
+      gap: 0.25rem;
+    }
+  }
+  @media (max-width: 768px) {
+    .filter-area{
+      padding: 0.15rem 0.4rem;
+      grid-template-columns: repeat(3, 4fr);
+      gap: 0.25rem;
+    }
+    .filter-area *{
+      font-size: 0.9rem;
+    }
+    .VehicleSelector , .btn-section, .dateOfJourney {
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+    }
+    .input-area{
+      max-width: 98%;
+    }
+    .passenger-input *{
+      font-size: 0.9rem;
+    }
+    .input-header{
+      text-align: center;
+      width: 22%;
+      font-size: 1rem;
+      padding: 0.2em 0;
+      margin: 0.2em 0;
+    }
+    form{
+      padding: 0.5em;
+    }
+    .input-area h2{
+      font-size: 1.2rem;
+    }
+    
+  }
+  @media (max-width: 576px) {
+    .input-details{
+      grid-template-columns: repeat(2, 6fr);
+      padding: 0.5em;
+      margin: 0.5em;
+    }
+  }
+  @media (max-width: 500px) {
+    .filter-area{
+      padding: 0.15rem 0.4rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.25rem;
+    }
+    .filter-area div{
+      border: none;
+      padding: 5px 8px 5px 5px;
+    }
+    .filter-area div:nth-child(1), .filter-area div:nth-child(2),.filter-area div:nth-child(3),.filter-area div:nth-child(4){
+      border-bottom: 1px solid rgb(161, 161, 161);
+     }
+    .filter-area div:nth-child(1),.filter-area div:nth-child(3),.filter-area div:nth-child(5){
+      border-right: 1px solid rgb(182, 182, 182);
+     }
+    .input-area{
+      max-width: 100%;
+    }
+    .input-header{
+      width: 25%;
+      font-size: 0.95rem;
+      padding: 0.05em 0;
+      margin: 0.05em 0;
+    }
+    .user-input{
+      padding: 0.25em;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .input-details{
+      grid-template-columns: 1fr 1fr;
+      padding: 0.5em;
+      margin: 0.1em;
+    }
+    .user-input input{
+      width: 80%;
+    }
+    .pName, .pId{
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    .pAge{
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+    .pAge{
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+    input[type=checkbox]{
+      width: 12px;
+      height: 12px;
+    }
+  }

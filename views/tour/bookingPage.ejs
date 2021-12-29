@@ -1,0 +1,61 @@
+<% layout('layouts/boilerplate')%>
+<main class="main-container">
+    <section class="filter-area">
+        <div class="preSelected-values">
+            <h6 class="state-name"><strong>Tour State: </strong> <%=state.state_name%></h6>
+            <h6 class="tour-source"><strong>Tour Source: </strong> <%=state.tour_source%></h6>
+            <p class="tour-duration"><strong>Duration: </strong> <%=state.duration%> </p>
+        </div>
+        <div class="pickupLocation">
+            <label for="pickup-state">Pickup Point</label>
+            <select id="pickup-state" class="" onchange="generateCityOptions();">
+                <option>Pickup State</option>
+                <option value="madhyaPradesh">Madhya Pradesh</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="northEast">North East</option>
+                <option value="rajashtan">Rajashtan</option>
+                <option value="kerela">Kerela</option>
+                <option value="uttarakhand">Uttarakhand</option>
+                <option value="gujrat">Gujrat</option>
+            </select>
+            <select id="pickup-city" class="">
+
+            </select>
+        </div>
+        <div class="passengerNo">
+            <label for="passengerNumber">Number of Passengers</label>
+            <input type="number" min="0" max="15" name="passengerNumber" id="passengerNumber" placeholder="0">
+        </div>
+        <div class="dateOfJourney">
+            <label for="dateOfJourney">Date of Journey</label>
+            <input type="date" name="dateOfJourney" id="dateOfJourney">
+        </div>
+        <div class="VehicleSelector">
+            <label for="Vehicletype">Select Vehicle</label>
+            <select id="vehicle-type" class="">
+                <option value="1000" selected>Bus</option>
+                <option value="3000">5-Seater</option>
+                <option value="5000">7-Seater</option>
+            </select>
+        </div>
+        <div class="btn-section">
+            <button id="reset">Reset Fields</button>
+            <button id="go">Go</button>
+        </div>
+    </section>
+    <section class="input-area">
+        <h2 class="text-center">Passenger Details</h2>
+        <form action="/states/<%=state._id%>/booking" method="POST">
+            <div id="passenger-form">
+
+
+                    
+            </div>
+            <input type="submit" value="Proceed to Book" id="formSubmit">
+            <div id="submit-btn" class="text-center">
+            </div>
+        </form>
+    </section>
+</main>
+
+<script src="/static/javascripts/bookingPage.js"></script>
