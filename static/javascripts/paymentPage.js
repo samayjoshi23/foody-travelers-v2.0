@@ -36,19 +36,11 @@ selectedBtn.forEach((btn, index) => {
     selectedBtn.forEach((section, i) => {
       if (section.classList.contains("activated-button")) {
         section.classList.remove("activated-button");
-        console.log("removed from ", i + 1);
         selectedOption[i].classList.remove("activated-card");
-        console.log(
-          `We were on : ${selectedOption[i].firstElementChild.innerText}`
-        );
       }
     });
-    console.log("activated on", index + 1);
     btn.classList.add("activated-button");
     selectedOption[index].classList.add("activated-card");
-    console.log(
-      `We are on : ${selectedOption[index].firstElementChild.innerText}`
-    );
   });
 });
 
