@@ -356,11 +356,11 @@ const seedState = [
         ],
         city_hotel: {
           hotel_name: "Atithi Inn",
-          hotel_img: "/static/images/Hotels/H_mp2-Atithi-Inn.jpg.jpg",
+          hotel_img: "/static/images/Hotels/H_mp2-Atithi-Inn.jpg",
         },
         city_restaurant: {
           restaurant_name: "Atithi Inn",
-          restaurant_img: "/static/images/Hotels/R_mp2-Atithi-Inn.jpg.jpg",
+          restaurant_img: "/static/images/Hotels/R_mp2-Atithi-Inn.jpg",
         },
       },
       {
@@ -1234,6 +1234,556 @@ const seedState = [
     tour_source: 'Leh',
     base_fare: 21829,
     duration: "15 Days 16 Nights",
+  },
+  // Rajasthan
+  {
+    state_name: "Rajasthan",
+    state_home_cover: "/static/images/home-state-cards/rajasthan.jpg",
+    cities: [
+      {
+        city_name: "Ajmer",
+        places: [
+          {
+            place_name: "Adhai Din ka Jhonpra",
+            img_url: "/static/images/Places/raj1_AdhaiDinKaJhonpra.jpg",
+          },
+          {
+            place_name: "Ana Sagar Lake",
+            img_url: "/static/images/Places/raj1_anaSagarLake.jpg",
+          },
+          {
+            place_name: "Birla Watar Park",
+            img_url: "/static/images/Places/raj1_BirlaWaterPark.jpg",
+          },
+          {
+            place_name: "Dargah Shariff",
+            img_url: "/static/images/Places/raj1_DargahShariff.jpg",
+          },
+          {
+            place_name: "Maharana Pratap Smarak",
+            img_url: "/static/images/Places/raj1_MaharanaPratapSmarak.jpg",
+          },
+          {
+            place_name: "Prithviraj Smarak",
+            img_url: "/static/images/Places/raj1_PrithvirajSmarak.jpg",
+          },
+          {
+            place_name: "Taragarh Fort",
+            img_url: "/static/images/Places/raj1_TaragarhFort.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "Royal Melange",
+          hotel_img: "/static/images/Hotels/H_Raj1_Royal-Melange.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "Royal Melange",
+          restaurant_img: "/static/images/Hotels/R_Raj1_Royal-Melange.jpg",
+        },
+      },
+      {
+        city_name: "Chittorgarh",
+        places: [
+          {
+            place_name: "Bassi Wildlife Sanctuary",
+            img_url: "/static/images/Places/raj2_BassiWildlifeSanctuary.jpg",
+          },
+          {
+            place_name: "Bhangarh Fort",
+            img_url: "/static/images/Places/raj2_BhangarhFort.jpg",
+          },
+          {
+            place_name: "Chittorgarh Fort",
+            img_url: "/static/images/Places/raj2_ChittorgarhFort.jpg",
+          },
+          {
+            place_name: "Gaumukh Resiorwire",
+            img_url: "/static/images/Places/raj2_GaumukhResiorwire.jpg",
+          },
+          {
+            place_name: "Pushkar Camel Fair",
+            img_url: "/static/images/Places/raj2_PushkarCamelFair.jpg",
+          },
+          {
+            place_name: "Pushkar Lake",
+            img_url: "/static/images/Places/raj2_PushkarLake.jpg",
+          },
+          {
+            place_name: "Rana Kumbha Fort",
+            img_url: "/static/images/Places/raj2_RanaKumbhaFort.jpg",
+          },
+          {
+            place_name: "Sitamata Wildlife Sanctuary",
+            img_url: "/static/images/Places/raj2_SitamataWildlifeSanctuary.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "Hotel Chittaurgarh Fort Haveli",
+          hotel_img: "/static/images/Hotels/H_raj2_Hotel-Chittaurgarh-Fort-Haveli.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "Zero Degree Restro",
+          restaurant_img: "/static/images/Hotels/R_Raj2_Zero-Degree-Restro.jpg",
+        },
+      },
+      {
+        city_name: "Jaipur",
+        places: [
+          {
+            place_name: "Amber Fort",
+            img_url: "/static/images/Places/raj3_AmberFort.jpg",
+          },
+          {
+            place_name: "Birla Mandir",
+            img_url: "/static/images/Places/raj3_BirlaMandir.jpg",
+          },
+          {
+            place_name: "Hawa Mahal",
+            img_url: "/static/images/Places/raj3_HawaMahal.jpg",
+          },
+          {
+            place_name: "Jaigarh Fort",
+            img_url: "/static/images/Places/raj3_JaigarhFort.jpg",
+          },
+          {
+            place_name: "Leapord Safari",
+            img_url: "/static/images/Places/raj3_LeapordSafari.jpg",
+          },
+          {
+            place_name: "Jantar Mantar",
+            img_url: "/static/images/Places/raj3_JantarMantar.jpg",
+          },
+          {
+            place_name: "Light And Sound Show",
+            img_url: "/static/images/Places/raj3_LightAndSoundShow.jpg",
+          },
+          {
+            place_name: "Night Tour",
+            img_url: "/static/images/Places/raj3_NightTour.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "Regenta Central Jaipur",
+          hotel_img: "/static/images/Hotels/H_Raj3_Regenta-Central-Jaipur.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "Regenta Central Jaipur",
+          restaurant_img: "/static/images/Hotels/R_Raj3_Regenta-Central-Jaipur.jpg",
+        },
+      },
+      {
+        city_name: "Jaiselmer",
+        places: [
+          {
+            place_name: "Desert Culture Museum",
+            img_url: "/static/images/Places/raj4_DesertCultureMuseum.jpg",
+          },
+          {
+            place_name: "Desert National Park",
+            img_url: "/static/images/Places/raj4_DesertNationalPark.jpg",
+          },
+          {
+            place_name: "Desert Safari",
+            img_url: "/static/images/Places/raj4_DesertSafari.jpg",
+          },
+          {
+            place_name: "Gadisagar Lake",
+            img_url: "/static/images/Places/raj4_GadisagarLake.jpg",
+          },
+          {
+            place_name: "Parasailing In Jaiselmer",
+            img_url: "/static/images/Places/raj4_ParasailingInJaiselmer.jpg",
+          },
+          {
+            place_name: "Jaiselmer Fort",
+            img_url: "/static/images/Places/raj4_JaiselmerFort.jpg",
+          },
+          {
+            place_name: "Patwon Ki Haweli",
+            img_url: "/static/images/Places/raj4_PatwonKiHaweli.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "Hotel Fateh Garh",
+          hotel_img: "/static/images/Hotels/H_raj4_FatehGarh.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "Hotel Fateh Garh",
+          restaurant_img: "/static/images/Hotels/R_raj4_FatehGarh.jpg",
+        },
+      },
+      {
+        city_name: "Mount Abu",
+        places: [
+          {
+            place_name: "Achalgarh Fort",
+            img_url: "/static/images/Places/raj5_AchalgarhFort.jpg",
+          },
+          {
+            place_name: "Dilwara Temple",
+            img_url: "/static/images/Places/raj5_DilwaraTemple.jpg",
+          },
+          {
+            place_name: "Guru Shikhar",
+            img_url: "/static/images/Places/raj5_GuruShikhar.jpg",
+          },
+          {
+            place_name: "Haldighati",
+            img_url: "/static/images/Places/raj5_Haldighati.jpg",
+          },
+          {
+            place_name: "Kumbhalgarh",
+            img_url: "/static/images/Places/raj5_Kumbhalgarh.jpg",
+          },
+          {
+            place_name: "Mount Abu Wildlife Sanctuary",
+            img_url: "/static/images/Places/raj5_MountAbuWildlifeSanctuary.jpg",
+          },
+          {
+            place_name: "Peace Park",
+            img_url: "/static/images/Places/raj5_PeacePark.jpg",
+          },
+          {
+            place_name: "Shri Raghunath Temple",
+            img_url: "/static/images/Places/raj5_ShriRaghunathTemple.jpg",
+          },
+          {
+            place_name: "Sunset Point",
+            img_url: "/static/images/Places/raj5_SunsetPoint.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "Hotel Gorbandh",
+          hotel_img: "/static/images/Hotels/H_raj5_Hotel-Gorbandh.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "Hotel Gorbandh",
+          restaurant_img: "/static/images/Hotels/R_raj5_Hotel-Gorbandh.jpg",
+        },
+      },
+      {
+        city_name: "Udaipur",
+        places: [
+          {
+            place_name: "City Palace",
+            img_url: "/static/images/Places/raj6_CityPalace.jpg",
+          },
+          {
+            place_name: "Eklingji Temple",
+            img_url: "/static/images/Places/raj6_EklingjiTemple.jpg",
+          },
+          {
+            place_name: "Fatehsagar Lake",
+            img_url: "/static/images/Places/raj6_FatehsagarLake.jpg",
+          },
+          {
+            place_name: "Jagdish Temple",
+            img_url: "/static/images/Places/raj6_JagdishTemple.jpg",
+          },
+          {
+            place_name: "Karni Mata Ropeway",
+            img_url: "/static/images/Places/raj6_KarniMataRopeway.jpg",
+          },
+          {
+            place_name: "Lake Palace",
+            img_url: "/static/images/Places/raj6_LakePalace.jpg",
+          },
+          {
+            place_name: "Lake Pichola",
+            img_url: "/static/images/Places/raj6_LakePichola.jpg",
+          },
+          {
+            place_name: "Maharana Pratap Memorial",
+            img_url: "/static/images/Places/raj6_MaharanaPratapMemorial.jpg",
+          },
+          {
+            place_name: "Sheesh Mahal Dinner",
+            img_url: "/static/images/Places/raj6_SheeshMahalDinner.jpg",
+          },
+          {
+            place_name: "Shilpgram Fair",
+            img_url: "/static/images/Places/raj6_ShilpgramFair.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "Bamboo Saa",
+          hotel_img: "/static/images/Hotels/H_raj6_Bamboo-Saa.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "Bamboo Saa",
+          restaurant_img: "/static/images/Hotels/R_raj6_Bamboo-Saa.jpg",
+        },
+      },
+    ],
+    state_food: [
+      {
+        f_name: "Badam Ka Halwa",
+        food_img: "/static/images/Food/raj_BadamKaHalwa.jpg",
+        price: 149,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Bajra Ki Roti",
+        food_img: "/static/images/Food/raj_Bajra-ki-Roti.jpg",
+        price: 80,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Dal Baati",
+        food_img: "/static/images/Food/raj_DalBaati.jpg",
+        price: 180,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Ghevar",
+        food_img: "/static/images/Food/raj_Ghevar.jpg",
+        price: 120,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Kalmi Vada",
+        food_img: "/static/images/Food/raj_Kalmi-Vada.jpg",
+        price: 99,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Ker Sangri",
+        food_img: "/static/images/Food/raj_Ker-Sangri.jpg",
+        price: 165,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Laal Maas",
+        food_img: "/static/images/Food/raj_Laal-Maas.jpg",
+        price: 350,
+        food_type: "Non-Veg",
+        dot_color: "red",
+      },
+      {
+        f_name: "Mawa Kachori",
+        food_img: "/static/images/Food/raj_MawaKachori.jpg",
+        price: 100,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Methi Bajra Puri",
+        food_img: "/static/images/Food/raj_Methi-Bajra-Puri.jpg",
+        price: 200,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Pyaaz ki kachori",
+        food_img: "/static/images/Food/raj_Pyaaz-ki-kachori.jpg",
+        price: 120,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Mohan Thal",
+        food_img: "/static/images/Food/raj_Mohan-Thal.jpg",
+        price: 260,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+    ],
+    tour_source: 'Ajmer',
+    base_fare: 36829,
+    duration: "22 Days 21 Nights",
+  },
+  // Uttarakhand
+  {
+    state_name: "Uttarakhand",
+    state_home_cover: "/static/images/home-state-cards/uttarakhand.jpg",
+    cities: [
+      {
+        city_name: "Dehradun and Musoorie",
+        places: [
+          {
+            place_name: "Fun Valley",
+            img_url: "/static/images/Places/uk1_FunValley.jpg",
+          },
+          {
+            place_name: "George Everests House",
+            img_url: "/static/images/Places/uk1_GeorgeEverestsHouse.jpg",
+          },
+          {
+            place_name: "Gun Hill",
+            img_url: "/static/images/Places/uk1_GunHill.jpg",
+          },
+          {
+            place_name: "Mussoorie Lake",
+            img_url: "/static/images/Places/uk1_MussoorieLake.jpg",
+          },
+          {
+            place_name: "National Sports Academy",
+            img_url: "/static/images/Places/uk1_NationalSportsAcademy.jpg",
+          },
+          {
+            place_name: "Robbers Cave",
+            img_url: "/static/images/Places/uk1_RobbersCave.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "Sterling Mussoorie",
+          hotel_img: "/static/images/Hotels/H_uk1_Sterling-Mussoorie.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "Sterling Mussoori",
+          restaurant_img: "/static/images/Hotels/R_uk1_Sterling-Mussoorie.jpg",
+        },
+      },
+      {
+        city_name: "Rishikesh and Haridwar",
+        places: [
+          {
+            place_name: "Bunge Jumping",
+            img_url: "/static/images/Places/uk2_BungeJumping.jpg",
+          },
+          {
+            place_name: "Har Ki Pauri",
+            img_url: "/static/images/Places/uk2_HarKiPauri.jpg",
+          },
+          {
+            place_name: "Kaudiyala",
+            img_url: "/static/images/Places/uk2_Kaudiyala.jpg",
+          },
+          {
+            place_name: "Laxman Jhoola",
+            img_url: "/static/images/Places/uk2_LaxmanJhoola.jpg",
+          },
+          {
+            place_name: "Ram Jhula",
+            img_url: "/static/images/Places/uk2_RamJhula.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "One Earth Hardwar",
+          hotel_img: "/static/images/Hotels/H_uk2_One-Earth-Hardwar.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "One Earth Hardwar",
+          restaurant_img: "/static/images/Hotels/R_uk2_One-Earth-Hardwar.jpg",
+        },
+      },
+      {
+        city_name: "Nainital",
+        places: [
+          {
+            place_name: "Hanuman Garhi",
+            img_url: "/static/images/Places/uk3_HanumanGarhi.jpg",
+          },
+          {
+            place_name: "Snow View Point",
+            img_url: "/static/images/Places/uk3_SnowViewPoint.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "Sterling Nainital",
+          hotel_img: "/static/images/Hotels/H_uk3_Sterling-Nainital.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "Sterling Nainital",
+          restaurant_img: "/static/images/Hotels/R_uk3_Sterling-Nainital.jpg",
+        },
+      },
+      {
+        city_name: "Almora",
+        places: [
+          {
+            place_name: "Kasar Devi",
+            img_url: "/static/images/Places/uk4_KasarDevi.jpg",
+          },
+          {
+            place_name: "Katarmal Sun Temple",
+            img_url: "/static/images/Places/uk4_KatarmalSunTemple.jpg",
+          },
+        ],
+        city_hotel: {
+          hotel_name: "Hotel Shivalik River",
+          hotel_img: "/static/images/Hotels/H_uk4_Hotel-Shivalik-River.jpg",
+        },
+        city_restaurant: {
+          restaurant_name: "Hotel Shivalik River",
+          restaurant_img: "/static/images/Hotels/R_uk4_Hotel-Shivalik-River.jpg",
+        },
+      },
+    ],
+    state_food: [
+      {
+        f_name: "Aloo ke Gutke",
+        food_img: "/static/images/Food/uk_Aaloo-ke-Gutke.jpg",
+        price: 160,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Arsa",
+        food_img: "/static/images/Food/uk_Arsa.jpg",
+        price: 95,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Balusahi",
+        food_img: "/static/images/Food/uk_Balusahi.jpg",
+        price: 120,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Bhang ki Chutney",
+        food_img: "/static/images/Food/uk_Bhang-ki-Chutney.jpg",
+        price: 140,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Bhutwa",
+        food_img: "/static/images/Food/uk_Bhautwa.jpg",
+        price: 190,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Jholi Curd Curry",
+        food_img: "/static/images/Food/uk_Jholi-curd-curry.jpg",
+        price: 220,
+        food_type: "Non-Veg",
+        dot_color: "red",
+      },
+      {
+        f_name: "Kafuli",
+        food_img: "/static/images/Food/uk_kafuli.jpg",
+        price: 190,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Phaanu",
+        food_img: "/static/images/Food/uk_phaanu.jpg",
+        price: 95,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+      {
+        f_name: "Singori",
+        food_img: "/static/images/Food/uk_singori.jpg",
+        price: 235,
+        food_type: "Veg",
+        dot_color: "green",
+      },
+    ],
+    tour_source: 'Dehradun',
+    base_fare: 36790,
+    duration: "24 Days 23 Nights",
   },
 ];
 
