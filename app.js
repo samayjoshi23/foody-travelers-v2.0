@@ -43,7 +43,10 @@ function wrapAsync(fn) {
     }
 }
 
-
+// User Routes
+app.get('/user/login', (req,res,next)=> {
+    res.render('users/login-signup', {title:'Login/Sign Up - Foody Travelers', css:'login-signup.css'});
+});
 
 
 // ------ Tour Routes ---------------

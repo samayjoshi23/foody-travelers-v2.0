@@ -1,0 +1,226 @@
+.login-signup {
+    width: 90%;
+    margin: 2% auto;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+}
+.login-signup section {
+    border: var(--main-border-color);
+    box-shadow: 0px 0px 5px 0 rgb(150, 150, 150);
+    border-top: none;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* ============ MODE SELECTOR ============ */
+.mode-selector {
+    position: relative;
+    margin-bottom: 2rem;
+}
+.mode-selector div h5 {
+    text-align: center;
+    margin: 0;
+    padding: 1% 0 2% 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+.login, .signup{
+    border: var(--main-border-color);
+    border-radius: 5rem;
+    width: 44%;
+}
+  
+/* ======== Login - Signup Sections =====*/
+.login-section, .signup-section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 1%;
+    justify-content: space-evenly;
+}
+
+/* Individual settings for forms,inputs and section */
+/* signup */
+.signup-section{
+  background-color: #FFEF82;
+}
+.signup-section .input-forms{
+  background-color: #f3db63;
+}
+.signup-section .inputs{
+  background-color: #d2d450;
+}
+.form-heading-signup{
+  color: #82954B;
+}
+.main-button-signup{
+  background-color: #82954B;
+  color:white;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+.main-button-signup:hover{
+  background-color: #5f6f2f;
+  color:white;
+}
+
+/* login */
+.login-section{
+  background-color: #E8F9FD;
+}
+.login-section .input-forms{
+  background-color: #96dee9;
+}
+.login-section .inputs{
+  background-color: #0AA1DD;
+}
+.form-heading-login{
+  color: #2155CD;
+}
+.main-button-login{
+  background-color: #2155CD;
+  color:white;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+.main-button-login:hover{
+  background-color: #133da0;
+  color:white;
+}
+
+/* Combined common code */
+.login-section .inputs::placeholder, .signup-section .inputs::placeholder{
+  color: #ffffff;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.75);
+  font-weight: 600;
+}
+.header-img{
+  width: 45%;
+  height: 100%;
+}
+.header-img img{
+  width: 100%;
+}
+.input-forms {
+  width: 45%;
+  margin: 1rem 0;
+  padding-bottom: 2%;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
+}
+.input-forms div{
+  padding: 1% 10%;
+}
+.inputs{
+  border: none;
+  border-bottom: 1px solid rgb(150, 150, 150);
+  padding: 8px;
+  margin: 5px 0 5px 20px;
+  border-radius: 5px;
+  box-shadow: 1px 0 4px 0 rgba(255, 255, 255, 0);
+}
+.inputs:focus {
+  border: none;
+  outline: none;
+  box-shadow: 1px 0 3px 0 rgb(0, 0, 0, 0.5);
+}
+.input-forms div a{
+  color: black;
+}
+.input-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.g-btn{
+  border: 1px solid rgb(206, 205, 205);
+}  
+.g-btn:hover{
+  border: 1px solid rgb(164, 164, 164);
+  background-color: rgb(235, 235, 235);
+}  
+.input-forms a img{
+  width: 1rem;
+  margin-left: 0.3rem;
+  margin-right: 0.65rem;
+}
+.input-forms .btn{
+  margin-left: 20px;
+  border-radius: 5rem;
+  width: 100%;
+}
+
+/* ============ JS Class============ */
+.bg-selected {
+  background-color: rgba(0, 0, 0,0.25);
+  box-shadow: 0px 2px 5px 2px rgb(0 0 0 / 25%);
+  transition: all 0.3s ease-in-out;
+}
+.font-bold h5{
+  font-weight: bold !important;
+}
+.display-hide {
+  display: none;
+}
+#selector {
+  height: 5px;
+  position: absolute;
+  left: 0%;
+  bottom: 2px;
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-out;
+}
+#selector img {
+  width: 14px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10%;
+}
+
+/* =========== Media Queries =========== */
+
+@media (max-width: 900px) {
+    .input-forms{
+      width: 60%;
+    }
+}
+@media (max-width: 768px) {
+    .input-forms{
+      width: 80%;
+    }
+    .mode-selector {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+}
+@media (max-width: 600px) {
+    .mode-selector h5{
+      font-size: 1.2rem;
+      padding: 0.5rem 0 !important;
+    }
+    .inputs{
+      border-bottom: 1px solid rgb(150, 150, 150);
+      padding: 4px 12px;
+      margin: 2px 0 2px 10px;
+      border-radius: 4px;
+      box-shadow: 1px 0 3px 0 rgba(255, 255, 255, 0);
+    }
+    .header-img{
+      display: none;
+    }
+    .login-signup{
+      width: 98%;
+    }
+    .login-signup h1{
+      margin-left: 2%;
+    }
+    .input-forms{
+      width: 100%;
+    }
+    .input-forms div{
+      padding: 1% 5%;
+    }
+}

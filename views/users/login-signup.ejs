@@ -1,0 +1,93 @@
+<% layout('layouts/boilerplate')%>
+
+<main class="login-signup">
+    <!-- Mode Selector -->
+    <div class="mode-selector d-flex w-100 justify-content-evenly">
+        <div class="login bg-selected font-bold">
+            <h5 class="mode-heading-login">Login</h5>
+        </div>
+        <div class="signup">
+            <h5 class="mode-heading-signup">Sign up</h5>
+        </div>
+    </div>
+    
+    <!-- Login Section -->
+    <section class="login-section">
+        <div class="header-img">
+            <img src="../../static/images/login-signup/login-img.jpg" alt="">
+        </div>
+        <form action="" class="input-forms" id="login-form">
+            <div class="text-center border-bottom border-2 mb-2">
+                <h3 class="form-heading-login">Login to FoodyTravellers</h3>
+            </div>
+            <div class="d-flex flex-column">
+                <label class="input-label" for="login-email">Email</label>
+                <input class="inputs" type="text" name="login-email" id="login-email" placeholder="xyz@domainName.com" autofocus>
+            </div>
+            <div class="d-flex flex-column">
+                <label class="input-label" for="login-password">Password</label>
+                <input class="inputs" type="password" name="login-password" id="login-password" placeholder="Enter your password">
+            </div>
+            <div class="d-flex">
+                <a href="" class="text-danger text-decoration-none">Forgot your password?</a>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn main-button-login" id="login-ac">Login</button>
+            </div>
+            <div class="text-center">
+                <p class="m-0 fw-bold">OR</p>
+            </div>
+            <div class="d-flex">
+                <a class="g-btn btn btn-light">
+                    <img src="../../static/images/login-signup/google-logo.png" alt="google-icon">Continue with Google
+                </a>
+            </div>
+        </form>
+    </section>
+    
+    <!-- Signup Section -->
+    <section class="signup-section display-hide">
+        <div class="header-img">
+            <img src="../../static/images/login-signup/signup-img.jpg" alt="">
+        </div>
+        <form action="" class="input-forms" id="signup-form">
+            <div class="text-center border-bottom border-2 mb-2">
+                <h3 class="form-heading-signup">Create a new account</h3>
+            </div>
+            <div class="d-flex flex-column">
+                <label class="input-label" for="name">Name</label>
+                <input class="inputs" type="text" name="name" id="name" placeholder="Enter your full name" autofocus>
+            </div>
+            <div class="d-flex flex-column">
+                <label class="input-label" for="signup-email">Email</label>
+                <input class="inputs" type="text" name="signup-email" id="signup-email" placeholder="xyz@domainName.com">
+            </div>
+            <div class="d-flex flex-column">
+                <label class="input-label" for="mobile">Mobile Number</label>
+                <input class="inputs" type="text" name="mobile" id="mobile" placeholder="+91 xxxx-xxxxx">
+            </div>
+            <div class="d-flex flex-column">
+                <label class="input-label" for="signup-password">Password</label>
+                <input class="inputs" type="password" name="signup-password" id="signup-password" placeholder="Enter your password" autofocus>
+            </div>
+            <div class="d-flex flex-column">
+                <label class="input-label" for="pas-confirm">Confirm Password</label>
+                <input class="inputs" type="password" name="" id="pass-confirm" placeholder="Re-enter password" autofocus>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn main-button-signup" id="signup-ac">Signup Now</button>
+            </div>
+            <div class="text-center">
+                <p class="m-0 fw-bold">OR</p>
+            </div>
+            <div class="d-flex">
+                <a class="g-btn btn btn-light">
+                    <img src="../../static/images/login-signup/google-logo.png" alt="google-icon">Signup with Google
+                </a>
+            </div>
+        </form>
+    </section>
+
+</main>
+
+<script src="/static/javascripts/login-signup.js"></script>
