@@ -2,13 +2,11 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const methodOverride = require('method-override');
-const AppError = require('./AppError');
 const session = require('express-session');
-
+const wrapAsync = require('./utils/wrapAsync');
 // Schema
-const State = require('./models/StateSchema');
-const Ticket = require('./models/ticketSchema');
+const State = require('./Models/StateSchema');
+const Ticket = require('./Models/TicketSchema');
 
 // mongoose connection
 mongoose.connect('mongodb://localhost:27017/foody-travelers', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -36,137 +34,14 @@ app.use(session({
     saveUninitialized: false
 }))
 
-// Middlewares
-function wrapAsync(fn) {
-    return function (req, res, next) {
-        fn(req, res, next).catch(e => next(e))
-    }
-}
 
-// User Routes
-app.get('/user/login', (req,res,next)=> {
-    res.render('users/login-signup', {title:'Login/Sign Up - Foody Travelers', css:'login-signup.css'});
-});
+// =============== Application Routes =============== 
+app.use('/user', require('./routes/userRoutes'))
+app.use('/tour', require('./routes/bookingRoutes'));
 
-
-// ------ Tour Routes ---------------
 app.get('/', wrapAsync(async (req,res,next)=>{
     res.render('home', {title: 'Foody-Travelers - Home',css:'home.css'});
 }));
-
-app.get('/states', wrapAsync(async (req,res,next)=> {
-    const states = await State.find({});
-    res.render('tour/allStates', {states, title: 'States',css:'allStates.css'});
-}));
-
-app.get('/state/:id/booking', wrapAsync(async(req,res)=>{
-    const {id} = req.params;
-    const state = await State.findById(id);
-    if(!state){
-        throw new AppError('State not found!!!', 404);
-    }
-    res.render('tour/bookingPage', {state, title:`Book-${state.state_name}`, css:'bookingPage.css'});
-}));
-
-
-app.get('/states/:id', wrapAsync(async (req, res, next) => {
-    const {id} = req.params;
-    const state = await State.findById(id);
-    if(!state){
-        throw new AppError('State not found!!!', 404);
-    }
-    res.render('tour/showState', {state, title:state.state_name, css:'showState.css'});
-}));
-
-
-app.post('/states/:id/booking', wrapAsync(async(req, res) => {
-    const {id} = req.params;
-    const state = await State.findById(id);
-    if(!state){
-        throw new AppError('State not found!!!', 404);
-    }
-    res.redirect(`/states/${state._id}/booking/ticket`);
-}));
-
-app.get('/states/:id/booking/ticket', wrapAsync( async(req,res, next) =>{
-    const {id} = req.params;
-    const state = await State.findById(id);
-    if(!state){
-        throw new AppError('State not found!!!', 404);
-    }
-     res.render('tour/ticketPage',{state, title: 'Confirm-Details', css:'ticketPage.css'});
-}));
-
-app.get('/states/:id/booking/ticket/payment',  wrapAsync( async(req,res)=>{
-    const {id} = req.params;
-    const state = await State.findById(id);
-    if(!state){
-        throw new AppError('State not found!!!', 404);
-    }
-    res.render('tour/paymentPage',{state, title:'Payment', css:'paymentPage.css'});
-}));
-
-app.post('/ticket', wrapAsync( async(req, res, next)=>{
-    const ticket = new Ticket(req.body);
-    console.log(ticket);
-    await ticket.save();
-    res.json({
-        stats: 'success',
-        ticket: ticket.user_Name
-    });
-}));
-
-
-
-
-
-
-
-// ======================= Error- Handlers ===================
-const handleValidationErr = err => {
-    console.dir(err);
-    return new AppError(`Validation Failed...${err.message}`, 400)
-}
-const handleCastErr = err => {
-    console.dir(err);
-    return new AppError(`Cast Error...${err.message}`, 500)
-}
-const handleSyantaxErr = err => {
-    console.dir(err);
-    return new AppError(`Not Valid Syntax...${err.message}`)
-}
-const handleErr = err => {
-    console.dir(err);
-    return new AppError(`There is an Error...${err.message}`)
-}
-const handleReferenceErr = err => {
-    console.dir(err);
-    return new AppError(`There is an Reference Error...${err.message}`)
-}
-const handleTypeErr = err => {
-    console.dir(err);
-    return new AppError(`There is an Reference Error...${err.message}`)
-}
-
-app.use((err, req, res, next) => {
-    console.log(err.name);
-    //We can single out particular types of Mongoose Errors:
-    if (err.name === 'ValidationError') err = handleValidationErr(err);
-    else if (err.name === 'CastError') err = handleCastErr(err);
-    else if (err.name === 'SyantaxError') err = handleSyantaxErr(err);
-    else if (err.name === 'Error') err = handleErr(err);
-    else if (err.name === 'ReferenceError') err = handleReferenceErr(err);
-    else if (err.name === 'TypeError') err = handleTypeErr(err);
-    next(err);
-});  
-
-app.use((err, req, res, next) => {
-    const { status = 500, message = 'Something went wrong' } = err;
-    res.status(status).send(message);
-});
-
-
-
 
 
 //  ============== server run =====================

@@ -83,7 +83,7 @@ pay.addEventListener("click", async function () {
     signal: undefined,
     window: window,
   };
-  const response = await fetch(`/ticket`, options);
+  const response = await fetch(`/tour/ticket`, options);
   console.log(response);
   const json = await response.json();
   if (json) {
