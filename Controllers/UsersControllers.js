@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../Models/UserSchema');
 
 // Middleware
-const getUser = require('../middlewares/getUser');
+// const getUser = require('../middlewares/getUser');
 
 module.exports.signupData = ([
     body('username','Name should be between 3 to 25 characters').isString().isLength({min:3, max:25}),
@@ -48,8 +48,12 @@ module.exports.signupData = ([
         password:secPass
     });
     const token = await user.generateAuthToken();
-    console.log("here is token: ",token)
     
+    res.cookie("jwt", token, {
+        expires: new Date(Date.now() + 3000000),
+        httpOnly: true,
+        // secure:true
+    });
     const newUser = await user.save();
     res.status(201).json({success: true, newUser});
     // res.redirect('/');
@@ -66,7 +70,6 @@ module.exports.loginData = ([
     body('password','Enter a valid Password').isLength({min:5, max:15}).exists()
 ],async(req,res,next)=> {
     const {email, password} = req.body;
-    console.log(req.body);
 
     let user = await User.findOne({email});
     if(!user){
@@ -79,18 +82,24 @@ module.exports.loginData = ([
         return res.status(400).json({error: "Wrong credentials, Re-enter the correct credentials"});
     }
 
-    return res.status(200).json({status: "ok", message:"Login succesful", data: user})
+    const token = await user.generateAuthToken();
+    res.cookie("jwt", token, {
+        expires: new Date(Date.now() + 3000000),
+        httpOnly: true,
+        // secure: true
+    });
+
+    // return res.status(200).json({status: "ok", message:"Login succesful", data: user})
+    res.send(`<a href='/user/secret'>Go to secret</a>`);
     
     // res.render('home', {title: 'Foody-Travelers - Home',css:'home.css' , user});
 });
 
-module.exports.getUsers = async (req,res)=>{
-    try{
-        let userId = req.user.id;
-        const user = await User.findById(userId).select("-password");
-        res.send(user);
-    }catch(error){
-        console.log(error.message);
-        res.status(500).send("Internal server errors occured...")
-    }
+module.exports.secret = async (req,res, next)=>{
+
+    const uid = req.cookies.uid;
+    console.log(`Controller page: ${uid}`);
+    const currentUser = await User.findById(uid);
+    console.log(currentUser);
+    res.json({status: "Successful", page: "Secret page", cookie: req.cookies.jwt})
 };

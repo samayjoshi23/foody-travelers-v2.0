@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = "hellobrosamayjoshiishereforyourhelp";
 
 
 const userSchema = new mongoose.Schema({
@@ -37,13 +36,12 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.generateAuthToken = async function() {
     try {
-        console.log(this._id);
         const id = this._id;
-        const token = jwt.sign({_id:id}, JWT_SECRET);
-        console.log(token);
+        const token = jwt.sign({_id:id.toString()}, process.env.JWT_SECRET);
+        this.tokens = this.tokens.concat({token});
+        await this.save();
         return token;
     } catch (error) {
-        // res.send("the error part" + error);
         console.log("the error part" + error);
     }
 }
