@@ -21,8 +21,6 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: Number,
-        // maxlength:10,
-        // minlength:10,
         unique:true,
         required: true
     },
@@ -30,6 +28,12 @@ const userSchema = new mongoose.Schema({
         token:{
             type: String,
             required:true
+        }
+    }],
+    tickets: [{
+        ticket:{ 
+            tId: String,
+            tName: String
         }
     }]
 });
@@ -45,8 +49,6 @@ userSchema.methods.generateAuthToken = async function() {
         console.log("the error part" + error);
     }
 }
-
-
 
 const User = mongoose.model('User', userSchema);
 

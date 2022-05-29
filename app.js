@@ -7,12 +7,7 @@ const session = require('express-session');
 const wrapAsync = require('./utils/wrapAsync');
 const cookieParser = require('cookie-parser');
 
-// Schema
-const State = require('./Models/StateSchema');
-const Ticket = require('./Models/TicketSchema');
-
 // mongoose connection
-
 mongoose.connect(`mongodb://localhost:${process.env.DB_URL}`, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("CONNECTION OPEN!!!")
@@ -23,7 +18,6 @@ mongoose.connect(`mongodb://localhost:${process.env.DB_URL}`, { useNewUrlParser:
     })
 
 // Use files-------
-
 const app = express();
 
 app.use(express.urlencoded({ extended : true }));
@@ -35,27 +29,22 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
-// app.use(session({
-//     secret: 'thisistopsecret',
-//     cookie: {maxAge: 30000},
-//     resave: false,
-//     saveUninitialized: false
-// }))
-
+app.use(session({
+    secret: 'thisistopsecret',
+    cookie: {maxAge: 30000},
+    resave: false,
+    saveUninitialized: false
+}))
 
 // =============== Application Routes =============== 
 app.use('/user', require('./routes/userRoutes'))
 app.use('/tour', require('./routes/bookingRoutes'));
 
-
-
 app.get('/', wrapAsync(async (req,res,next)=>{
     res.render('home', {title: 'Foody-Travelers - Home',css:'home.css'});
 }));
 
-
 //  ============== server run =====================
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Serving on port ${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`Serving on port ${process.env.PORT}`)
 });

@@ -41,6 +41,19 @@ const reset = document.querySelector("#reset");
 
 
 
+// Date Selector limit
+let currentDate = new Date();
+let dayToday = currentDate.getDate();
+let monthToday = currentDate.getMonth();
+let yearToday = currentDate.getFullYear();
+let zero = '';
+if(monthToday+1 < 10){
+  zero='0';
+}
+dateSelector.setAttribute("min", `${yearToday}-${zero}${monthToday+1}-${dayToday}`);
+dateSelector.setAttribute("max", `${yearToday}-${zero}${monthToday+6}-${dayToday}`);
+
+
 submitButtonDiv.innerHTML = '<h3 class="text-center text-secondary fw-light bg-dark p-4">Select the above choices then press "GO"</h3>';
 
 function generateCityOptions() {

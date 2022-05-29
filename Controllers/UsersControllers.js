@@ -54,15 +54,16 @@ module.exports.signupData = ([
         httpOnly: true,
         // secure:true
     });
-    const newUser = await user.save();
-    res.status(201).json({success: true, newUser});
-    // res.redirect('/');
+    await user.save();
+    // res.status(201).json({success: true, newUser});
+    res.redirect('/');
 })
 
 
 
 module.exports.loginPage = async (req,res,next)=> {
-    res.render('users/login-signup', {title:'Login/Sign Up - Foody Travelers', css:'login-signup.css'});
+    let user = req.user;
+    res.render('users/login-signup', {user, title:'Login/Sign Up - Foody Travelers', css:'login-signup.css'});
 }
 
 module.exports.loginData = ([
@@ -87,19 +88,26 @@ module.exports.loginData = ([
         expires: new Date(Date.now() + 3000000),
         httpOnly: true,
         // secure: true
-    });
-
-    // return res.status(200).json({status: "ok", message:"Login succesful", data: user})
-    res.send(`<a href='/user/secret'>Go to secret</a>`);
-    
-    // res.render('home', {title: 'Foody-Travelers - Home',css:'home.css' , user});
+    });    
+    res.render('home', {title: 'Foody-Travelers - Home',css:'home.css' , user});
 });
 
-module.exports.secret = async (req,res, next)=>{
-
-    const uid = req.cookies.uid;
-    console.log(`Controller page: ${uid}`);
-    const currentUser = await User.findById(uid);
-    console.log(currentUser);
-    res.json({status: "Successful", page: "Secret page", cookie: req.cookies.jwt})
+module.exports.secret = async (req, res)=>{
+    const user = req.user
+    res.json({status: "Successful", page: "Secret page", cookie: req.cookies.jwt, user});
 };
+
+
+module.exports.logout = async(req, res) => {
+    req.user.tokens = req.user.tokens.filter((currElement) => {
+        return currElement.token !== req.token;
+    })
+
+    // To logout from all the devices
+    // req.user.tokens = [];
+
+
+    res.clearCookie('jwt');
+    await req.user.save();
+    res.status(200).redirect('/user/login');
+}

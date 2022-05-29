@@ -9,6 +9,9 @@
         </div>
     </div>
     <div class="navbar-right">
+        <a href="/">
+            <button class="btn account-btns">Home</button>
+        </a>
         <div class="dropdown nav-drop-btn">
             <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -20,16 +23,20 @@
                 <li><a class="dropdown-item" href="#">Our Resources</a></li>
             </ul>
         </div>
-        <a href="/user/login">
-            <button id="login" class="btn account-btns">Login/Signup</button>
-        </a>
-        <a>
+            <Home></Home>
+        <% if (typeof(user) === "undefined") { %>
+            <a href="/user/login">
+                <button id="login" class="btn account-btns">Login/Signup</button>
+            </a>
+        <% } else { %>
+            <a>
+                <button id="settings" class="btn account-btns">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/guest-male.png" />
+                </button>
+            </a>
+        <a href="/user/logout">
             <button id="logout" class="btn account-btns">Logout</button>
         </a>
-        <a>
-            <button id="settings" class="btn account-btns">
-                <img src="https://img.icons8.com/material-outlined/24/000000/guest-male.png" />
-            </button>
-        </a>
+        <% } %> 
     </div>
 </nav>

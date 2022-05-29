@@ -18,4 +18,8 @@ router.post('/signup', wrapAsync(users.signupData));
 
 router.get('/secret', auth, wrapAsync(users.secret));
 
+router.get('/logout', auth, wrapAsync(users.logout));
+
+
+
 module.exports = router;
