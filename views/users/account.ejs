@@ -1,0 +1,110 @@
+<% layout('layouts/boilerplate')%>
+
+
+<main class="myAccount">
+    <!-- Mode Selector -->
+    <h1 class="">Welcome <strong>Samay</strong></h1>
+    <div class="mode-selector d-flex w-100 justify-content-evenly">
+        <div class="update bg-selected font-bold">
+            <h5 class="mode-heading-update">My Account</h5>
+        </div>
+        <div class="journey">
+            <h5 class="mode-heading-journey">My Journyes</h5>
+        </div>
+    </div>
+    
+    <!-- Update Details Section -->
+    <section class="update-section">
+        <div class="header-img">
+            <img src="../../static/images/accounts/accountSettings.webp" alt="">
+        </div>
+        <form action="" class="input-forms" id="update-form" method="POST">
+            <div class="text-center border-bottom border-2 mb-2">
+                <h3 class="form-heading-update">Update Account</h3>
+            </div>
+            <div class="d-flex flex-column">
+                <label class="input-label" for="name">Name</label>
+                <input class="inputs" type="text" name="username" id="name" placeholder="Enter your full name" autofocus>
+            </div>
+            <div class="d-flex flex-column">
+                <label class="input-label" for="mobile">Mobile Number</label>
+                <input class="inputs" type="text" name="phone" id="mobile" placeholder="+91 xxxx-xxxxx">
+            </div>
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-success main-button-update" id="login-ac">Update</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatePasswordModal">
+                    Update Password
+                </button>
+            </div>
+        </form>
+        <!-- Update Password Modal -->
+        <div class="modal fade" id="updatePasswordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <form action="" method="">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Update Password</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="d-flex flex-column">
+                          <label class="input-label" for="change-password">Your Current Password</label>
+                          <input class="inputs" type="password" name="OldPassword" id="change-password" placeholder="Enter your current password" autofocus>
+                      </div>
+                      <div class="d-flex flex-column">
+                          <label class="input-label" for="new-password">Your Current Password</label>
+                          <input class="inputs" type="password" name="newPassword" id="new-password" placeholder="Enter your current password" autofocus>
+                      </div>
+                      <div class="d-flex flex-column">
+                          <label class="input-label" for="pas-confirm">Confirm Password</label>
+                          <input class="inputs" type="password" name="cNewPassword" id="pass-confirm" placeholder="Re-enter password" autofocus>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </section>
+    
+    <!-- Tickets Section -->
+    <section class="journey-section display-hide">
+        <div class="ticket-section">
+            <h4 class="ticket-header pb-2 text-center text-primary">State Name</h4>
+            <div class="ticket-items">
+                <label class="left" id="b_id_label">Booking Id</label>
+                <label class="right" id="b_id">3432h3ghaa2345</label>
+            </div>
+            <div class="ticket-items">
+                <label class="left" id="passenger-name">Passengers</label>
+                <ul class="right" id="passenger-list">
+                    <li>Passenger 1 (Age)</li>
+                    <li>Passenger 2 (Age)</li>
+                    <li>Passenger 3 (Age)</li>
+                    <li>Passenger 4 (Age)</li>
+                </ul>
+            </div>
+            <div class="ticket-items">
+                <label class="left" id="dob_lbl">Date of Booking</label>
+                <label class="right" id="dob">dd/mm/yyyy</label>
+            </div>
+            <div class="ticket-items">
+                <label class="left" id="doj_lbl">Date of Journey</label>
+                <label class="right" id="doj">dd/mm/yyyy</label>
+            </div>
+            <div class="ticket-items">
+                <label class="left" id="vehicle-type_lbl">Vehicle</label>
+                <label class="right" id="vehicle-type">7 seater / Bus</label>    
+            </div>
+            <div class="ticket-items">
+                <button class="cancel-booking btn btn-danger m-auto">Cancel Booking</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="/static/javascripts/login-signup.js"></script>

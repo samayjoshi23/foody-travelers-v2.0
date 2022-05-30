@@ -1,0 +1,234 @@
+.myAccount {
+    width: 90%;
+    margin: 2% auto;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+}
+.myAccount section {
+    border: var(--main-border-color);
+    box-shadow: 0px 0px 5px 0 rgb(150, 150, 150);
+    border-top: none;
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* ============ MODE SELECTOR ============ */
+.mode-selector {
+    position: relative;
+    margin-bottom: 2rem;
+}
+.mode-selector div h5 {
+    text-align: center;
+    margin: 0;
+    padding: 1% 0 2% 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+.update, .journey{
+    border: var(--main-border-color);
+    border-radius: 5rem;
+    width: 44%;
+}
+  
+/* ======== update - Journey Sections =====*/
+.update-section, .journey-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 1%;
+    justify-content: space-evenly;
+}
+
+.update-section .inputs{
+  background-color: #7b7b7b;
+}
+.main-button-update, #changePasswordBtn{
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.update-section .inputs::placeholder{
+  color: #ffffff;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.75);
+  font-weight: 600;
+}
+.header-img{
+  width: 45%;
+  height: 100%;
+}
+.header-img img{
+  width: 100%;
+}
+.input-forms {
+  width: 45%;
+  margin: 1rem 0;
+  padding-bottom: 2%;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
+}
+.input-forms div{
+  padding: 1% 10%;
+}
+.inputs{
+  border: none;
+  border-bottom: 1px solid rgb(150, 150, 150);
+  padding: 8px;
+  margin: 5px 0 5px 20px;
+  border-radius: 5px;
+  box-shadow: 1px 0 4px 0 rgba(255, 255, 255, 0);
+}
+.inputs:focus {
+  border: none;
+  outline: none;
+  box-shadow: 1px 0 3px 0 rgb(0, 0, 0, 0.5);
+}
+.input-forms div a{
+  color: black;
+}
+.input-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.g-btn{
+  border: 1px solid rgb(206, 205, 205);
+}  
+.g-btn:hover{
+  border: 1px solid rgb(164, 164, 164);
+  background-color: rgb(235, 235, 235);
+}  
+.input-forms a img{
+  width: 1rem;
+  margin-left: 0.3rem;
+  margin-right: 0.65rem;
+}
+.input-forms .btn{
+  margin-left: 20px;
+  border-radius: 5rem;
+  width: 100%;
+}
+
+/* ------------ Journey Section ------------- */
+
+.journey-section {
+    width: 100%;
+  }
+  .ticket-section {
+    width: 95%;
+    margin: 2% auto;
+    box-shadow: 1px 0 5px 0 rgb(167, 167, 167);
+    background-image: linear-gradient(to right, rgba(255, 255, 0, 0.3), rgba(0, 255, 0, 0.2));
+    border-radius: 5px;
+    padding: 1.5rem;
+  }
+  .ticket-items {
+    width: 50%;
+    border-top: 1px solid rgb(180, 180, 180);
+    display: flex;
+    padding: 0.5%;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+  .ticket-items:last-child {
+    margin-top: 1%;
+    border: none;
+  }
+  .ticket-items ul li {
+    list-style: none;
+  }
+  .left {
+    width: 50%;
+    padding-left: 10%;
+    font-weight: bold;
+  }
+  .right {
+    width: 50%;
+    padding-left: 10%;
+  }
+  .cancel-booking {
+    width: 50%;
+  }
+  
+
+/* ============ JS Class============ */
+.bg-selected {
+  background-color: rgba(0, 0, 0,0.25);
+  box-shadow: 0px 2px 5px 2px rgb(0 0 0 / 25%);
+  transition: all 0.3s ease-in-out;
+}
+.font-bold h5{
+  font-weight: bold !important;
+}
+.display-hide {
+  display: none;
+}
+#selector {
+  height: 5px;
+  position: absolute;
+  left: 0%;
+  bottom: 2px;
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-out;
+}
+#selector img {
+  width: 14px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10%;
+}
+
+/* =========== Media Queries =========== */
+
+@media (max-width: 900px) {
+    .input-forms{
+      width: 60%;
+    }
+}
+@media (max-width: 768px) {
+    .input-forms{
+      width: 80%;
+    }
+    .mode-selector {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .ticket-items {
+        width: 80%;
+    }
+    .left,
+    .right {
+        width: 45%;
+        padding-left: 3%;
+    }
+}
+@media (max-width: 600px) {
+    .mode-selector h5{
+      font-size: 1.2rem;
+      padding: 0.5rem 0 !important;
+    }
+    .inputs{
+      border-bottom: 1px solid rgb(150, 150, 150);
+      padding: 4px 12px;
+      margin: 2px 0 2px 10px;
+      border-radius: 4px;
+      box-shadow: 1px 0 3px 0 rgba(255, 255, 255, 0);
+    }
+    .header-img{
+      display: none;
+    }
+    .myAccount{
+      width: 98%;
+    }
+    .myAccount h1{
+      margin-left: 2%;
+    }
+    .input-forms{
+      width: 100%;
+    }
+    .input-forms div{
+      padding: 1% 5%;
+    }
+}
