@@ -6,6 +6,8 @@ const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const wrapAsync = require('./utils/wrapAsync');
 const cookieParser = require('cookie-parser');
+const AppError = require('./utils/AppError');
+
 
 // mongoose connection
 mongoose.connect(`mongodb://localhost:${process.env.DB_URL}`, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -41,8 +43,56 @@ app.use('/user', require('./routes/userRoutes'))
 app.use('/tour', require('./routes/bookingRoutes'));
 
 app.get('/', wrapAsync(async (req,res,next)=>{
-    res.render('home', {title: 'Foody-Travelers - Home',css:'home.css'});
+    let user = req.user;
+    res.render('home', {user, title: 'Foody-Travelers - Home',css:'home.css'});
 }));
+
+
+
+// ======================= Error- Handlers ===================
+const handleValidationErr = err => {
+    console.dir(err);
+    return new AppError(`Validation Failed...${err.message}`, 400)
+}
+const handleCastErr = err => {
+    console.dir(err);
+    return new AppError(`Cast Error...${err.message}`, 500)
+}
+const handleSyantaxErr = err => {
+    console.dir(err);
+    return new AppError(`Not Valid Syntax...${err.message}`)
+}
+const handleErr = err => {
+    console.dir(err);
+    return new AppError(`There is an Error...${err.message}`)
+}
+const handleReferenceErr = err => {
+    console.dir(err);
+    return new AppError(`There is an Reference Error...${err.message}`)
+}
+const handleTypeErr = err => {
+    console.dir(err);
+    return new AppError(`There is an Reference Error...${err.message}`)
+}
+
+app.use((err, req, res, next) => {
+    console.log(err.name);
+    //We can single out particular types of Mongoose Errors:
+    if (err.name === 'ValidationError') err = handleValidationErr(err);
+    else if (err.name === 'CastError') err = handleCastErr(err);
+    else if (err.name === 'SyantaxError') err = handleSyantaxErr(err);
+    else if (err.name === 'Error') err = handleErr(err);
+    else if (err.name === 'ReferenceError') err = handleReferenceErr(err);
+    else if (err.name === 'TypeError') err = handleTypeErr(err);
+    next(err);
+});  
+
+app.use((err, req, res, next) => {
+    const { status = 500, message = 'Something went wrong' } = err;
+    res.status(status).send(message);
+});
+
+
 
 //  ============== server run =====================
 app.listen(process.env.PORT, () => {

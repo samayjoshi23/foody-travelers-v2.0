@@ -71,7 +71,7 @@ module.exports.paymentPage = async(req,res)=>{
 
 module.exports.generateTicket = async(req, res, next)=>{
     let user = req.user;
-    
+
     const bookedTicket = new Ticket(req.body);
     console.log('tickets array: ', user.tickets)
 
@@ -88,46 +88,3 @@ module.exports.generateTicket = async(req, res, next)=>{
         ticket: ticket.user_Name
     });
 }
-
-// ======================= Error- Handlers ===================
-const handleValidationErr = err => {
-    console.dir(err);
-    return new AppError(`Validation Failed...${err.message}`, 400)
-}
-const handleCastErr = err => {
-    console.dir(err);
-    return new AppError(`Cast Error...${err.message}`, 500)
-}
-const handleSyantaxErr = err => {
-    console.dir(err);
-    return new AppError(`Not Valid Syntax...${err.message}`)
-}
-const handleErr = err => {
-    console.dir(err);
-    return new AppError(`There is an Error...${err.message}`)
-}
-const handleReferenceErr = err => {
-    console.dir(err);
-    return new AppError(`There is an Reference Error...${err.message}`)
-}
-const handleTypeErr = err => {
-    console.dir(err);
-    return new AppError(`There is an Reference Error...${err.message}`)
-}
-
-app.use((err, req, res, next) => {
-    console.log(err.name);
-    //We can single out particular types of Mongoose Errors:
-    if (err.name === 'ValidationError') err = handleValidationErr(err);
-    else if (err.name === 'CastError') err = handleCastErr(err);
-    else if (err.name === 'SyantaxError') err = handleSyantaxErr(err);
-    else if (err.name === 'Error') err = handleErr(err);
-    else if (err.name === 'ReferenceError') err = handleReferenceErr(err);
-    else if (err.name === 'TypeError') err = handleTypeErr(err);
-    next(err);
-});  
-
-app.use((err, req, res, next) => {
-    const { status = 500, message = 'Something went wrong' } = err;
-    res.status(status).send(message);
-});
