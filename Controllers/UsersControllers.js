@@ -1,14 +1,11 @@
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
-// Schema Import
-// const State = require('../Models/StateSchema');
-// const Ticket = require('../Models/TicketSchema');
+// Schema
 const User = require('../Models/UserSchema');
 
-// Middleware
-// const getUser = require('../middlewares/getUser');
 
+// Signup (Post Route) - No Login required
 module.exports.signupData = ([
     body('username','Name should be between 3 to 25 characters').isString().isLength({min:3, max:25}),
     body('email','Enter a valid Email').isEmail(),
@@ -61,11 +58,13 @@ module.exports.signupData = ([
 
 
 
+// Login (Get Route) - No Login required
 module.exports.loginPage = async (req,res,next)=> {
     let user = req.user;
     res.render('users/login-signup', {user, title:'Login/Sign Up - Foody Travelers', css:'login-signup.css'});
 }
 
+// Login (Post Route) - No Login required
 module.exports.loginData = ([
     body('email','Enter a valid Email').isEmail(),
     body('password','Enter a valid Password').isLength({min:5, max:15}).exists()
@@ -92,22 +91,30 @@ module.exports.loginData = ([
     res.render('home', {title: 'Foody-Travelers - Home',css:'home.css' , user});
 });
 
+
+// Test Page (Authentication and Authorization) (Get Route) - Login required
 module.exports.secret = async (req, res)=>{
     const user = req.user
     res.json({status: "Successful", page: "Secret page", cookie: req.cookies.jwt, user});
 };
 
 
+// Logout (Get Route) - Login required
 module.exports.logout = async(req, res) => {
     req.user.tokens = req.user.tokens.filter((currElement) => {
         return currElement.token !== req.token;
     })
-
     // To logout from all the devices
     // req.user.tokens = [];
-
 
     res.clearCookie('jwt');
     await req.user.save();
     res.status(200).redirect('/user/login');
+}
+
+
+// Account Page (Get Route) - Login required
+module.exports.account = async(req,res) => {
+    let user = req.user;
+    res.render('users/account', {user, title:'My Account - Foody Travelers', css:'accounts.css'});
 }

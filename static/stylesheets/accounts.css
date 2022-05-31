@@ -5,6 +5,11 @@
     flex-direction: column;
     transition: all 0.3s ease-in-out;
 }
+.welcome-header{
+  border-bottom: 2px solid rgb(190, 190, 190);
+  padding-bottom: 2rem;
+  margin-bottom: 1.5rem;
+}
 .myAccount section {
     border: var(--main-border-color);
     box-shadow: 0px 0px 5px 0 rgb(150, 150, 150);
@@ -30,7 +35,7 @@
     border-radius: 5rem;
     width: 44%;
 }
-  
+
 /* ======== update - Journey Sections =====*/
 .update-section, .journey-section {
     display: flex;
@@ -42,31 +47,34 @@
 }
 
 .update-section .inputs{
-  background-color: #7b7b7b;
+  background-color: #a0a0a0;
 }
 .main-button-update, #changePasswordBtn{
   font-weight: bold;
   margin-top: 1rem;
 }
-
 .update-section .inputs::placeholder{
   color: #ffffff;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.75);
-  font-weight: 600;
 }
 .header-img{
-  width: 45%;
+  width: 48%;
   height: 100%;
 }
 .header-img img{
   width: 100%;
 }
+.forms-section{
+  width: 48%;
+}
 .input-forms {
-  width: 45%;
   margin: 1rem 0;
   padding-bottom: 2%;
   border-radius: 8px;
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
+}
+.change-password-form .modal-body div{
+  margin: 1.5rem auto;
 }
 .input-forms div{
   padding: 1% 10%;
@@ -91,20 +99,13 @@
   font-size: 1.1rem;
   font-weight: 500;
 }
-.g-btn{
-  border: 1px solid rgb(206, 205, 205);
-}  
-.g-btn:hover{
-  border: 1px solid rgb(164, 164, 164);
-  background-color: rgb(235, 235, 235);
-}  
 .input-forms a img{
   width: 1rem;
   margin-left: 0.3rem;
   margin-right: 0.65rem;
 }
 .input-forms .btn{
-  margin-left: 20px;
+  margin: 1rem 0.5rem;
   border-radius: 5rem;
   width: 100%;
 }
@@ -183,31 +184,59 @@
 /* =========== Media Queries =========== */
 
 @media (max-width: 900px) {
-    .input-forms{
+    .welcome-header{
+      padding-bottom: 1.2rem;
+    }
+    .forms-section{
       width: 60%;
+    }
+    .input-forms .btn{
+      margin: 1.25rem 0.5rem;
+      padding: 0.25rem;
     }
 }
 @media (max-width: 768px) {
-    .input-forms{
+    .forms-section{
       width: 80%;
+    }
+    .input-forms{
+      font-size: 1rem;
+    }
+    .input-forms .btn{
+      margin: 1rem 0.25rem;
+      padding: 0.5rem;
+      font-size: 0.9rem;
     }
     .mode-selector {
       position: relative;
       margin-bottom: 1rem;
     }
     .ticket-items {
-        width: 80%;
+      width: 80%;
+    }
+    .header-img{
+      display: none;
     }
     .left,
     .right {
-        width: 45%;
-        padding-left: 3%;
+      width: 45%;
+      padding-left: 3%;
     }
-}
-@media (max-width: 600px) {
+  }
+  @media (max-width: 600px) {
     .mode-selector h5{
       font-size: 1.2rem;
       padding: 0.5rem 0 !important;
+    }
+    .welcome-header{
+      padding-bottom: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .forms-section{
+      width: 100%;
+    }
+    .update-section, .journey-section {
+      padding: 0.5rem;
     }
     .inputs{
       border-bottom: 1px solid rgb(150, 150, 150);
@@ -215,9 +244,6 @@
       margin: 2px 0 2px 10px;
       border-radius: 4px;
       box-shadow: 1px 0 3px 0 rgba(255, 255, 255, 0);
-    }
-    .header-img{
-      display: none;
     }
     .myAccount{
       width: 98%;
@@ -227,6 +253,7 @@
     }
     .input-forms{
       width: 100%;
+      margin: 0.5rem auto;
     }
     .input-forms div{
       padding: 1% 5%;

@@ -20,6 +20,7 @@ router.get('/secret', auth, wrapAsync(users.secret));
 
 router.get('/logout', auth, wrapAsync(users.logout));
 
+router.get('/account', auth, wrapAsync(users.account));
 
 
 module.exports = router;
