@@ -71,16 +71,17 @@ module.exports.paymentPage = async(req,res)=>{
 
 module.exports.generateTicket = async(req, res, next)=>{
     let user = req.user;
-    const ticket = new Ticket(req.body);
+    
+    const bookedTicket = new Ticket(req.body);
+    console.log('tickets array: ', user.tickets)
 
-    let newTicketObj = {
-        tId: ticket._id,
-        tName: ticket.state_Name
-    }
-    user.tickets = user.tickets.concat({newTicketObj});
-    console.log(user);
+    let ticket = bookedTicket._id;
+    bookedTicket.user_Id = req.user._id;
+
+    user.tickets = user.tickets.concat({ticket});
 
     await user.save();
+    await bookedTicket.save();
 
     res.json({
         stats: 'success',

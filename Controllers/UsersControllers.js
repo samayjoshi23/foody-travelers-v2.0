@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 // Schema
 const User = require('../Models/UserSchema');
+const Ticket = require('../Models/TicketSchema');
 
 
 // Signup (Post Route) - No Login required
@@ -11,9 +12,13 @@ module.exports.signupData = ([
     body('email','Enter a valid Email').isEmail(),
     body('phone','Enter a valid mobile number').isNumeric().isLength({min:10, max:10}),
     body('password','Enter a valid password').isLength({min: 5, max:15}),
-    body('cpassword','Enter a valid password').isLength({min: 5, max:15})
+    body('cpassword','Enter a valid password').isLength({min: 5, max:15}),
+    body('pin', 'Enter a valid PIN code (6 digits)').isLength({min:6, max:6}),
+    body('age', 'Age must be between 16 to 100').isNumeric({min:16, max:100})
 ], async (req,res)=> {
-    const {username, email, phone, password, cpassword} = req.body;
+    
+    
+    const {firstName, lastName, email, phone, age, dob, street, ward, city, state, pin, password, cpassword} = req.body;
     
     // If there are errors, returns bad inputs
     const errors = validationResult(req);
@@ -34,14 +39,20 @@ module.exports.signupData = ([
         return res.status(400).json({erros: 'Passwords do not match'})
     }
     
+    const address = `${street},${ward},${city},${state},${pin}`;
+
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password,salt);
     
     
     user = new User({
-        username,
+        firstName,
+        lastName,
         email,
         phone,
+        age,
+        dob,
+        address,
         password:secPass
     });
     const token = await user.generateAuthToken();
@@ -52,7 +63,6 @@ module.exports.signupData = ([
         // secure:true
     });
     await user.save();
-    // res.status(201).json({success: true, newUser});
     res.redirect('/');
 })
 
@@ -101,11 +111,15 @@ module.exports.secret = async (req, res)=>{
 
 // Logout (Get Route) - Login required
 module.exports.logout = async(req, res) => {
-    req.user.tokens = req.user.tokens.filter((currElement) => {
-        return currElement.token !== req.token;
-    })
+    // To logout from specific device or browser
+    
+    // req.user.tokens = req.user.tokens.filter((currElement) => {
+    //     return currElement.token !== req.token;
+    // })
+
+
     // To logout from all the devices
-    // req.user.tokens = [];
+    req.user.tokens = [];
 
     res.clearCookie('jwt');
     await req.user.save();
@@ -116,5 +130,7 @@ module.exports.logout = async(req, res) => {
 // Account Page (Get Route) - Login required
 module.exports.account = async(req,res) => {
     let user = req.user;
-    res.render('users/account', {user, title:'My Account - Foody Travelers', css:'accounts.css'});
+    let ticket = await Ticket.find({user_Id: req.user._id});
+
+    res.render('users/account', {ticket, user, title:'My Account - Foody Travelers', css:'accounts.css'});
 }
