@@ -34,7 +34,7 @@ app.use(session({
     cookie: {maxAge: 30000},
     resave: false,
     saveUninitialized: false
-}))
+}));
 
 // =============== Application Routes =============== 
 app.use('/user', require('./routes/userRoutes'))

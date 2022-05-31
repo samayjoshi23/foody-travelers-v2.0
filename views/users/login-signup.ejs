@@ -17,27 +17,27 @@
             <img src="../../static/images/login-signup/login-img.jpg" alt="">
         </div>
         <form action="/user/login" class="input-forms" id="login-form" method="POST">
-            <div class="text-center border-bottom border-2 mb-2">
+            <div class=" singleColumn text-center border-bottom border-2 mb-2">
                 <h3 class="form-heading-login">Login to FoodyTravellers</h3>
             </div>
-            <div class="d-flex flex-column">
+            <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="login-email">Email</label>
                 <input class="inputs" type="email" name="email" id="login-email" placeholder="xyz@domainName.com" autofocus required>
             </div>
-            <div class="d-flex flex-column">
+            <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="login-password">Password</label>
                 <input class="inputs" type="password" name="password" id="login-password" placeholder="Enter your password" required>
             </div>
-            <div class="d-flex">
+            <div class="singleColumn d-flex">
                 <a href="" class="text-danger text-decoration-none">Forgot your password?</a>
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="singleColumn d-flex justify-content-between">
                 <button type="submit" class="btn main-button-login" id="login-ac">Login</button>
             </div>
-            <div class="text-center">
+            <div class="singleColumn text-center">
                 <p class="m-0 fw-bold">OR</p>
             </div>
-            <div class="d-flex">
+            <div class="singleColumn d-flex">
                 <a class="g-btn btn btn-light">
                     <img src="../../static/images/login-signup/google-logo.png" alt="google-icon">Continue with Google
                 </a>
@@ -51,43 +51,82 @@
             <img src="../../static/images/login-signup/signup-img.jpg" alt="">
         </div>
         <form action="/user/signup" class="input-forms" id="signup-form" method="POST">
-            <div class="text-center border-bottom border-2 mb-2">
+            <div class="singleColumn text-center border-bottom border-2 mb-2">
                 <h3 class="form-heading-signup">Create a new account</h3>
             </div>
-            <div class="d-flex flex-column">
-                <label class="input-label" for="name">Name</label>
-                <input class="inputs" type="text" name="username" id="name" placeholder="Enter your full name" autofocus>
+            <div class="doubleColumns singleColumn ">
+                <div class="d-flex flex-column">
+                    <label class="input-label" for="fName">First Name</label>
+                    <input class="inputs" type="text" name="lastName" id="fName" placeholder="Enter your first name">
+                </div>
+                <div class="d-flex flex-column">
+                    <label class="input-label" for="lName">Last Name</label>
+                    <input class="inputs" type="text" name="firstName" id="lNname" placeholder="Enter your last name">
+                </div>
             </div>
-            <div class="d-flex flex-column">
+            <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="signup-email">Email</label>
                 <input class="inputs" type="text" name="email" id="signup-email" placeholder="xyz@domainName.com">
             </div>
-            <div class="d-flex flex-column">
+            <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="mobile">Mobile Number</label>
                 <input class="inputs" type="text" name="phone" id="mobile" placeholder="+91 xxxx-xxxxx">
             </div>
-            <div class="d-flex flex-column">
+            <div class="singleColumn doubleColumns">
+                <div class="d-flex flex-column">
+                    <label class="input-label" for="age">Age</label>
+                    <input class="inputs" type="number" name="age" id="age" min="16" max="100" placeholder="more than 16">
+                </div>
+                <div class="d-flex flex-column">
+                    <label class="input-label" for="dob">Date Of Birth</label>
+                    <input class="inputs" type="date" name="dob" id="dob">
+                </div>
+            </div>
+            <div class="singleColumn d-flex flex-column">
+                <label for="street" class="input-label">Street and Colony</label>
+                <input type="text" name="street" id="street" placeholder="street/Apartment/H.No." class="inputs">
+            </div>
+            <div class="singleColumn doubleColumns">
+                <div class="d-flex flex-column">
+                    <label for="ward" class="input-label">Ward</label>
+                    <input type="text" name="ward" id="ward" placeholder="Ward/Area" class="inputs">
+                </div>
+                <div class="d-flex flex-column">
+                    <label for="city" class="input-label">City</label>
+                    <input type="text" name="city" id="city" placeholder="City/Village" class="inputs">
+                </div>
+            </div>
+            <div class="singleColumn doubleColumn">
+                <div class="d-flex flex-column">
+                    <label for="state" class="input-label">State</label>
+                    <input type="text" name="state" id="state" placeholder="State/Union Territory" class="inputs">
+                </div>
+                <div class="d-flex flex-column">
+                    <label for="pin" class="input-label">PIN Code</label>
+                    <input type="number" name="pin" id="pin" placeholder="Pin Code" class="inputs" minlength="6" maxlength="6">
+                </div>
+            </div>
+            <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="signup-password">Password</label>
                 <input class="inputs" type="password" name="password" id="signup-password" placeholder="Enter your password" autofocus>
             </div>
-            <div class="d-flex flex-column">
+            <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="pas-confirm">Confirm Password</label>
                 <input class="inputs" type="password" name="cpassword" id="pass-confirm" placeholder="Re-enter password" autofocus>
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="singleColumn d-flex justify-content-between">
                 <button type="submit" class="btn main-button-signup" id="signup-ac">Signup Now</button>
             </div>
             <div class="text-center">
                 <p class="m-0 fw-bold">OR</p>
             </div>
-            <div class="d-flex">
+            <div class="singleColumn d-flex">
                 <a class="g-btn btn btn-light">
                     <img src="../../static/images/login-signup/google-logo.png" alt="google-icon">Signup with Google
                 </a>
             </div>
         </form>
     </section>
-
 </main>
 
 <script src="/static/javascripts/login-signup.js"></script>

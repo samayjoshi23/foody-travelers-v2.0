@@ -110,7 +110,7 @@
   border-radius: 8px;
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
 }
-.input-forms div{
+.input-forms .singleColumn{
   padding: 1% 10%;
 }
 .inputs{
@@ -126,8 +126,16 @@
   outline: none;
   box-shadow: 1px 0 3px 0 rgb(0, 0, 0, 0.5);
 }
-.input-forms div a{
+.input-forms .singleColumn a{
   color: black;
+}
+.doubleColumns{
+  width: 100%;
+  display: flex;
+}
+.doubleColumns div{
+  width: 50%;
+  padding: 0;
 }
 .input-label {
   font-size: 1.1rem;
@@ -182,6 +190,11 @@
 
 /* =========== Media Queries =========== */
 
+@media (max-width: 1200px) {
+  .doubleColumns div{
+    width: 50%;
+  }
+}
 @media (max-width: 900px) {
     .input-forms{
       width: 60%;
@@ -220,7 +233,16 @@
     .input-forms{
       width: 100%;
     }
-    .input-forms div{
+    .input-forms .singleColumn{
       padding: 1% 5%;
     }
+}
+@media (max-width: 500px) {
+  .doubleColumns{
+    width: 100%;
+    flex-direction: column;
+  }
+  .doubleColumns div{
+    width: 100%;
+  }
 }
