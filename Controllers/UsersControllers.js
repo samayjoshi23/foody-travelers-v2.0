@@ -130,7 +130,7 @@ module.exports.logout = async(req, res) => {
 // Account Page (Get Route) - Login required
 module.exports.account = async(req,res) => {
     let user = req.user;
-    let ticket = await Ticket.find({user_Id: req.user._id});
+    let tickets = await Ticket.find({user_Id: req.user._id});
 
-    res.render('users/account', {ticket, user, title:'My Account - Foody Travelers', css:'accounts.css'});
+    res.render('users/account', {tickets, user, title:'My Account - Foody Travelers', css:'accounts.css'});
 }

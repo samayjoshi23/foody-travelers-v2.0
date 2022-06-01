@@ -94,37 +94,84 @@
 
     <!-- Tickets Section -->
     <section class="journey-section display-hide">
-        <div class="ticket-section">
-            <h4 class="ticket-header pb-2 text-center text-primary">State Name</h4>
-            <div class="ticket-items">
-                <label class="left" id="b_id_label">Booking Id</label>
-                <label class="right" id="b_id">3432h3ghaa2345</label>
+        <% tickets.forEach(ticket => { %> 
+            <div class="ticket-section ticket-details">
+                <div class="details-header">
+                    <div class="details-header-left">
+                        <p><strong>State Name : </strong> <span id="stateNameSpan"><%=ticket.state_Name%></span></p>
+                        <p><strong>Tour Source : </strong> <span id="tourSourceSpan"><%=ticket.tour_Source %></span></p>
+                        <p><strong>Total Fare : </strong><span id="baseFareSpan"> <%=ticket.grand_Fare %><span></p>
+                        <p><strong>Tour Duration : </strong><span id="tourDurationSpan">Not Available<span></p>
+                    </div>
+                    <div class="details-header-right">
+                        <p><strong>Pickup State : </strong> <span><%= ticket.pickup_State %> </span></p>
+                        <p><strong>Pickup City : </strong> <span><%= ticket.pickup_City %> </span></p>
+                        <p><strong>Pickup Address : </strong><span id="pickupAddressSpan"></span></p>
+                    </div> 
+                </div>
+                <div class="details-data">
+                    <div class="table-left">
+                        <table class="data-table">
+                            <tr>
+                                <td class="data-left">Ticket Id :</td>
+                                <td class="data-right" id="UserId">tkt<%= ticket._id%>as3</td>
+                            </tr>
+                            <tr>
+                                <td class="data-left">User Name :</td>
+                                <td class="data-right" id="UserName"><%=ticket.user_Name%></td>
+                            </tr>
+                            <tr>
+                                <td class="data-left">Date Of Booking :</td>
+                                <td class="data-right" id="dobSpan"><%= ticket.date_of_Booking %></td>
+                            </tr>
+                            <tr>
+                                <td class="data-left">Vehicle Selected :</td>
+                                <td class="data-right" id="vehicleType"><%= ticket.vehicle_Type %></td>
+                            </tr>
+                            <tr>
+                                <td class="data-left">Vehicle Fare :</td>
+                                <td class="data-right" id="vehicleFare"><%= ticket.vehicle_Fare %></td>
+                            </tr>
+                            <tr>
+                                <td class="data-left">Date of Journey :</td>
+                                <td class="data-right" id="doj"><%= ticket.date_of_Journey %></td>
+                            </tr>
+                            <tr>
+                                <td class="data-left">Selected Food :</td>
+                                <td class="data-right" id="totalFoodFare"><%= ticket.food_Fare %> </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="table-right">
+                        <table class="data-table">
+                            <tr>
+                                <td class="data-left" id="passenger-left">Passenger List :</td>
+                                <td class="data-right">
+                                    <ul id="passengerList">
+                                        <% ticket.passenger_details.forEach(passenger => { %>
+                                            <li><%= passenger.name %> (<%= passenger.age %>) - <%= passenger.gender %>  </li>
+                                        <% }) %> 
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="data-left" id="food-left">Food List :</td>
+                                <td class="data-right">
+                                    <ul id="foodList">
+                                        <% ticket.food_Opted.forEach(food => { %>
+                                            <li><%= food.name %> (<%= food.Price %>) </li>
+                                        <% }) %> 
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <form action="" method="" class="d-flex justify-content-center">
+                    <button type="" class="btn btn-danger w-50 mt-4">Cancel Ticket</button>
+                </form>
             </div>
-            <div class="ticket-items">
-                <label class="left" id="passenger-name">Passengers</label>
-                <ul class="right" id="passenger-list">
-                    <li>Passenger 1 (Age)</li>
-                    <li>Passenger 2 (Age)</li>
-                    <li>Passenger 3 (Age)</li>
-                    <li>Passenger 4 (Age)</li>
-                </ul>
-            </div>
-            <div class="ticket-items">
-                <label class="left" id="dob_lbl">Date of Booking</label>
-                <label class="right" id="dob">dd/mm/yyyy</label>
-            </div>
-            <div class="ticket-items">
-                <label class="left" id="doj_lbl">Date of Journey</label>
-                <label class="right" id="doj">dd/mm/yyyy</label>
-            </div>
-            <div class="ticket-items">
-                <label class="left" id="vehicle-type_lbl">Vehicle</label>
-                <label class="right" id="vehicle-type">7 seater / Bus</label>
-            </div>
-            <div class="ticket-items">
-                <button class="cancel-booking btn btn-danger m-auto">Cancel Booking</button>
-            </div>
-        </div>
+        <% }); %> 
     </section>
 </main>
 

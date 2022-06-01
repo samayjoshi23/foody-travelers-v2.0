@@ -1,70 +1,72 @@
 .myAccount {
-    width: 90%;
-    margin: 2% auto;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease-in-out;
+  width: 90%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-in-out;
 }
-.welcome-header{
+.welcome-header {
   border-bottom: 2px solid rgb(190, 190, 190);
   padding-bottom: 2rem;
   margin-bottom: 1.5rem;
 }
 .myAccount section {
-    border: var(--main-border-color);
-    box-shadow: 0px 0px 5px 0 rgb(150, 150, 150);
-    border-top: none;
-    border-radius: 8px;
-    width: 100%;
+  border: var(--main-border-color);
+  box-shadow: 0px 0px 5px 0 rgb(150, 150, 150);
+  border-top: none;
+  border-radius: 8px;
+  width: 100%;
 }
 
 /* ============ MODE SELECTOR ============ */
 .mode-selector {
-    position: relative;
-    margin-bottom: 2rem;
+  position: relative;
+  margin-bottom: 2rem;
 }
 .mode-selector div h5 {
-    text-align: center;
-    margin: 0;
-    padding: 1% 0 2% 0;
-    font-weight: 400;
-    cursor: pointer;
+  text-align: center;
+  margin: 0;
+  padding: 1% 0 2% 0;
+  font-weight: 400;
+  cursor: pointer;
 }
-.update, .journey{
-    border: var(--main-border-color);
-    border-radius: 5rem;
-    width: 44%;
+.update,
+.journey {
+  border: var(--main-border-color);
+  border-radius: 5rem;
+  width: 44%;
 }
 
 /* ======== update - Journey Sections =====*/
-.update-section, .journey-section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    padding: 1%;
-    justify-content: space-evenly;
+.update-section,
+.journey-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 1%;
+  justify-content: space-evenly;
 }
-
-.update-section .inputs{
+.update-section .inputs {
   background-color: #a0a0a0;
 }
-.main-button-update, #changePasswordBtn{
+.main-button-update,
+#changePasswordBtn {
   font-weight: bold;
   margin-top: 1rem;
 }
-.update-section .inputs::placeholder{
+.update-section .inputs::placeholder {
   color: #ffffff;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.75);
 }
-.header-img{
+.header-img {
   width: 48%;
   height: 100%;
 }
-.header-img img{
+.header-img img {
   width: 100%;
 }
-.forms-section{
+.forms-section {
   width: 48%;
 }
 .input-forms {
@@ -73,13 +75,13 @@
   border-radius: 8px;
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
 }
-.change-password-form .modal-body div{
+.change-password-form .modal-body div {
   margin: 1.5rem auto;
 }
-.input-forms div{
+.input-forms div {
   padding: 1% 10%;
 }
-.inputs{
+.inputs {
   border: none;
   border-bottom: 1px solid rgb(150, 150, 150);
   padding: 8px;
@@ -92,19 +94,19 @@
   outline: none;
   box-shadow: 1px 0 3px 0 rgb(0, 0, 0, 0.5);
 }
-.input-forms div a{
+.input-forms div a {
   color: black;
 }
 .input-label {
   font-size: 1.1rem;
   font-weight: 500;
 }
-.input-forms a img{
+.input-forms a img {
   width: 1rem;
   margin-left: 0.3rem;
   margin-right: 0.65rem;
 }
-.input-forms .btn{
+.input-forms .btn {
   margin: 1rem 0.5rem;
   border-radius: 5rem;
   width: 100%;
@@ -113,52 +115,84 @@
 /* ------------ Journey Section ------------- */
 
 .journey-section {
-    width: 100%;
-  }
-  .ticket-section {
-    width: 95%;
-    margin: 2% auto;
-    box-shadow: 1px 0 5px 0 rgb(167, 167, 167);
-    background-image: linear-gradient(to right, rgba(255, 255, 0, 0.3), rgba(0, 255, 0, 0.2));
-    border-radius: 5px;
-    padding: 1.5rem;
-  }
-  .ticket-items {
-    width: 50%;
-    border-top: 1px solid rgb(180, 180, 180);
-    display: flex;
-    padding: 0.5%;
-    margin: 0 auto;
-    justify-content: space-between;
-  }
-  .ticket-items:last-child {
-    margin-top: 1%;
-    border: none;
-  }
-  .ticket-items ul li {
-    list-style: none;
-  }
-  .left {
-    width: 50%;
-    padding-left: 10%;
-    font-weight: bold;
-  }
-  .right {
-    width: 50%;
-    padding-left: 10%;
-  }
-  .cancel-booking {
-    width: 50%;
-  }
-  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.ticket-section {
+  width: 95%;
+  margin: 2% auto;
+  box-shadow: 1px 0 5px 0 rgb(167, 167, 167);
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 0, 0.3),
+    rgba(0, 255, 0, 0.2)
+  );
+  border-radius: 5px;
+  padding: 1.5rem;
+}
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-top: 2px solid rgb(207, 207, 207);
+  border-bottom: 2px solid rgb(207, 207, 207);
+  font-family: var(--font-content);
+}
+.details-header p {
+  padding: 0.2rem 0;
+}
+.details-header-right {
+  width: 35%;
+  justify-self: right;
+}
+.details-data {
+  margin: 0.5rem 0;
+  width: 100%;
+  display: flex;
+}
+.table-left,
+.table-right {
+  width: 50%;
+}
+.table-left {
+  border-right: 2px solid rgb(201, 201, 201);
+}
+.details-data table {
+  width: 100%;
+  margin: 1rem auto;
+  font-family: var(--font-content);
+}
+.data-left,
+.data-right {
+  padding: 0.3rem 0.6rem;
+  width: 50%;
+}
+.data-left {
+  font-weight: bold;
+  text-align: right;
+}
+#passenger-left,
+#food-left {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+#passengerList li,
+#foodList li {
+  list-style: none;
+}
+.cancel-booking {
+  width: 50%;
+}
 
 /* ============ JS Class============ */
 .bg-selected {
-  background-color: rgba(0, 0, 0,0.25);
+  background-color: rgba(0, 0, 0, 0.25);
   box-shadow: 0px 2px 5px 2px rgb(0 0 0 / 25%);
   transition: all 0.3s ease-in-out;
 }
-.font-bold h5{
+.font-bold h5 {
   font-weight: bold !important;
 }
 .display-hide {
@@ -184,78 +218,119 @@
 /* =========== Media Queries =========== */
 
 @media (max-width: 900px) {
-    .welcome-header{
-      padding-bottom: 1.2rem;
-    }
-    .forms-section{
-      width: 60%;
-    }
-    .input-forms .btn{
-      margin: 1.25rem 0.5rem;
-      padding: 0.25rem;
-    }
+  .welcome-header {
+    padding-bottom: 1.2rem;
+  }
+  .forms-section {
+    width: 60%;
+  }
+  .input-forms .btn {
+    margin: 1.25rem 0.5rem;
+    padding: 0.25rem;
+  }
 }
 @media (max-width: 768px) {
-    .forms-section{
-      width: 80%;
-    }
-    .input-forms{
-      font-size: 1rem;
-    }
-    .input-forms .btn{
-      margin: 1rem 0.25rem;
-      padding: 0.5rem;
-      font-size: 0.9rem;
-    }
-    .mode-selector {
-      position: relative;
-      margin-bottom: 1rem;
-    }
-    .ticket-items {
-      width: 80%;
-    }
-    .header-img{
-      display: none;
-    }
-    .left,
-    .right {
-      width: 45%;
-      padding-left: 3%;
-    }
+  .forms-section {
+    width: 80%;
   }
-  @media (max-width: 600px) {
-    .mode-selector h5{
-      font-size: 1.2rem;
-      padding: 0.5rem 0 !important;
-    }
-    .welcome-header{
-      padding-bottom: 0.8rem;
-      margin-bottom: 1rem;
-    }
-    .forms-section{
-      width: 100%;
-    }
-    .update-section, .journey-section {
-      padding: 0.5rem;
-    }
-    .inputs{
-      border-bottom: 1px solid rgb(150, 150, 150);
-      padding: 4px 12px;
-      margin: 2px 0 2px 10px;
-      border-radius: 4px;
-      box-shadow: 1px 0 3px 0 rgba(255, 255, 255, 0);
-    }
-    .myAccount{
-      width: 98%;
-    }
-    .myAccount h1{
-      margin-left: 2%;
-    }
-    .input-forms{
-      width: 100%;
-      margin: 0.5rem auto;
-    }
-    .input-forms div{
-      padding: 1% 5%;
-    }
+  .input-forms {
+    font-size: 1rem;
+  }
+  .input-forms .btn {
+    margin: 1rem 0.25rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .mode-selector {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  .ticket-items {
+    width: 80%;
+  }
+  .header-img {
+    display: none;
+  }
+  .details-header-right, .details-header-left {
+    width: 45%;
+  }
+  .data-left,
+  .data-right {
+    font-size: 0.9rem;
+  }
+  .ticket-details p,
+  .data-left,
+  .data-right {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 600px) {
+  .mode-selector h5 {
+    font-size: 1.2rem;
+    padding: 0.5rem 0 !important;
+  }
+  .ticket-details{
+    padding: 0.5rem;
+  }
+  .welcome-header {
+    padding-bottom: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .forms-section {
+    width: 100%;
+  }
+  .update-section,
+  .journey-section {
+    padding: 0.5rem;
+  }
+  .inputs {
+    border-bottom: 1px solid rgb(150, 150, 150);
+    padding: 4px 12px;
+    margin: 2px 0 2px 10px;
+    border-radius: 4px;
+    box-shadow: 1px 0 3px 0 rgba(255, 255, 255, 0);
+  }
+  .myAccount {
+    width: 98%;
+  }
+  .myAccount h1 {
+    margin-left: 2%;
+  }
+  .input-forms {
+    width: 100%;
+    margin: 0.5rem auto;
+  }
+  .input-forms div {
+    padding: 1% 5%;
+  }
+}
+@media (max-width: 500px) {
+  .details-header{
+      padding: 0.2rem;
+  }
+  .details-header-left, .details-header-right {
+    width: 49%;
+  }
+  .data-table tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.4rem 0.25rem;
+  }
+  .data-table .data-left{
+    padding: 0; 
+    border-bottom: 1px solid rgb(190, 190, 190)
+  }
+  .data-left,
+  .data-right {
+    width: 100%;
+    text-align: left;
+  }
+  .data-right {
+    padding-left: 1.5rem;
+  }
+  #passenger-left,
+  #food-left {
+    justify-content: flex-start;
+  }
 }

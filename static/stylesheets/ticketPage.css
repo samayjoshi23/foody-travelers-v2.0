@@ -1,4 +1,4 @@
-*,
+/* *,
 p,
 h1,
 h2,
@@ -45,7 +45,7 @@ ol {
   --font-main-heading: "Bakbak One", cursive;
   --font-sub-heading: "Baloo Bhaina 2", cursive;
   --font-content: "Montserrat", sans-serif;
-}
+} */
 #info-card {
   background-color: rgba(255, 255, 102, 0.2);
   border: 1px solid rgba(255, 255, 64, 0.6);
