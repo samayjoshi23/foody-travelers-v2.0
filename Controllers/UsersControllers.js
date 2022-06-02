@@ -54,13 +54,17 @@ module.exports.signupData = ([
     
     
     user = new User({
-        firstName,
-        lastName,
+        firstName, 
+        lastName, 
         email,
         phone,
         age,
         dob,
-        address,
+        street,
+        ward,
+        city,
+        state,
+        pin,
         password:secPass
     });
     const token = await user.generateAuthToken();
