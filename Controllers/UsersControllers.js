@@ -23,20 +23,28 @@ module.exports.signupData = ([
     // If there are errors, returns bad inputs
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        req.flash('error', errors.array());
+        res.redirect('/user/login', 400);
+        return;
     }
-
+    
     // Checking wether the user email and phone already exists or not
     let user = await User.findOne({email});
     let mobile = await User.findOne({phone});
     if(user){
-        return res.status(400).json({error: "Sorry the user with this email already exists"});
+        req.flash('error', 'Sorry the user with this email already exists');
+        res.status(400).redirect('/user/login');
+        return;
     }
     if(mobile){
-        return res.status(400).json({error: "Sorry this number is already registered"});
+        req.flash('error', 'Sorry this number is already registered');
+        res.status(400).redirect('/user/login');
+        return;
     }
     if(password !== cpassword){
-        return res.status(400).json({erros: 'Passwords do not match'})
+        req.flash('error', 'Passwords do not match');
+        res.status(400).redirect('/user/login');
+        return;
     }
     
     const address = `${street},${ward},${city},${state},${pin}`;
@@ -62,8 +70,11 @@ module.exports.signupData = ([
         httpOnly: true,
         // secure:true
     });
+
+
     await user.save();
-    res.redirect('/');
+    req.flash('success', `Hey ${user.firstName}, Welcome to foody travelers`)
+    res.status(201).redirect('/');
 })
 
 
@@ -80,25 +91,41 @@ module.exports.loginData = ([
     body('password','Enter a valid Password').isLength({min:5, max:15}).exists()
 ],async(req,res,next)=> {
     const {email, password} = req.body;
-
+    
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        req.flash('error', errors.array());
+        console.log(errors.array());
+        res.redirect('/user/login');
+        return;
+    }
+    
     let user = await User.findOne({email});
     if(!user){
-        return res.status(400).json({error: "Wrong credentials, Re-enter the correct credentials"});
+        req.flash('error', "Wrong credentials, Re-enter the correct credentials");
+        res.status(400).redirect('/user/login');
+        return;
     }
-
+    
     const passwordCompare = await bcrypt.compare(password, user.password);
     
     if(!passwordCompare){
-        return res.status(400).json({error: "Wrong credentials, Re-enter the correct credentials"});
+        req.flash('error', "Wrong credentials, Re-enter the correct credentials");
+        res.status(400).redirect('/user/login');
+        return;
     }
-
+    
     const token = await user.generateAuthToken();
     res.cookie("jwt", token, {
         expires: new Date(Date.now() + 3000000),
         httpOnly: true,
         // secure: true
-    });    
-    res.render('home', {title: 'Foody-Travelers - Home',css:'home.css' , user});
+    });
+    
+    
+    req.flash('success', `Hey ${user.firstName}, Welcome back to foody travelers`) 
+    res.status(200).redirect('/');
+    
 });
 
 
@@ -111,26 +138,30 @@ module.exports.secret = async (req, res)=>{
 
 // Logout (Get Route) - Login required
 module.exports.logout = async(req, res) => {
-    // To logout from specific device or browser
+    // -----To logout from specific device or browser-----
     
     // req.user.tokens = req.user.tokens.filter((currElement) => {
     //     return currElement.token !== req.token;
     // })
 
 
-    // To logout from all the devices
+    // ---------To logout from all the devices---------
+    
     req.user.tokens = [];
 
     res.clearCookie('jwt');
     await req.user.save();
-    res.status(200).redirect('/user/login');
+    req.flash('success', 'Have a nice day, Logged Out successfully');
+    res.ststus(200).redirect('/user/login');
 }
 
 
 // Account Page (Get Route) - Login required
 module.exports.account = async(req,res) => {
     let user = req.user;
+    let isUser = req.isUser;
+
     let tickets = await Ticket.find({user_Id: req.user._id});
 
-    res.render('users/account', {tickets, user, title:'My Account - Foody Travelers', css:'accounts.css'});
+    res.render('users/account', {isUser, tickets, user, title:'My Account - Foody Travelers', css:'accounts.css'});
 }

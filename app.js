@@ -6,8 +6,10 @@ const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const wrapAsync = require('./utils/wrapAsync');
 const cookieParser = require('cookie-parser');
-const AppError = require('./utils/AppError');
-
+// const AppError = require('./utils/AppError');
+const createHttpError = require('http-errors');
+const connectFlash = require('connect-flash');
+const isUser = require('./middlewares/isLoggedIn');
 
 // mongoose connection
 mongoose.connect(`mongodb://localhost:${process.env.DB_URL}`, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -31,68 +33,91 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
+
+// Init Session
 app.use(session({
-    secret: 'thisistopsecret',
-    cookie: {maxAge: 30000},
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+        httpOnly: true,
+        // secure: true
+    },
     resave: false,
     saveUninitialized: false
 }));
+
+app.use(connectFlash());
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+})
 
 // =============== Application Routes =============== 
 app.use('/user', require('./routes/userRoutes'))
 app.use('/tour', require('./routes/bookingRoutes'));
 
-app.get('/', wrapAsync(async (req,res,next)=>{
+app.get('/', isUser, wrapAsync(async (req,res,next)=>{
     let user = req.user;
-    res.render('home', {user, title: 'Foody-Travelers - Home',css:'home.css'});
+    let isUser = req.isUser;
+    console.log(isUser);
+    res.render('home', {isUser, user, title: 'Foody-Travelers - Home',css:'home.css'});
 }));
 
 
 
 // ======================= Error- Handlers ===================
-const handleValidationErr = err => {
-    console.dir(err);
-    return new AppError(`Validation Failed...${err.message}`, 400)
-}
-const handleCastErr = err => {
-    console.dir(err);
-    return new AppError(`Cast Error...${err.message}`, 500)
-}
-const handleSyantaxErr = err => {
-    console.dir(err);
-    return new AppError(`Not Valid Syntax...${err.message}`)
-}
-const handleErr = err => {
-    console.dir(err);
-    return new AppError(`There is an Error...${err.message}`)
-}
-const handleReferenceErr = err => {
-    console.dir(err);
-    return new AppError(`There is an Reference Error...${err.message}`)
-}
-const handleTypeErr = err => {
-    console.dir(err);
-    return new AppError(`There is an Reference Error...${err.message}`)
-}
+// const handleValidationErr = err => {
+//     console.dir(err);
+//     return new AppError(`Validation Failed...${err.message}`, 400)
+// }
+// const handleCastErr = err => {
+//     console.dir(err);
+//     return new AppError(`Cast Error...${err.message}`, 500)
+// }
+// const handleSyantaxErr = err => {
+//     console.dir(err);
+//     return new AppError(`Not Valid Syntax...${err.message}`)
+// }
+// const handleErr = err => {
+//     console.dir(err);
+//     return new AppError(`There is an Error...${err.message}`)
+// }
+// const handleReferenceErr = err => {
+//     console.dir(err);
+//     return new AppError(`There is an Reference Error...${err.message}`)
+// }
+// const handleTypeErr = err => {
+//     console.dir(err);
+//     return new AppError(`There is an Reference Error...${err.message}`)
+// }
 
-app.use((err, req, res, next) => {
-    console.log(err.name);
-    //We can single out particular types of Mongoose Errors:
-    if (err.name === 'ValidationError') err = handleValidationErr(err);
-    else if (err.name === 'CastError') err = handleCastErr(err);
-    else if (err.name === 'SyantaxError') err = handleSyantaxErr(err);
-    else if (err.name === 'Error') err = handleErr(err);
-    else if (err.name === 'ReferenceError') err = handleReferenceErr(err);
-    else if (err.name === 'TypeError') err = handleTypeErr(err);
-    next(err);
-});  
+// app.use((err, req, res, next) => {
+//     console.log(err.name);
+//     //We can single out particular types of Mongoose Errors:
+//     if (err.name === 'ValidationError') err = handleValidationErr(err);
+//     else if (err.name === 'CastError') err = handleCastErr(err);
+//     else if (err.name === 'SyantaxError') err = handleSyantaxErr(err);
+//     else if (err.name === 'Error') err = handleErr(err);
+//     else if (err.name === 'ReferenceError') err = handleReferenceErr(err);
+//     else if (err.name === 'TypeError') err = handleTypeErr(err);
+//     next(err);
+// });  
 
-app.use((err, req, res, next) => {
-    const { status = 500, message = 'Something went wrong' } = err;
-    res.status(status).send(message);
+// app.use((err, req, res, next) => {
+//     const { status = 500, message = 'Something went wrong' } = err;
+//     res.status(status).send(message);
+// });
+
+app.use((req,res,next) => {
+    next(createHttpError.NotFound());
 });
 
-
+app.use((error, req, res, next) => {
+    error.status = error.status || 500;
+    res.status(error.status);
+    res.render('errorPage', {error, title:'Error - Something went wrong', css:''});
+})
 
 //  ============== server run =====================
 app.listen(process.env.PORT, () => {

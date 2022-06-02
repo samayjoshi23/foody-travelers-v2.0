@@ -1,3 +1,4 @@
+const flash = require('connect-flash/lib/flash');
 const jwt = require('jsonwebtoken');
 
 const User = require('../Models/UserSchema');
@@ -7,6 +8,7 @@ const auth = async(req, res, next) => {
     try {
         const token = req.cookies.jwt;
         if(!token){
+            req.flash('error', 'You are not logged in, Login or signup first');
             return res.status(401).redirect('/user/login');
         }
         verifyUser = jwt.verify(token, process.env.JWT_SECRET);

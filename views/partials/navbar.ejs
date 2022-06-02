@@ -23,8 +23,7 @@
                 <li><a class="dropdown-item" href="#">Our Resources</a></li>
             </ul>
         </div>
-            <Home></Home>
-        <% if (typeof(user) === "undefined") { %>
+        <% if (isUser === false) { %>
             <a href="/user/login">
                 <button id="login" class="btn account-btns">Login/Signup</button>
             </a>

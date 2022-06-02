@@ -7,21 +7,22 @@ const tour = require('../Controllers/bookingControllers');
 
 // Middleware Import
 const auth = require('../middlewares/auth');
+const isUser = require('../middlewares/isLoggedIn');
 
 
-router.get('/states', wrapAsync(tour.getStates));
+router.get('/states', isUser, wrapAsync(tour.getStates));
 
-router.get('/states/:id/booking', auth, wrapAsync(tour.bookingPage));
+router.get('/states/:id/booking', isUser, auth, wrapAsync(tour.bookingPage));
 
-router.get('/states/:id', wrapAsync(tour.showState));
+router.get('/states/:id', isUser, wrapAsync(tour.showState));
 
-router.post('/states/:id/booking', auth, wrapAsync(tour.detailsPage));
+router.post('/states/:id/booking', isUser, auth, wrapAsync(tour.detailsPage));
 
-router.get('/states/:id/booking/ticket', auth, wrapAsync(tour.ticketPage));
+router.get('/states/:id/booking/ticket', isUser, auth, wrapAsync(tour.ticketPage));
 
-router.get('/states/:id/booking/ticket/payment', auth, wrapAsync(tour.paymentPage));
+router.get('/states/:id/booking/ticket/payment', isUser, auth, wrapAsync(tour.paymentPage));
 
-router.post('/ticket', auth, wrapAsync(tour.generateTicket));
+router.post('/ticket', isUser, auth, wrapAsync(tour.generateTicket));
 
 
 module.exports = router;
