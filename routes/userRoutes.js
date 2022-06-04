@@ -12,16 +12,18 @@ const isUser = require('../middlewares/isLoggedIn');
 
 
 router.route('/login')
-    .get(wrapAsync(users.loginPage))
+    .get(isUser, wrapAsync(users.loginPage))
     .post(wrapAsync(users.loginData))
 
 router.post('/signup', isUser, wrapAsync(users.signupData));
 
 router.get('/secret', isUser, auth, wrapAsync(users.secret));
 
+router.route('/account')
+    .get(isUser, auth, wrapAsync(users.accountPage))
+    .patch(isUser, auth, wrapAsync(users.updateAccount))
+
+
 router.get('/logout', isUser, auth, wrapAsync(users.logout));
-
-router.get('/account', isUser, auth, wrapAsync(users.account));
-
 
 module.exports = router;

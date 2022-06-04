@@ -12,3 +12,10 @@ burger.addEventListener('click', function () {
     // rotation
     burger.classList.toggle('burger-rotate');
 });
+
+
+const flashCards = document.querySelectorAll('#flash-messages');
+
+setTimeout(() => {
+    flashCards[0].innerHTML = '';
+}, 5000);

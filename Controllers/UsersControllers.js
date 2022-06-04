@@ -85,8 +85,9 @@ module.exports.signupData = ([
 
 // Login (Get Route) - No Login required
 module.exports.loginPage = async (req,res,next)=> {
+    let isUser = req.isUser;
     let user = req.user;
-    res.render('users/login-signup', {user, title:'Login/Sign Up - Foody Travelers', css:'login-signup.css'});
+    res.render('users/login-signup', {isUser, user, title:'Login/Sign Up - Foody Travelers', css:'login-signup.css'});
 }
 
 // Login (Post Route) - No Login required
@@ -150,22 +151,29 @@ module.exports.logout = async(req, res) => {
 
 
     // ---------To logout from all the devices---------
-    
     req.user.tokens = [];
-
     res.clearCookie('jwt');
     await req.user.save();
+
+    let isUser = req.isUser;
+    console.log(isUser);
+
     req.flash('success', 'Have a nice day, Logged Out successfully');
-    res.ststus(200).redirect('/user/login');
+    res.status(200).redirect('/user/login');
 }
 
 
 // Account Page (Get Route) - Login required
-module.exports.account = async(req,res) => {
+module.exports.accountPage = async(req,res) => {
     let user = req.user;
     let isUser = req.isUser;
 
     let tickets = await Ticket.find({user_Id: req.user._id});
 
     res.render('users/account', {isUser, tickets, user, title:'My Account - Foody Travelers', css:'accounts.css'});
+}
+
+// Update Account details - Login Required
+module.exports.updateAccount = async(req,res) => {
+    
 }

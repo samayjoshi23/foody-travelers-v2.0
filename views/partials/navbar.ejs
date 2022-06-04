@@ -10,32 +10,21 @@
     </div>
     <div class="navbar-right">
         <a href="/">
-            <button class="btn account-btns">Home</button>
+            <button class="btn home-btn btn-outline-dark">Home</button>
         </a>
-        <div class="dropdown nav-drop-btn">
-            <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <strong>Travel Zone</strong>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">About</a></li>
-                <li><a class="dropdown-item" href="#">Journey Planner</a></li>
-                <li><a class="dropdown-item" href="#">Our Resources</a></li>
-            </ul>
-        </div>
         <% if (isUser === false) { %>
             <a href="/user/login">
                 <button id="login" class="btn account-btns">Login/Signup</button>
             </a>
         <% } else { %>
             <a href="/user/account">
-                <button id="settings" class="btn account-btns">
+                <button id="settings" class="btn account-btns mx-2">
                     <img src="https://img.icons8.com/material-outlined/24/000000/guest-male.png" />
                 </button>
             </a>
-        <a href="/user/logout">
-            <button id="logout" class="btn account-btns">Logout</button>
-        </a>
+            <a href="/user/logout">
+                <button id="logout" class="btn account-btns">Logout</button>
+            </a>
         <% } %> 
     </div>
 </nav>

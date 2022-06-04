@@ -50,6 +50,7 @@ app.use(connectFlash());
 app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
+    res.locals.warning = req.flash('warning');
     next();
 })
 
@@ -60,7 +61,6 @@ app.use('/tour', require('./routes/bookingRoutes'));
 app.get('/', isUser, wrapAsync(async (req,res,next)=>{
     let user = req.user;
     let isUser = req.isUser;
-    console.log(isUser);
     res.render('home', {isUser, user, title: 'Foody-Travelers - Home',css:'home.css'});
 }));
 
