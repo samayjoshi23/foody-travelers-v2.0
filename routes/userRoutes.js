@@ -22,8 +22,12 @@ router.get('/secret', isUser, auth, wrapAsync(users.secret));
 router.route('/account')
     .get(isUser, auth, wrapAsync(users.accountPage))
     .patch(isUser, auth, wrapAsync(users.updateAccount))
-
+    .delete(isUser, auth, wrapAsync(users.deleteAccount))
 
 router.get('/logout', isUser, auth, wrapAsync(users.logout));
+
+router.patch('/accountPass', isUser, auth, wrapAsync(users.updatePassword))
+
+router.delete('/cancelTicket/:id', isUser, auth, wrapAsync(users.deleteTicket))
 
 module.exports = router;

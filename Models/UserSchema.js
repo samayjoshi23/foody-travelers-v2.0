@@ -33,10 +33,31 @@ const userSchema = new mongoose.Schema({
         trim: true,
         required: [true, 'Birthdate cannot be blank']
     },
-    address: {
+    street: {
         type: String,
         trim: true,
-        required: [true, 'Address cannot be blank']
+        required: [true, 'Street cannot be blank']
+    },
+    ward: {
+        type: String,
+        trim: true,
+        required: [true, 'Ward cannot be blank']
+    },
+    city: {
+        type: String,
+        trim: true,
+        required: [true, 'City cannot be blank']
+    },
+    state: {
+        type: String,
+        trim: true,
+        required: [true, 'State cannot be blank']
+    },
+    pin: {
+        type: Number,
+        minlength: 6,
+        maxlength: 6,
+        required: [true, 'PIN cannot be blank']
     },
     password: {
         type: String,

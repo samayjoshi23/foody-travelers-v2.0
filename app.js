@@ -6,7 +6,7 @@ const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const wrapAsync = require('./utils/wrapAsync');
 const cookieParser = require('cookie-parser');
-// const AppError = require('./utils/AppError');
+const methodOverride = require('method-override');
 const createHttpError = require('http-errors');
 const connectFlash = require('connect-flash');
 const isUser = require('./middlewares/isLoggedIn');
@@ -27,6 +27,8 @@ const app = express();
 app.use(express.urlencoded({ extended : true }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(methodOverride('_method'));
+
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
@@ -51,6 +53,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     res.locals.warning = req.flash('warning');
+    res.locals.info = req.flash('info');
     next();
 })
 
@@ -116,7 +119,7 @@ app.use((req,res,next) => {
 app.use((error, req, res, next) => {
     error.status = error.status || 500;
     res.status(error.status);
-    res.render('errorPage', {error, title:'Error - Something went wrong', css:''});
+    res.render('errorPage', {isUser, error, title:'Error - Something went wrong', css:''});
 })
 
 //  ============== server run =====================

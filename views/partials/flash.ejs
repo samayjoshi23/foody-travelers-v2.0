@@ -16,3 +16,9 @@
             <strong><%= warning %></strong>
         </div>
     <% } %>
+        
+    <% if(info && info.length) {%>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <strong><%= info %></strong>
+        </div>
+    <% } %>

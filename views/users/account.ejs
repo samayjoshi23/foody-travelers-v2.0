@@ -8,7 +8,7 @@
             <h5 class="mode-heading-update">My Account</h5>
         </div>
         <div class="journey">
-            <h5 class="mode-heading-journey">My Journyes</h5>
+            <h5 class="mode-heading-journey">My Journies</h5>
         </div>
     </div>
 
@@ -18,18 +18,18 @@
             <img src="../../static/images/accounts/accountSettings.webp" alt="">
         </div>
         <div class="forms-section">
-            <form action="" class="input-forms" id="update-form" method="POST">
+            <form action="/user/account?_method=PATCH" method="POST" class="input-forms" id="update-form">
                 <div class="singleColumn text-center border-bottom border-2 mb-2">
                     <h3 class="form-heading-signup">Create a new account</h3>
                 </div>
                 <div class="doubleColumns singleColumn">
                     <div class="d-flex flex-column">
-                        <label class="input-label" for="fName">First Name</label>
-                        <input class="inputs" type="text" name="firstName" id="fName" value="<%=user.firstName%> ">
+                        <label class="input-label" for="firstName">First Name</label>
+                        <input class="inputs" type="text" name="firstName" id="firstName" value="<%=user.firstName%>">
                     </div>
                     <div class="d-flex flex-column">
-                        <label class="input-label" for="lName">Last Name</label>
-                        <input class="inputs" type="text" name="lastName" id="lNname" value="<%=user.lastName%>">
+                        <label class="input-label" for="lastName">Last Name</label>
+                        <input class="inputs" type="text" name="lastName" id="lastName" value="<%=user.lastName%>">
                     </div>
                 </div>
                 <div class="singleColumn d-flex flex-column">
@@ -84,19 +84,19 @@
             </form>
             <!-- Update Password Modal -->
             <div class="modal fade" id="updatePasswordModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="" method="" class="change-password-form">
+                        <form action="/user/accountPass?_method=PATCH" method="POST" class="change-password-form">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Update Password</h5>
+                                <h5 class="modal-title" id="changePasswordLabel">Update Password</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="d-flex flex-column">
                                     <label class="input-label" for="change-password">Your Current Password</label>
-                                    <input class="inputs" type="password" name="OldPassword" id="change-password"
+                                    <input class="inputs" type="password" name="oldPassword" id="change-password"
                                         placeholder="Enter your current password" autofocus>
                                 </div>
                                 <div class="d-flex flex-column">
@@ -120,7 +120,7 @@
             </div>
 
             <!-- Delete Account Page -->
-            <form action="" class="delete-form input-forms">
+            <div action="" class="delete-form input-forms">
                 <div class="singleColumn update-form text-center border-bottom border-2 mb-2">
                     <h3 class="text-danger">Delete Account</h3> 
                 </div>
@@ -128,14 +128,52 @@
                     <p>This will permanenty delete you account and you can't recover the account again.
                         Are you sure you want to delete this account?
                     </p>
-                    <button class="btn btn-danger mt-3 mx-auto" id="del-ac">Delete Account</button>    
+                    <button type="button" class="btn btn-danger mt-3 mx-auto" data-bs-toggle="modal"
+                        data-bs-target="#deleteAccountModal" id="deleteAccountBtn">
+                        Delete Account
+                    </button>
                 </div>
-            </form>
+            </div>
+
+            <!-- Delete account modal -->
+            <div class="modal fade" id="deleteAccountModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="deleteAccountLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="/user/account?_method=DELETE" method="POST" class="delete-account-form">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-danger" id="deleteAccountLabel">Delete Account</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="my-4"><strong>Are you sure you want to delete your account?</strong></p>
+                                <p class="my-3">
+                                    You can never recover your details and and tickets.
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Tickets Section -->
     <section class="journey-section display-hide">
+        <% if(tickets.length === 0) { %>
+            <div class="">
+                <h2 class="text-center text-secondary my-4">No tickets are booked</h2>
+                <p class="text-center text-muted my-4">
+                    All your booked tickets will shown here. <br>
+                    First book ticket then visit again to check ticket details.
+                </p>
+            </div>
+        <% } %>  
         <% tickets.forEach(ticket => { %> 
             <div class="ticket-section ticket-details">
                 <div class="details-header">
@@ -209,7 +247,7 @@
                         </table>
                     </div>
                 </div>
-                <form action="" method="" class="d-flex justify-content-center">
+                <form action="/user/cancelTicket/<%=ticket._id%>?_method=DELETE" method="POST" class="d-flex justify-content-center">
                     <button type="" class="btn btn-danger w-50 mt-4">Cancel Ticket</button>
                 </form>
             </div>
