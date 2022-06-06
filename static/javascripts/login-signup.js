@@ -18,6 +18,8 @@ function fun1(){
     signupSection.classList.add('display-hide');
     login.style.backgroundColor = '#96dee9';
     signup.style.backgroundColor = '#FFEF82';
+
+    login.removeEventListener('click', fun1);
 }
 function fun2(){
     login.classList.value ='login';
@@ -26,6 +28,8 @@ function fun2(){
     signupSection.classList.remove('display-hide');
     login.style.backgroundColor = '#E8F9FD';
     signup.style.backgroundColor = '#f3db63';
+
+    signup.removeEventListener('click', fun2);
 }
 login.addEventListener('click', fun1);
 signup.addEventListener('click', fun2);

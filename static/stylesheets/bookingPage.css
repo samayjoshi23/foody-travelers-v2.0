@@ -53,6 +53,15 @@
     box-shadow: var(--def-box-shadow-sm);
     background-color: rgb(12, 180, 88);
   }
+  #go.disableHover{
+    box-shadow: none;
+    border: 2px solid rgb(153, 221, 184);
+  }
+  #go.disableHover:hover{
+    box-shadow: none;
+    border: 2px solid rgb(153, 221, 184);
+    background-color: rgb(153, 221, 184);;
+  }
   
   
   /* ================ passenger details =================== */
@@ -118,7 +127,7 @@
     font-weight: bold;
     color: rgb(102, 102, 102);
   }
-  input[type=submit]{
+  form #formSubmit{
     font-weight: bold;
     margin-top: 1em;
     padding: 0.4em 2em;
@@ -128,18 +137,12 @@
     transition: all 0.3s ease;
     background-color: rgb(153, 221, 184);
   }
-  input[type=submit]:hover{
+  form #formSubmit:hover{
     box-shadow: var(--def-box-shadow-sm);
     background-color:rgb(12, 180, 88);
   }
   
-  
-  
-  
-  
-  
-  
-  
+
   /* ============ Media queries ============== */
   @media (max-width: 900px) {
     .filter-area{
@@ -179,7 +182,6 @@
     .input-area h2{
       font-size: 1.2rem;
     }
-    
   }
   @media (max-width: 576px) {
     .input-details{

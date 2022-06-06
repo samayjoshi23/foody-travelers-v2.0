@@ -1,3 +1,4 @@
+const flash = require('connect-flash/lib/flash');
 const express = require('express');
 const app = express();
 
@@ -86,7 +87,7 @@ module.exports.generateTicket = async(req, res, next)=>{
 
     await user.save();
     await bookedTicket.save();
-
+    req.flash('success', `Ticket Booked... Happy journey for your ${ticket.state_Name} tour`)
     res.json({
         stats: 'success',
         ticket: ticket.user_Name

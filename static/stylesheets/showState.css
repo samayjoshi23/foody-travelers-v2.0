@@ -280,25 +280,6 @@
   border-bottom-right-radius: 5px;
   border-left: 1px solid rgb(220, 220, 220);
 }
-#calculate-food{
-  background-color: #2fd46f;
-  padding: 0.6rem 0;
-  margin-top: 0.5rem;
-  border-radius: 5px;
-  border: none;
-  font-weight: bold;
-  font-size: 1.25rem;
-  box-shadow: var(--def-box-shadow-sm);
-  transition: all 0.2s ease-out;
-}
-#calculate-food:hover{
-  background-color: #51f38f;
-  box-shadow: var(--def-box-shadow-lg);
-}
-#calculate-food:active{
-  border: 3px solid #2fd46f;
-  background-color: #fff;
-}
 
 /* ..............media queries ........................ */
 @media (max-width: 900px) {

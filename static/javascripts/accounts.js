@@ -17,6 +17,8 @@ function fun1() {
     journeySection.classList.add('display-hide');
     update.style.backgroundColor = '#96dee9';
     journey.style.backgroundColor = '#FFEF82';
+
+    update.removeEventListener("click", fun1);
 }
 function fun2() {
     update.classList.value = 'update';
@@ -25,6 +27,8 @@ function fun2() {
     journeySection.classList.remove('display-hide');
     update.style.backgroundColor = '#E8F9FD';
     journey.style.backgroundColor = '#f3db63';
+
+    journey.removeEventListener("click", fun2);
 }
 update.addEventListener('click', fun1);
 journey.addEventListener('click', fun2);

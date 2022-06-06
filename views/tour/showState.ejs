@@ -105,7 +105,7 @@
                                 <p>Rs: <span><%= food.price %></span></p>
                             </div>
                             <div class="food-type">
-                                <div class="food-color" style='background-color:<%=food.dot_color %>'> </div>
+                                <div class="food-color" style='background-color:<%= food.dot_color %>'> </div>
                                 <p class="food-type-text"><%= food.food_type%> </p>
                             </div>
                         </div>
@@ -116,8 +116,7 @@
                         <button class="counter-btn plus">+</button>
                     </div>
                 </div>
-                <% } %> 
-            <button id="calculate-food">Done Selection</button>
+            <% } %>
         </section>
     </main>
 

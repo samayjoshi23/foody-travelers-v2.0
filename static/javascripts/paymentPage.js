@@ -29,6 +29,8 @@ foodData.forEach(data=>{
 
 window.addEventListener("load", (event) => {
   document.querySelector("#grandFare").innerText = grandFare;
+
+  window.removeEventListener("load", event);
 });
 
 selectedBtn.forEach((btn, index) => {

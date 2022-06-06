@@ -41,30 +41,32 @@ let foodCounts = document.querySelectorAll("#foodCounter");
 let foodTotal = 0,
   totalFoodPackage = 0;
 
-let foodCounterBtn = document.querySelector("#calculate-food");
+let bookingButton = document.querySelector(".booking-btn");
 
-foodCounterBtn.addEventListener("click", function () {
+function bookButton(){
   let foodList = [];
-  let fName, fPrice, fQty, foodTotalCost=0;
+    let fName, fPrice, fQty, foodTotalCost=0;
 
-  foodCounts.forEach((count) => {
-    if (count.innerText > 0) {
-      fPrice = count.parentElement.previousElementSibling.lastElementChild.firstElementChild.lastElementChild.firstElementChild.innerText;
-      fName = count.parentElement.previousElementSibling.lastElementChild.firstElementChild.firstElementChild.innerText
-      fQty = count.innerText
-      foodTotalCost = parseInt(fPrice) * parseInt(fQty);
-      totalFoodPackage += foodTotalCost;
-      let food = {
-        name: fName,
-        Price: fPrice,
-        Qty: fQty,
-        TotalCost: foodTotalCost,
-      };
-      foodList.push(food);
-      foodTotalCost = 0;
-    }
-  });
-  foodCounterBtn.innerText = "Selected";
-  sessionStorage.setItem('totalFoodPackage',totalFoodPackage);
-  sessionStorage.setItem('foodObj', JSON.stringify(foodList));
-});
+    foodCounts.forEach((count) => {
+      if (count.innerText > 0) {
+        fPrice = count.parentElement.previousElementSibling.lastElementChild.firstElementChild.lastElementChild.firstElementChild.innerText;
+        fName = count.parentElement.previousElementSibling.lastElementChild.firstElementChild.firstElementChild.innerText
+        fQty = count.innerText
+        foodTotalCost = parseInt(fPrice) * parseInt(fQty);
+        totalFoodPackage += foodTotalCost;
+        let food = {
+          name: fName,
+          Price: fPrice,
+          Qty: fQty,
+          TotalCost: foodTotalCost,
+        };
+        foodList.push(food);
+        foodTotalCost = 0;
+      }
+    });
+
+    sessionStorage.setItem('totalFoodPackage',totalFoodPackage);
+    sessionStorage.setItem('foodObj', JSON.stringify(foodList));
+}
+
+bookingButton.addEventListener("click", bookButton);
