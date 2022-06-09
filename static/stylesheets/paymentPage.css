@@ -1,3 +1,6 @@
+body{
+    position: relative;
+}
 .main-container{
     width: 90%;
     margin: 1rem auto;
@@ -219,4 +222,41 @@
 }
 .activated-button div{
     right: 10%;
+}
+
+/* ========== Overlay Popup ============== */
+.overlay-popup{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.overlay-body{
+    padding:2rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    font-family: var(--font-sub-heading);
+}
+.overlay-heading{
+    margin: 1rem;
+    font-weight: bold;
+    color: gray;
+}
+.overlay-description{
+    margin: 1rem;
+    color: red;
+    font-size: 1.2rem;
+}
+.overflowHideBody{
+    max-height: 100vh;
+    overflow-y: hidden;
 }

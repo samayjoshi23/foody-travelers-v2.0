@@ -1,7 +1,21 @@
 <% layout('layouts/boilerplate')%>
 
-<h1 class="text-center">We are lost in space</h1>
-<h3><%= error.status %> | <%= error.message %>  </h3>
-<a href="/">
-    <p>Lets get back to home</p>
-</a>
+
+<main class="main-container">
+    <img class="error-img" src="/static/images/accounts/errorPageImg.jpg" alt="">
+    <div class="error-container">
+        <h3 class="error-value"><%= error.status %></h3>
+        <div class="error-description">
+            <h1 class="text-center error-heading">We are lost in space</h1>
+            <p class="error-message"><%= error.message %></p>
+            <button id="backButton">&#8592; Let's go back</button>
+        </div>
+    </div>
+</main>
+
+
+<script>
+    document.querySelector('#backButton').addEventListener('click', () => {
+        window.history.go(-1)
+    })
+</script>

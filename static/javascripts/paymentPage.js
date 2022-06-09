@@ -46,9 +46,13 @@ selectedBtn.forEach((btn, index) => {
   });
 });
 
+const popup = document.querySelector(".overlay-popup");
 const pay = document.querySelector(".paymentButton");
 
 pay.addEventListener("click", async function () {
+  document.body.classList.add('overflowHideBody');
+  popup.style.display = 'flex';
+  
   stateId = document.querySelector('#stateId');
   const ticket = {
     user_Id: userId,
@@ -68,7 +72,7 @@ pay.addEventListener("click", async function () {
     pickup_City: pickupCity,
     grand_Fare: grandFare,
   };
-
+  
   const options = {
     method: "POST",
     headers: {
@@ -88,8 +92,13 @@ pay.addEventListener("click", async function () {
   const response = await fetch(`/tour/ticket`, options);
   console.log(response);
   const json = await response.json();
-  if (json) {
-      redirect: window.location.replace("/");
-  }
   console.log(json);
+
+  setTimeout( async () => {
+    console.log("In set time out");
+    document.body.classList.remove('overflowHideBody');
+    if (json) {
+        redirect: window.location.replace("/");
+    }
+  }, 3500);
 });

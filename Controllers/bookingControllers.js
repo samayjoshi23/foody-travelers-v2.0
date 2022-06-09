@@ -17,13 +17,13 @@ module.exports.getStates = async (req,res,next)=> {
 }
 
 
-module.exports.bookingPage = async(req,res)=>{
+module.exports.bookingPage = async(req,res, next)=>{
     const user = req.user;
     let isUser = req.isUser;
     const {id} = req.params;
     const state = await State.findById(id);
     if(!state){
-        throw new AppError('State not found!!!', 404);
+        throw new AppError('State not found', 404);
     }
     res.render('tour/bookingPage', {isUser, user, state, title:`Book-${state.state_name}`, css:'bookingPage.css'});
 }
@@ -35,7 +35,7 @@ module.exports.showState = async (req, res, next) => {
     const {id} = req.params;
     const state = await State.findById(id);
     if(!state){
-        throw new AppError('State not found!!!', 404);
+        throw new AppError('State not found', 404);
     }
     res.render('tour/showState', {isUser, user, state, title:state.state_name, css:'showState.css'});
 }
@@ -45,7 +45,7 @@ module.exports.detailsPage = async(req, res) => {
     const {id} = req.params;
     const state = await State.findById(id);
     if(!state){
-        throw new AppError('State not found!!!', 404);
+        throw new AppError('State not found', 404);
     }
     res.redirect(`/tour/states/${state._id}/booking/ticket`);
 }
@@ -57,7 +57,7 @@ module.exports.ticketPage = async(req,res, next) =>{
     const {id} = req.params;
     const state = await State.findById(id);
     if(!state){
-        throw new AppError('State not found!!!', 404);
+        throw new AppError('State not found', 404);
     }
     res.render('tour/ticketPage',{isUser, user, state, title: 'Confirm-Details', css:'ticketPage.css'});
 }
@@ -69,7 +69,7 @@ module.exports.paymentPage = async(req,res)=>{
     const {id} = req.params;
     const state = await State.findById(id);
     if(!state){
-        throw new AppError('State not found!!!', 404);
+        throw new AppError('State not found', 404);
     }
     res.render('tour/paymentPage',{isUser, user, state, title:'Payment', css:'paymentPage.css'});
 }

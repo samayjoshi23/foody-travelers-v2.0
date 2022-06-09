@@ -4,20 +4,10 @@ const bcrypt = require('bcryptjs');
 // Schema
 const User = require('../Models/UserSchema');
 const Ticket = require('../Models/TicketSchema');
-const { findOne } = require('../Models/UserSchema');
 
 
 // Signup (Post Route) - No Login required
-module.exports.signupData = ([
-    body('username','Name should be between 3 to 25 characters').isString().isLength({min:3, max:25}),
-    body('email','Enter a valid Email').isEmail(),
-    body('phone','Enter a valid mobile number').isNumeric().isLength({min:10, max:10}),
-    body('password','Enter a valid password').isLength({min: 5, max:15}),
-    body('cpassword','Enter a valid password').isLength({min: 5, max:15}),
-    body('pin', 'Enter a valid PIN code (6 digits)').isLength({min:6, max:6}),
-    body('age', 'Age must be between 16 to 100').isNumeric({min:16, max:100})
-], async (req,res)=> {
-    
+module.exports.signupData = async (req,res)=> {
     
     const {firstName, lastName, email, phone, age, dob, street, ward, city, state, pin, password, cpassword} = req.body;
     
@@ -51,7 +41,6 @@ module.exports.signupData = ([
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password,salt);
     
-    
     user = new User({
         firstName, 
         lastName, 
@@ -74,12 +63,10 @@ module.exports.signupData = ([
         // secure:true
     });
 
-
     await user.save();
     req.flash('success', `Hey ${user.firstName}, Welcome to foody travelers`)
     res.status(201).redirect('/');
-})
-
+};
 
 
 // Login (Get Route) - No Login required
@@ -90,25 +77,25 @@ module.exports.loginPage = async (req,res,next)=> {
 }
 
 // Login (Post Route) - No Login required
-module.exports.loginData = ([
-    body('email','Enter a valid Email').isEmail(),
-    body('password','Enter a valid Password').isLength({min:5, max:15}).exists()
-],async(req,res,next)=> {
+module.exports.loginData = async(req,res,next)=> {
     const {email, password} = req.body;
-    
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        req.flash('error', errors.array());
-        console.log(errors.array());
-        res.redirect('/user/login');
-        return;
-    }
+    const tempUserData = req.body;
+    let isUser = req.isUser;
     
     let user = await User.findOne({email});
     if(!user){
-        req.flash('error', "Wrong credentials, Re-enter the correct credentials");
+        req.flash('error', "User doesnot exists");
         res.status(400).redirect('/user/login');
         return;
+    }
+    
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        errors.array().forEach(err => {
+            req.flash('error', err.msg);
+        })
+
+        return res.render('users/login-signup', {tempUserData, isUser, user, title:'Login/Sign Up - Foody Travelers', css:'login-signup.css'})
     }
     
     const passwordCompare = await bcrypt.compare(password, user.password);
@@ -126,11 +113,9 @@ module.exports.loginData = ([
         // secure: true
     });
     
-    
     req.flash('success', `Hey ${user.firstName}, Welcome back to foody travelers`) 
     res.status(200).redirect('/');
-    
-});
+};
 
 
 // Test Page (Authentication and Authorization) (Get Route) - Login required
@@ -297,7 +282,6 @@ module.exports.deleteTicket = async(req, res) => {
         await Ticket.findByIdAndDelete(id);
 
         let tickets = await Ticket.find({user_Id: user._id});
-
         user = await User.findByIdAndUpdate({_id: user._id},{
             tickets
         },

@@ -14,16 +14,16 @@
   justify-self: center;
   padding: 10px 20px;
 }
-.main-logo{
+.main-logo a{
   display: flex;
   align-items: center;
 }
 .main-logo img{
-  width: 6rem;
-  margin-right: 1.2rem;
+  width: 5rem;
+  margin-right: 0.5rem;
 }
 .main-logo h2{
-  margin-top: 1.1rem;
+  margin: 0.75rem 0 0.5rem 0;
 }
 .hamburger{
   position: absolute;

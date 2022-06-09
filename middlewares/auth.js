@@ -1,4 +1,3 @@
-const flash = require('connect-flash/lib/flash');
 const jwt = require('jsonwebtoken');
 
 const User = require('../Models/UserSchema');

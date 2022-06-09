@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { body, validationResult } = require('express-validator');
 const wrapAsync = require('../utils/wrapAsync')
 
 // Controller
@@ -13,16 +14,35 @@ const isUser = require('../middlewares/isLoggedIn');
 
 router.route('/login')
     .get(isUser, wrapAsync(users.loginPage))
-    .post(wrapAsync(users.loginData))
+    .post([
+        body('email','Enter a valid Email').exists().isEmail(),
+        body('password','Password should be between 5 to 15 characters').isLength({min:5, max:15}).exists()
+    ], wrapAsync(users.loginData))
 
-router.post('/signup', isUser, wrapAsync(users.signupData));
+router.post('/signup', isUser, [
+    body('username','Name should be between 3 to 25 characters').isString().isLength({min:3, max:25}),
+    body('email','Enter a valid Email').isEmail(),
+    body('phone','Enter a valid mobile number').isNumeric().isLength({min:10, max:10}),
+    body('password','Enter a valid password').isLength({min: 5, max:15}),
+    body('cpassword','Enter a valid password').isLength({min: 5, max:15}),
+    body('pin', 'Enter a valid PIN code (6 digits)').isLength({min:6, max:6}),
+    body('age', 'Age must be between 16 to 100').isNumeric({min:16, max:100})
+], wrapAsync(users.signupData));
 
 router.get('/secret', isUser, auth, wrapAsync(users.secret));
 
 router.route('/account')
     .get(isUser, auth, wrapAsync(users.accountPage))
-    .patch(isUser, auth, wrapAsync(users.updateAccount))
     .delete(isUser, auth, wrapAsync(users.deleteAccount))
+    .patch(isUser, auth, [
+        body('username','Name should be between 3 to 25 characters').isString().isLength({min:3, max:25}),
+        body('email','Enter a valid Email').isEmail(),
+        body('phone','Enter a valid mobile number').isNumeric().isLength({min:10, max:10}),
+        body('password','Enter a valid password').isLength({min: 5, max:15}),
+        body('cpassword','Enter a valid password').isLength({min: 5, max:15}),
+        body('pin', 'Enter a valid PIN code (6 digits)').isLength({min:6, max:6}),
+        body('age', 'Age must be between 16 to 100').isNumeric({min:16, max:100})
+    ], wrapAsync(users.updateAccount))
 
 router.get('/logout', isUser, auth, wrapAsync(users.logout));
 

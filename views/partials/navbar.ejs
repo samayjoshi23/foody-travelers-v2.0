@@ -1,8 +1,10 @@
 <nav class="navbar-container">
     <div class="navbar-left d-flex">
         <div class="main-logo">
-            <img class="img-fluid" src="/static/images/logo_main.png" alt="">
-            <h2>Foody Travellers</h2>
+            <a href="/">
+                <img class="img-fluid" src="/static/images/logo_main.png" alt="">
+                <h2 class="text-dark">Foody Travellers</h2>
+            </a>
         </div>
         <div class="hamburger hide-burger">
             <img src="https://img.icons8.com/pastel-glyph/64/000000/circled-chevron-down.png" />
@@ -10,11 +12,11 @@
     </div>
     <div class="navbar-right">
         <a href="/">
-            <button class="btn home-btn btn-outline-dark mx-2">Home</button>
+            <button class="btn home-btn account-btns btn-outline-dark">Home</button>
         </a>
         <% if (isUser === false) { %>
             <a href="/user/login">
-                <button id="login" class="btn account-btns">Login/Signup</button>
+                <button id="login" class="btn account-btns mx-2">Login/Signup</button>
             </a>
         <% } else { %>
             <a href="/user/account">
