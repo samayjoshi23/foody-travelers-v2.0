@@ -14,7 +14,7 @@
         <a href="/">
             <button class="btn home-btn account-btns btn-outline-dark">Home</button>
         </a>
-        <% if (isUser === false) { %>
+        <% if (isUser.login === false) { %>
             <a href="/user/login">
                 <button id="login" class="btn account-btns mx-2">Login/Signup</button>
             </a>
@@ -27,6 +27,11 @@
             <a href="/user/logout">
                 <button id="logout" class="btn account-btns">Logout</button>
             </a>
-        <% } %> 
+        <% } %>
+        <% if (isUser.admin === true) { %>
+            <a href="/admin/view">
+                <button id="admin-btn" class="btn account-btns mx-2">Manage Panel</button>
+            </a>    
+        <% }%>
     </div>
 </nav>

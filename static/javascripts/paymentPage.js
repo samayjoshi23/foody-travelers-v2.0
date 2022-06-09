@@ -95,10 +95,9 @@ pay.addEventListener("click", async function () {
   console.log(json);
 
   setTimeout( async () => {
-    console.log("In set time out");
     document.body.classList.remove('overflowHideBody');
     if (json) {
         redirect: window.location.replace("/");
     }
-  }, 3500);
+  }, 3000);
 });

@@ -64,6 +64,15 @@ const userSchema = new mongoose.Schema({
         trim: true,
         required: [true, 'Password cannot be blank']
     },
+    role: {
+        type: String,
+        enum: ['admin', 'user'],
+        default: 'user'
+    },
+    created: {
+        type: Date,
+        default: Date.now
+    },
     tokens: [{
         token:{
             type: String,

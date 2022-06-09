@@ -65,13 +65,13 @@ module.exports.signupData = async (req,res)=> {
 
     await user.save();
     req.flash('success', `Hey ${user.firstName}, Welcome to foody travelers`)
-    res.status(201).redirect('/');
+    res.status(200).redirect('/');
 };
 
 
 // Login (Get Route) - No Login required
 module.exports.loginPage = async (req,res,next)=> {
-    let isUser = req.isUser;
+    let isUser = req.userData;
     let user = req.user;
     res.render('users/login-signup', {isUser, user, title:'Login/Sign Up - Foody Travelers', css:'login-signup.css'});
 }
@@ -80,7 +80,7 @@ module.exports.loginPage = async (req,res,next)=> {
 module.exports.loginData = async(req,res,next)=> {
     const {email, password} = req.body;
     const tempUserData = req.body;
-    let isUser = req.isUser;
+    let isUser = req.userData;
     
     let user = await User.findOne({email});
     if(!user){
@@ -114,14 +114,7 @@ module.exports.loginData = async(req,res,next)=> {
     });
     
     req.flash('success', `Hey ${user.firstName}, Welcome back to foody travelers`) 
-    res.status(200).redirect('/');
-};
-
-
-// Test Page (Authentication and Authorization) (Get Route) - Login required
-module.exports.secret = async (req, res)=>{
-    const user = req.user
-    res.json({status: "Successful", page: "Secret page", cookie: req.cookies.jwt, user});
+    res.status(201).redirect('/');
 };
 
 
@@ -148,7 +141,7 @@ module.exports.logout = async(req, res) => {
 module.exports.accountPage = async(req,res) => {
     try {
         let user = req.user;
-        let isUser = req.isUser;
+        let isUser = req.userData;
 
         let tickets = await Ticket.find({user_Id: req.user._id});
 
@@ -159,10 +152,11 @@ module.exports.accountPage = async(req,res) => {
     }
 }
 
+
 // Update Account details - Login Required
 module.exports.updateAccount = async(req,res) => {
     try {
-        let isUser = req.isUser;
+        let isUser = req.userData;
         let tickets = await Ticket.find({user_Id: req.user._id});
         
         let oldUser = req.user;
@@ -194,6 +188,8 @@ module.exports.updateAccount = async(req,res) => {
     }
 }
 
+
+// Delete User Account - Login Required 
 module.exports.deleteAccount = async(req, res) => {
     try {
         let user = req.user;
@@ -209,12 +205,9 @@ module.exports.deleteAccount = async(req, res) => {
     }
 }
 
-module.exports.updatePassword = ([
-    body('oldPassword','Enter a valid password').isLength({min: 5, max:15}).withMessage('password should be between 5 to 15 characters'),
-    body('newPassword','Enter a valid password').isLength({min: 5, max:15}).withMessage('password should be between 5 to 15 characters'),
-    body('cNewPassword','Enter a valid password').isLength({min: 5, max:15}).withMessage('password should be between 5 to 15 characters'),
-],
-async(req, res) => {
+
+// Update user Password - Login Required
+module.exports.updatePassword = async(req, res) => {
     try {
         const {oldPassword, newPassword, cNewPassword} = req.body;
         
@@ -271,9 +264,10 @@ async(req, res) => {
     } catch (error) {
         console.log(error);
     }
-})
+}
 
 
+// Delete Ticket
 module.exports.deleteTicket = async(req, res) => {
     try {
         const { id } = req.params;

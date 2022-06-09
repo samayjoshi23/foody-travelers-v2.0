@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const wrapAsync = require('./utils/wrapAsync');
 const cookieParser = require('cookie-parser');
@@ -10,6 +9,7 @@ const methodOverride = require('method-override');
 const connectFlash = require('connect-flash');
 const isUser = require('./middlewares/isLoggedIn');
 const AppError = require('./utils/AppError');
+const expressLayouts = require('express-ejs-layouts');
 
 // mongoose connection -----------
 mongoose.connect(`mongodb://localhost:${process.env.DB_URL}`, { 
@@ -32,7 +32,8 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 
 
-app.engine('ejs', ejsMate);
+app.use(expressLayouts)
+app.set('layout', './layouts/boilerplate');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/static', express.static(path.join(__dirname, 'static')));
@@ -63,10 +64,11 @@ app.use((req, res, next) => {
 // =============== Application Routes =============== 
 app.use('/user', require('./routes/userRoutes'))
 app.use('/tour', require('./routes/bookingRoutes'));
+app.use('/admin', require('./routes/adminRoutes'));
 
 app.get('/', isUser, wrapAsync(async (req,res)=>{
     let user = req.user;
-    let isUser = req.isUser;
+    let isUser = req.userData;
     res.render('home', {isUser, user, title: 'Foody-Travelers - Home',css:'home.css'});
 }));
 
@@ -117,9 +119,9 @@ app.use((err, req, res, next) => {
 });
 
 app.all('*', isUser, (req, res, next) => {
-    let isUser = req.isUser;
+    let isUser = req.userData;
     next(new AppError('Page Not Found', 404));
-    res.render('errorPage', {isUser, error, title:'Error - Something went wrong', css:'errorPage.css'});
+    res.render('errorPage', {isUser, title:'Error - Something went wrong', css:'errorPage.css'});
 })
 
 app.use((err, req, res, next) => {

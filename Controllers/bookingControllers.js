@@ -1,7 +1,3 @@
-const flash = require('connect-flash/lib/flash');
-const express = require('express');
-const app = express();
-
 // Schema
 const State = require('../Models/StateSchema');
 const Ticket = require('../Models/TicketSchema');
@@ -11,7 +7,7 @@ const AppError = require('../utils/AppError');
 
 module.exports.getStates = async (req,res,next)=> {
     let user = req.user;
-    let isUser = req.isUser;
+    let isUser = req.userData;
     const states = await State.find({});
     res.render('tour/allStates', {isUser, user, states, title: 'States',css:'allStates.css'});
 }
@@ -19,7 +15,7 @@ module.exports.getStates = async (req,res,next)=> {
 
 module.exports.bookingPage = async(req,res, next)=>{
     const user = req.user;
-    let isUser = req.isUser;
+    let isUser = req.userData;
     const {id} = req.params;
     const state = await State.findById(id);
     if(!state){
@@ -31,7 +27,7 @@ module.exports.bookingPage = async(req,res, next)=>{
 
 module.exports.showState = async (req, res, next) => {
     let user = req.user;
-    let isUser = req.isUser;
+    let isUser = req.userData;
     const {id} = req.params;
     const state = await State.findById(id);
     if(!state){
@@ -53,7 +49,7 @@ module.exports.detailsPage = async(req, res) => {
 
 module.exports.ticketPage = async(req,res, next) =>{
     let user = req.user;
-    let isUser = req.isUser;
+    let isUser = req.userData;
     const {id} = req.params;
     const state = await State.findById(id);
     if(!state){
@@ -65,7 +61,7 @@ module.exports.ticketPage = async(req,res, next) =>{
 
 module.exports.paymentPage = async(req,res)=>{
     let user = req.user;
-    let isUser = req.isUser;
+    let isUser = req.userData;
     const {id} = req.params;
     const state = await State.findById(id);
     if(!state){
@@ -87,7 +83,7 @@ module.exports.generateTicket = async(req, res, next)=>{
 
     await user.save();
     await bookedTicket.save();
-    req.flash('success', `Ticket Booked... Happy journey for your ${ticket.state_Name} tour`)
+    req.flash('success', `Ticket Booked Successfully... Happy journey for your tour`)
     res.json({
         stats: 'success',
         ticket: ticket.user_Name

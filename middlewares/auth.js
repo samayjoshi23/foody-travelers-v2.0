@@ -11,10 +11,10 @@ const auth = async(req, res, next) => {
             return res.status(401).redirect('/user/login');
         }
         verifyUser = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await User.findOne({_id: verifyUser._id});
+        const currentUser = await User.findOne({_id: verifyUser._id});
         
         req.token = token;
-        req.user = user;
+        req.user = currentUser;
 
         next();
     } catch (error) {

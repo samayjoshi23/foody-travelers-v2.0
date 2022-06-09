@@ -1,0 +1,21 @@
+<main class="main-container">
+    <section class="content-section">
+        <h1 class="section-heading text-center">Users</h1>
+        <% users.forEach(user => {  %>
+            <div class="user-card d-flex">
+                <div class="user-data d-flex flex-column">
+                    <h4 class="user-name"><%= user.firstName %> <%= user.lastName %></h4>
+                    <h5 class="user-email"><%= user.email %> </h5>
+                </div>
+                <div class="user-options d-flex">
+                    <button class="btn-sm mx-1">view</button>
+                    <button class="btn-sm mx-1">edit</button>
+                    <button class="btn-sm mx-1">delete</button>
+                </div>
+            </div>
+        <% }) %> 
+    </section>
+    <section class="content-section">
+        <h1 class="section-heading text-center">Tickets Booked</h1>
+    </section>
+</main>
