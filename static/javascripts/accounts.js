@@ -30,5 +30,16 @@ function fun2() {
 
     journey.removeEventListener("click", fun2);
 }
+
+
+function setAllPasswords(elementId){
+    var x = document.getElementById(`${elementId}`);
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+}
+
 update.addEventListener('click', fun1);
 journey.addEventListener('click', fun2);

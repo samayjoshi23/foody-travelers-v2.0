@@ -9,11 +9,10 @@ const AppError = require('../utils/AppError');
 
 module.exports.getViews = async(req, res) => {
     let isUser = req.userData;
-    const users = await User.find({});
-    const tickets = await Ticket.find({});
-    if(!users || !tickets){
+    const usersData = await User.find({});
+    const ticketsData = await Ticket.find({});
+    if(!usersData || !ticketsData){
         return res.status(404).send('NO users are found');
     }
-    res.set("Content-Type", "text/html");
-    res.render('admin/showData', { isUser, users, tickets, title:'Admin Panel - Foody travelers', css: ''});
+    res.render('admin/showData', { isUser, usersData, ticketsData, title:'Admin Panel - Foody travelers', css: 'admin/viewData.css'});
 }

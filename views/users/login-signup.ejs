@@ -20,19 +20,14 @@
             </div>
             <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="login-email">Email</label>
-                <% if (typeof(tempUserData) === 'undefined') { %>
-                    <input class="inputs" type="email" name="email" id="login-email" placeholder="xyz@domainName.com"autofocus>
-                <% } else { %>
-                    <input class="inputs" type="email" name="email" id="login-email" placeholder="xyz@domainName.com" value="<%= tempUserData.email%>" autofocus>
-                <% } %>
+                <input class="inputs" type="email" name="email" id="login-email" placeholder="xyz@domainName.com">
             </div>
             <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="login-password">Password</label>
-                <% if (typeof(tempUserData) === 'undefined') { %>
-                    <input class="inputs" type="password" name="password" id="login-password" placeholder="Enter your password">
-                <% }else { %>
-                    <input class="inputs" type="password" name="password" id="login-password" placeholder="Enter your password" value="<%= tempUserData.password %>">
-                <% } %>
+                <input class="inputs" type="password" name="password" id="login-password" placeholder="Enter your password">
+                <div class="d-flex mx-3 align-items-center">
+                    <input type="checkbox" class="mx-2" style="width: 18px; height: 18px;" onclick="setAllPasswords('login-password')">Show Password
+                </div>
             </div>
             <div class="singleColumn d-flex">
                 <a href="" class="text-danger text-decoration-none">Forgot your password?</a>
@@ -115,10 +110,16 @@
             <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="signup-password">Password</label>
                 <input class="inputs" type="password" name="password" id="signup-password" placeholder="Enter your password" autofocus>
+                <div class="d-flex mx-3 align-items-center">
+                    <input type="checkbox" class="mx-2" style="width: 18px; height: 18px;" onclick="setAllPasswords('signup-password')">Show Password
+                </div>
             </div>
             <div class="singleColumn d-flex flex-column">
                 <label class="input-label" for="pas-confirm">Confirm Password</label>
                 <input class="inputs" type="password" name="cpassword" id="pass-confirm" placeholder="Re-enter password" autofocus>
+                <div class="d-flex mx-3 align-items-center">
+                    <input type="checkbox" class="mx-2" style="width: 18px; height: 18px;" onclick="setAllPasswords('pass-confirm')">Show Password
+                </div>
             </div>
             <div class="singleColumn d-flex justify-content-between">
                 <button type="submit" class="btn main-button-signup" id="signup-ac">Signup Now</button>

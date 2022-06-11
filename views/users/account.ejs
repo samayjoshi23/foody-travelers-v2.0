@@ -89,23 +89,33 @@
                             <div class="modal-header">
                                 <h5 class="modal-title" id="changePasswordLabel">Update Password</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                    aria-label="Close">
+                                </button>
                             </div>
                             <div class="modal-body">
                                 <div class="d-flex flex-column">
                                     <label class="input-label" for="change-password">Your Current Password</label>
                                     <input class="inputs" type="password" name="oldPassword" id="change-password"
                                         placeholder="Enter your current password" autofocus>
+                                    <div class="d-flex mx-3 align-items-center">
+                                        <input type="checkbox" class="mx-2" style="width: 18px; height: 18px;" onclick="setAllPasswords('change-password')">Show Password
+                                    </div>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <label class="input-label" for="new-password">New Password</label>
                                     <input class="inputs" type="password" name="newPassword" id="new-password"
-                                        placeholder="Enter new password" autofocus>
+                                    placeholder="Enter new password" autofocus>
+                                    <div class="d-flex mx-3 align-items-center">
+                                        <input type="checkbox" class="mx-2" style="width: 18px; height: 18px;" onclick="setAllPasswords('new-password')">Show Password
+                                    </div>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <label class="input-label" for="pas-confirm">Confirm Password</label>
                                     <input class="inputs" type="password" name="cNewPassword" id="pass-confirm"
-                                        placeholder="Re-enter new password" autofocus>
+                                    placeholder="Re-enter new password" autofocus>
+                                    <div class="d-flex mx-3 align-items-center">
+                                        <input type="checkbox" class="mx-2" style="width: 18px; height: 18px;" onclick="setAllPasswords('pass-confirm')">Show Password
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">

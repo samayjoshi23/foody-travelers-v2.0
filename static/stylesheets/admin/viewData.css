@@ -1,0 +1,58 @@
+.main-container{
+    width: var(--main-sections-width-pc);
+    margin: var(--main-sections-margin-pc);
+    box-shadow: var(--def-box-shadow-lg);
+    border-radius: 8px;
+}
+.content-section{
+    padding-top: 1rem;
+}
+.card-collection{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+.user-card{
+    display: flex;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: rgb(235, 235, 235);
+}
+.user-name{
+    font-size: 1.5rem;
+}
+.user-email{
+    font-size: 1rem;
+    color: gray;
+}
+.utility-btns{
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    padding: 0;
+}
+.search{
+    border: 2px solid rgb(66, 149, 174);
+}
+.search:hover{
+    background-color: rgb(66, 149, 174);
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.25);
+}
+.edit{
+    border: 2px solid rgb(255, 197, 89);
+}
+.edit:hover{
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.25);
+    background-color: rgb(255, 197, 89);
+}
+.delete{
+    border: 2px solid rgb(255, 105, 105);
+}
+.delete:hover{
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.25);
+    background-color: rgb(255, 105, 105);
+}

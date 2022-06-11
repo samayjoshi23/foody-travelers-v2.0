@@ -31,5 +31,16 @@ function fun2(){
 
     signup.removeEventListener('click', fun2);
 }
+
+function setAllPasswords(elementId){
+    var x = document.getElementById(`${elementId}`);
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+}
+
+
 login.addEventListener('click', fun1);
 signup.addEventListener('click', fun2);

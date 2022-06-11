@@ -16,7 +16,7 @@ const isLoggedIn = async(req, res, next) => {
         if(token && (req.url === '/login')){
             req.flash('warning', "You are already logged in, don't hit manual routes");
             res.redirect('/user/account');
-            // next();
+            next();
             return;
         }
         verifyUser = jwt.verify(token, process.env.JWT_SECRET);
@@ -32,9 +32,10 @@ const isLoggedIn = async(req, res, next) => {
             login : true,
             admin : userAdmin
         }
+
         next();
     } catch (error) {
-        res.status(401).send(error);
+        return res.status(401).send(error);
     }
 } 
 

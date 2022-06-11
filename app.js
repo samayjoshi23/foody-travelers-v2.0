@@ -72,6 +72,20 @@ app.get('/', isUser, wrapAsync(async (req,res)=>{
     res.render('home', {isUser, user, title: 'Foody-Travelers - Home',css:'home.css'});
 }));
 
+app.get('/about', isUser, wrapAsync(async (req, res) => {
+    let isUser = req.userData;
+    res.status(200).render('site/about', {isUser, title:'About - Foody Travelers', css: 'site/siteCommon.css'});
+}));
+
+app.get('/services', isUser, wrapAsync(async (req, res) => {
+    let isUser = req.userData;
+    res.status(200).render('site/services', {isUser, title:'Services - Foody Travelers', css: 'site/siteCommon.css'});
+}));
+
+app.get('/contact', isUser, wrapAsync(async (req, res) => {
+    let isUser = req.userData;
+    res.status(200).render('site/contact', {isUser, title:'Contact Us - Foody Travelers', css: 'site/siteCommon.css'});
+}));
 
 // ======================= Error- Handlers ===================
 
@@ -119,12 +133,11 @@ app.use((err, req, res, next) => {
 });
 
 app.all('*', isUser, (req, res, next) => {
-    let isUser = req.userData;
     next(new AppError('Page Not Found', 404));
-    res.render('errorPage', {isUser, title:'Error - Something went wrong', css:'errorPage.css'});
 })
 
 app.use((err, req, res, next) => {
+    let isUser = req.userData;
     const { status = 500, message = 'Something went wrong' } = err;
     let error = {
         status,
