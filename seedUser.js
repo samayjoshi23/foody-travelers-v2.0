@@ -23,4 +23,3 @@ async function setUser(){
     await user.save();
 }
 setUser();
-// await doc.save(); // Throws "document must have an _id before saving"

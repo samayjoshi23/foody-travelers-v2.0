@@ -14,18 +14,18 @@
   justify-self: center;
   padding: 10px 20px;
 }
-.main-logo a{
+.main-logo a {
   display: flex;
   align-items: center;
 }
-.main-logo img{
+.main-logo img {
   width: 5rem;
   margin-right: 0.5rem;
 }
-.main-logo h2{
+.main-logo h2 {
   margin: 0.75rem 0 0.5rem 0;
 }
-.hamburger{
+.hamburger {
   position: absolute;
   top: 40%;
   right: 2.5vh;
@@ -38,84 +38,92 @@
 .nav-drop-btn {
   margin: 0 2%;
 }
-.navbar-right{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 10px 20px;
-    transition: all 0.3s ease-out;
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  transition: all 0.3s ease-out;
 }
-.account-btns, .home-btn{
-    border-radius: 5px;
-    font-weight: bolder;
-    background-color: white !important;
+.account-btns,
+.home-btn {
+  border-radius: 5px;
+  font-weight: bolder;
+  background-color: white !important;
 }
-.account-btns:hover, .home-btn:hover{
-    box-shadow: 1px 1px 8px 1px rgb(160, 160, 160) !important;
-    color: black;
+.account-btns:hover,
+.home-btn:hover {
+  box-shadow: 1px 1px 8px 1px rgb(160, 160, 160) !important;
+  color: black;
 }
-#login{
-    border: 1px solid #1EBB76 !important;
+#login {
+  border: 1px solid #1ebb76 !important;
 }
-#login:hover{
-    background-color: #1EBB76 !important;
-    color: white !important;
+#login:hover {
+  background-color: #1ebb76 !important;
+  color: white !important;
 }
-#logout{
-    border: 1px solid rgba(212, 0, 0, 0.5) !important;
+#logout {
+  border: 1px solid rgba(212, 0, 0, 0.5) !important;
 }
-#logout:hover{
-    background-color: rgba(212, 0, 0, 0.5) !important;
-    color: white !important;
+#logout:hover {
+  background-color: rgba(212, 0, 0, 0.5) !important;
+  color: white !important;
 }
-#settings{
-    border: 1px solid rgb(196, 196, 196) !important;
-    padding: 5px 7px !important;
+#settings {
+  border: 1px solid rgb(196, 196, 196) !important;
+  padding: 5px 7px !important;
 }
-#settings:hover{
-    border: 3px solid black !important;
+#settings:hover {
+  border: 3px solid black !important;
+}
+#admin-btn {
+  background-color: #408ccf !important;
+  color: white !important;
+}
+#admin-btn:hover {
+  background-color: #216fb3 !important;
 }
 
 /* hamburger */
-.hide-burger{
+.hide-burger {
   display: none;
 }
 
-
 /* media queries */
-@media(max-width: 670px){
-  .navbar-right{
+@media (max-width: 670px) {
+  .navbar-right {
     max-height: 0;
     padding: 0;
     overflow: hidden;
     justify-content: space-evenly;
   }
-  .navbar-container{
+  .navbar-container {
     justify-content: center;
     flex-direction: column;
     width: 100%;
   }
-  .navbar-left{
+  .navbar-left {
     padding: 5px 0;
   }
-  .main-logo img{
+  .main-logo img {
     width: 4rem;
     margin-right: 0.5rem;
   }
-  .main-logo h2{
+  .main-logo h2 {
     font-size: 1.3rem;
     letter-spacing: -0.05rem;
   }
-  #settings{
+  #settings {
     padding: 2px !important;
   }
-  .resp-nav{
+  .resp-nav {
     padding: 10px 20px;
     max-height: 200px;
   }
-  .hide-burger{
+  .hide-burger {
     display: flex;
-  } 
+  }
   .burger-rotate {
     transform: rotate(180deg);
   }

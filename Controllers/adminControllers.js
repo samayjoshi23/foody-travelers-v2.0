@@ -16,3 +16,20 @@ module.exports.getViews = async(req, res) => {
     }
     res.render('admin/showData', { isUser, usersData, ticketsData, title:'Admin Panel - Foody travelers', css: 'admin/viewData.css'});
 }
+
+module.exports.deleteTicketAdmin = async(req, res) => {
+    const {id} = req.params;
+    await Ticket.findByIdAndDelete(id);
+    req.flash('success', 'Ticket deleted by Admin Successfully');
+    res.status(200).redirect('/admin/view');
+}
+
+
+module.exports.deleteUserAdmin = async(req, res) => {
+    const {id} = req.params;
+    
+    await User.findByIdAndDelete(id);
+    
+    req.flash('success', 'User removed by Admin Successfully');
+    res.status(200).redirect('/admin/view');
+}

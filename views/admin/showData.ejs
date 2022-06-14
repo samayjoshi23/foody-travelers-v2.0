@@ -41,11 +41,13 @@
                         <button class="btn-sm edit utility-btns mx-1">
                             <img src="https://img.icons8.com/ios/25/undefined/edit--v1.png"/>
                         </button>
-                        <!-- <form method="POST" action="/admin/view?_method=DELETE"> -->
-                        <button class="btn-sm delete utility-btns mx-1">
-                            <img src="https://img.icons8.com/dotty/25/undefined/filled-trash.png"/>
-                        </button>
-                        <!-- </form> -->
+                        <% if (oneUserData.role !== 'admin') { %>
+                            <form method="POST" action="/admin/removeuser/<%=oneUserData._id%>?_method=DELETE">
+                            <button class="btn-sm delete utility-btns mx-1">
+                                <img src="https://img.icons8.com/dotty/25/undefined/filled-trash.png"/>
+                            </button>
+                            </form>
+                        <% } %>
                     </div>
                 </div>
             <% }) %> 
@@ -108,11 +110,11 @@
                         <button class="btn-sm edit utility-btns mx-1">
                             <img src="https://img.icons8.com/ios/25/undefined/edit--v1.png"/>
                         </button>
-                        <!-- <form method="POST" action="/admin/view?"> -->
+                        <form method="POST" action="/admin/removeticket/<%=ticket._id%>?_method=DELETE">
                         <button class="btn-sm delete utility-btns mx-1">
                             <img src="https://img.icons8.com/dotty/25/undefined/filled-trash.png"/>
                         </button>
-                        <!-- </form> -->
+                        </form>
                     </div>
                 </div>
             <% }) %> 

@@ -85,7 +85,7 @@ module.exports.generateTicket = async(req, res, next)=>{
     await bookedTicket.save();
     req.flash('success', `Ticket Booked Successfully... Happy journey for your tour`)
     res.json({
-        stats: 'success',
+        status: 'success',
         ticket: ticket.user_Name
     });
 }

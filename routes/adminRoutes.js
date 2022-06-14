@@ -11,5 +11,9 @@ const isUser = require('../middlewares/isLoggedIn');
 
 router.get('/view', isUser, auth, wrapAsync(admin.getViews));
 
+router.delete('/removeticket/:id', isUser, auth, wrapAsync(admin.deleteTicketAdmin));
+
+router.delete('/removeuser/:id', isUser, auth, wrapAsync(admin.deleteUserAdmin));
+
 
 module.exports = router;
