@@ -24,12 +24,22 @@ module.exports.deleteTicketAdmin = async(req, res) => {
     res.status(200).redirect('/admin/view');
 }
 
-
 module.exports.deleteUserAdmin = async(req, res) => {
     const {id} = req.params;
+    if(id === req.user._id){
+        req.flash('Admin can not remove himself, ask another admin to remove you')
+        return res.status(401).redirect('/admin/view');
+    }
     
     await User.findByIdAndDelete(id);
+    console.log("User removed");
+    const allTickets = await Ticket.find({});
     
+    allTickets.forEach(async (ticket) => {
+        if(ticket.user_Id === id){
+            await Ticket.findByIdAndDelete({_id: ticket._id});
+        } 
+    })
     req.flash('success', 'User removed by Admin Successfully');
     res.status(200).redirect('/admin/view');
 }
