@@ -15,5 +15,7 @@ router.delete('/removeticket/:id', isUser, auth, wrapAsync(admin.deleteTicketAdm
 
 router.delete('/removeuser/:id', isUser, auth, wrapAsync(admin.deleteUserAdmin));
 
+router.patch('/updateuser/:id', isUser, auth, wrapAsync(admin.updateUser));
+
 
 module.exports = router;

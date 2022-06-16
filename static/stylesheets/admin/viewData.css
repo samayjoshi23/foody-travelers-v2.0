@@ -4,8 +4,19 @@
     box-shadow: var(--def-box-shadow-lg);
     border-radius: 8px;
 }
+.container-heading{
+    font-family: var(--font-main-heading);
+    background-color: rgb(246, 246, 246);
+    padding: 1rem;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
 .content-section{
     padding-top: 1rem;
+}
+.section-heading{
+    font-family: var(--font-content);
 }
 .card-collection{
     display: grid;
@@ -15,25 +26,53 @@
 }
 .user-card{
     display: flex;
+    flex-direction: column;
     border-radius: 12px;
-    align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(246, 246, 246);
+    gap: 1rem;
+}
+.user-card:hover{
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.25);
+}
+.user-details-container{
+    display: flex;
+    justify-content: space-between;
+}
+.user-role-section form{
+    display: flex;
+    align-items: center;
+}
+#role-selector{
+    font-weight: bold;
+    border: none;
+    margin-right: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+#role-selector:focus{
+    outline: none;
+    background-color: rgb(253, 255, 203);
 }
 .user-name{
     font-size: 1.5rem;
 }
 .user-email{
     font-size: 1rem;
-    color: gray;
+    color: rgb(103, 103, 103);
 }
 .utility-btns{
     border: none;
-    width: 2.5rem;
-    height: 2.5rem;
     border-radius: 5px;
-    padding: 0;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+.utility-btns p{
+    padding-right: 0.25rem;
 }
 .search{
     border: 2px solid rgb(66, 149, 174);

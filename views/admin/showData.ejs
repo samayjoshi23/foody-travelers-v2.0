@@ -1,17 +1,33 @@
 <main class="main-container">
+    <h1 class="container-heading">Foody Travelers - Admin Panel</h1>
+
     <section class="content-section">
-        <h1 class="section-heading text-center">Registered Users</h1>
+        <h2 class="section-heading text-center">Registered Users</h2>
         <div class="card-collection">
             <% usersData.forEach(oneUserData => {  %>
                 <div class="user-card">
-                    <div class="user-data d-flex flex-column">
-                        <h4 class="user-name"><%= oneUserData.firstName %> <%= oneUserData.lastName %></h4>
-                        <h5 class="user-email"><%= oneUserData.email %> </h5>
+                    <div class="user-details-container">
+                        <div class="user-data d-flex flex-column">
+                            <h4 class="user-name"><%= oneUserData.firstName %> <%= oneUserData.lastName %></h4>
+                            <h5 class="user-email"><%= oneUserData.email %> </h5>
+                        </div>
+                        <div class="user-role-section">
+                            <form action="/admin/updateuser/<%= oneUserData._id %>?_method=PATCH" method="POST">
+                                <select name="role" id="role-selector">
+                                    <% for(let role of UserRoles){ %>
+                                        <option value="<%=role%>" <%= oneUserData.role === role ? 'selected': '' %>><%=role%></option>
+                                    <% } %>
+                                </select>
+                                <button class="btn-sm edit utility-btns mx-1">
+                                    <p>Update </p><img src="https://img.icons8.com/fluency-systems-regular/25/undefined/upload--v1.png"/>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                     <div class="user-options d-flex">
                         <div class="user-modal">
                             <button type="button" class="btn-sm search utility-btns mx-1" data-bs-toggle="modal" data-bs-target="#Modal<%=oneUserData._id%>">
-                                <img src="https://img.icons8.com/ios/25/undefined/search--v1.png"/>
+                                <p>View </p><img src="https://img.icons8.com/ios/25/undefined/search--v1.png"/>
                             </button>
                             <!-- Modal -->
                             <div class="modal fade" id="Modal<%=oneUserData._id%>" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="<%=oneUserData._id%>Label" aria-hidden="true">
@@ -37,15 +53,12 @@
                                 </div>
                               </div>
                             </div>
-                        </div>
-                        <button class="btn-sm edit utility-btns mx-1">
-                            <img src="https://img.icons8.com/ios/25/undefined/edit--v1.png"/>
-                        </button>
+                        </div>                    
                         <% if (oneUserData.role !== 'admin') { %>
                             <form method="POST" action="/admin/removeuser/<%=oneUserData._id%>?_method=DELETE">
-                            <button class="btn-sm delete utility-btns mx-1">
-                                <img src="https://img.icons8.com/dotty/25/undefined/filled-trash.png"/>
-                            </button>
+                                <button class="btn-sm delete utility-btns mx-1">
+                                    <p>Delete </p><img src="https://img.icons8.com/dotty/25/undefined/filled-trash.png"/>
+                                </button>
                             </form>
                         <% } %>
                     </div>
@@ -54,7 +67,7 @@
         </div>
     </section>
     <section class="content-section">
-        <h1 class="section-heading text-center">Tickets Booked</h1>
+        <h2 class="section-heading text-center">Tickets Booked</h2>
         <div class="card-collection">
             <% ticketsData.forEach(ticket => {  %>
                 <div class="user-card">
@@ -107,9 +120,6 @@
                               </div>
                             </div>
                         </div>
-                        <button class="btn-sm edit utility-btns mx-1">
-                            <img src="https://img.icons8.com/ios/25/undefined/edit--v1.png"/>
-                        </button>
                         <form method="POST" action="/admin/removeticket/<%=ticket._id%>?_method=DELETE">
                         <button class="btn-sm delete utility-btns mx-1">
                             <img src="https://img.icons8.com/dotty/25/undefined/filled-trash.png"/>
