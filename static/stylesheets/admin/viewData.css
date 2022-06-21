@@ -3,20 +3,53 @@
     margin: var(--main-sections-margin-pc);
     box-shadow: var(--def-box-shadow-lg);
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
 }
 .container-heading{
     font-family: var(--font-main-heading);
     background-color: rgb(246, 246, 246);
-    padding: 1rem;
+    padding-bottom: 0.75rem;
+    padding-top: 0.4rem;
     text-align: center;
+    border-top: 2px solid rgb(211, 211, 211);
+    border-bottom: 2px solid rgb(211, 211, 211);
+}
+.admin-buttons{
+    display: flex;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    padding: 1rem;
+    justify-content: space-around;
+    background-color: rgb(246, 246, 246);
+}
+.admin-buttons button{
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background-color: rgb(93, 206, 140);
+    font-size: 1.2rem;
+    font-family: var(--font-main-heading);
+    transition: all 0.2s ease-in;
+}
+.admin-buttons button:hover{
+    box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.25);
+    color: white;
+    background-color: rgb(62, 138, 94);
+    transform: translateY(-3px);
 }
 .content-section{
     padding-top: 1rem;
 }
-.section-heading{
+.section-stats{
     font-family: var(--font-content);
+    background-color: rgb(200, 200, 200);
+    font-weight: bold;
+    padding: 0.5rem 0;
+}
+.section-stats span{
+    font-weight: 200;
 }
 .card-collection{
     display: grid;
@@ -26,7 +59,6 @@
 }
 .user-card{
     display: flex;
-    flex-direction: column;
     border-radius: 12px;
     justify-content: space-between;
     padding: 1rem;
@@ -36,11 +68,7 @@
 .user-card:hover{
     box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.25);
 }
-.user-details-container{
-    display: flex;
-    justify-content: space-between;
-}
-.user-role-section form{
+.user-options, .user-options form{
     display: flex;
     align-items: center;
 }

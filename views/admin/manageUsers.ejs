@@ -1,0 +1,70 @@
+<main class="main-container">
+    <section class="admin-buttons">
+        <a href="/admin/dashboard">
+            <button id="dashboard-btn">Admin Dashboard</button>
+        </a>
+        <a href="/admin/users">
+            <button id="user-btn" disabled>Manage Registered Users</button>
+        </a>
+        <a href="/admin/tickets">
+            <button id="ticket-btn">Manage All Tickets</button>
+        </a>
+        <a href="/admin/states">
+            <button id="state-btn">Manage States and Foods</button>
+        </a>
+    </section>
+    
+    <h1 class="container-heading">Registered Users</h1>
+
+    <section class="content-section">
+        <h6 class="section-stats text-center">Total: <%= userStats.admin + userStats.user %> | Admin: <%= userStats.admin %> | Users: <%= userStats.user %></h6>
+        <div class="card-collection">
+            <% usersData.forEach(oneUserData => {  %>
+                <div class="user-card">
+                    <div class="user-data d-flex flex-column">
+                        <h4 class="user-name"><%= oneUserData.firstName %> <%= oneUserData.lastName %></h4>
+                        <h5 class="user-email"><%= oneUserData.email %> </h5>
+                    </div>
+                    <div class="user-options">
+                        <div class="user-modal">
+                                <button type="button" class="btn-sm search utility-btns mx-1" data-bs-toggle="modal" data-bs-target="#Modal<%=oneUserData._id%>">
+                                    <p>View </p><img src="https://img.icons8.com/ios/25/undefined/search--v1.png"/>
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="Modal<%=oneUserData._id%>" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="<%=oneUserData._id%>Label" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="<%=oneUserData._id%>Label"><%= oneUserData.firstName %> <%= oneUserData.lastName %></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class=" d-flex flex-column">
+                                            <label><strong>Eamil:</strong> <%= oneUserData.firstName %> <%= oneUserData.lastName %> </label>
+                                            <label><strong>Age: </strong> <%= oneUserData.age %></label>
+                                            <label><strong>DOB: </strong> <%= oneUserData.dob %></label>
+                                            <label><strong>Phone: </strong><%= oneUserData.phone %></label>
+                                            <label><strong>Address: </strong><%= oneUserData.street %>, <%= oneUserData.ward %> </label>
+                                            <label><strong>City: </strong><%= oneUserData.city %> </label>
+                                            <label><strong>State: </strong><%= oneUserData.state %> </label>
+                                            <label><strong>Pin: </strong><%= oneUserData.pin %> </label>
+                                            <label><strong>User Role: </strong><%= oneUserData.role %> </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                        </div>                    
+                        <% if (oneUserData.role !== 'admin') { %>
+                        <form method="POST" action="/admin/removeuser/<%=oneUserData._id%>?_method=DELETE">
+                            <button class="btn-sm delete utility-btns mx-1">
+                                <p>Delete </p><img src="https://img.icons8.com/dotty/25/undefined/filled-trash.png"/>
+                            </button>
+                        </form>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %> 
+        </div>
+    </section>
+</main>

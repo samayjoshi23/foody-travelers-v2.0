@@ -1,0 +1,63 @@
+<main class="main-container">
+    <h1 class="container-heading text-center mb-3">Add a New State</h1>
+    
+    <section class="content-section">
+        <form action="" id="createStateForm">
+            <div class="input-divs" id="stateName">
+                <label for="" class="input-label">State Name</label>
+                <input type="text" class="inputs" name="state_name" placeholder="State Name">
+            </div>
+            <div id="cities" class="input-divs">
+                <label for="" class="input-label">Cities</label>
+                <div id="cities-container">
+                    <div class="newCity">
+                        <div class="city-input">
+                            <input type="text" class="inputs" name="cityName" placeholder="City 1 Name">
+                            <div class="city-places">
+                                <div class="place-inputs">
+                                    <input type="text" class="inputs" name="cityPlace" placeholder="Place Name">
+                                </div>
+                                <div class="add-btn cityPlaces-btn">Add Place To City</div>
+                            </div>
+                        </div>
+                        <div class="hotel-input">
+                            <input type="text" class="inputs" name="hotelName" placeholder="City - Hotel Name">
+                        </div>
+                        <div class="rest-input">
+                            <input type="text" class="inputs" name="restName" placeholder="City - Restaturant Name">
+                        </div>
+                    </div>
+                </div>
+                <button class="add-btn" id="addCity-btn">Add City</button>
+            </div>
+            <div id="foods" class="input-divs">
+                <label for="" class="input-label">Foods</label>
+                <div id="food-container">
+                    <div class="food-group">
+                        <input class="inputs" type="text" name="fName" placeholder="Food Name">
+                        <select name="foodTypeSelector" id="foodTypeSelector">
+                            <option value="veg">veg</option>
+                            <option value="non-veg">Non-veg</option>
+                        </select>
+                        <input class="inputs" type="number" name="price" id="food1price" placeholder="Price in Rs.">
+                    </div>
+                </div>
+                <button class="add-btn" id="addFood-btn">Add Food Item</button>
+            </div>
+            <div class="input-divs" id="baseFare">
+                <label for="" class="input-label">Base Fare</label>
+                <input type="number" class="inputs" name="base_fare" placeholder="36452">
+            </div>
+            <div class="input-divs" id="tourDuration">
+                <label for="" class="input-label">Tour Duration</label>
+                <input type="text" class="inputs" name="tour_duration" placeholder="Eg: 7 days 6 nights">
+            </div>
+            <div class="input-divs" id="tourSource">
+                <label for="" class="input-label">Tour Source City</label>
+                <input type="text" class="inputs" name="tour_source" placeholder="Tour Source">
+            </div>
+        </form>
+    </section>
+</main>
+
+<script src="/static/javascripts/admin/createStates.js"></script>

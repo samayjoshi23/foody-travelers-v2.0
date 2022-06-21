@@ -1,0 +1,88 @@
+<main class="main-container">
+
+    <section class="admin-buttons">
+        <a href="/admin/dashboard">
+            <button id="dashboard-btn">Admin Dashboard</button>
+        </a>
+        <a href="/admin/users">
+            <button id="user-btn">Manage Registered Users</button>
+        </a>
+        <a href="/admin/tickets">
+            <button id="ticket-btn">Manage All Tickets</button>
+        </a>
+        <a href="/admin/states">
+            <button id="state-btn" disabled>Manage States and Foods</button>
+        </a>
+    </section>
+    
+    <h1 class="container-heading">Tickets Booked</h1>
+    
+    <section class="content-section">
+        <h6 class="section-stats text-center">Total Sates: <%= stateCounter %> </h6>
+        <div class="card-collection">
+            <% statesData.forEach(state => {  %>
+                <div class="user-card">
+                    <div class="user-data d-flex flex-column">
+                        <h4 class="user-name"><%= state.state_name %></h4>
+                        <h5 class="user-email"><%= state.tour_source %> </h5>
+                    </div>
+                    <div class="user-options">
+                        <div class="user-modal">
+                            <button type="button" class="btn-sm search utility-btns mx-1" data-bs-toggle="modal" data-bs-target="#Modal<%= state._id %>">
+                                <img src="https://img.icons8.com/ios/25/undefined/search--v1.png"/>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="Modal<%= state._id %>" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="<%= state._id %>Label" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="<%= state._id %>Label"><%= state.state_name %></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class=" d-flex flex-column">
+                                        <label><strong>State Name:</strong> <%= state.state_name %></label>
+                                        <label><strong>Cities:</strong></label>
+                                        <ol type="1">
+                                            <%for(let city of state.cities){ %>
+                                                <li><strong> &#x25AA; <%= city.city_name %></strong></li>
+                                                <ol type="i">
+                                                    <% city.places.forEach(place => { %>
+                                                        <li>- <%= place.place_name %> </li>
+                                                   <% }) %>
+                                                </ol>
+                                                <li> &#x25B8; <strong>Hotel - </strong><%= city.city_hotel.hotel_name %></li>
+                                                <li> &#x25B8; <strong>Restaurant - </strong><%= city.city_restaurant.restaurant_name %> </li>
+                                           <% } %>
+                                        </ol>
+                                        <label><strong>Food items: </strong></label>
+                                        <ol type="1">
+                                            <%for(let food of state.state_food){ %>
+                                                <li><strong> &#x25AA; <%= food.f_name %> | </strong><%= food.price %></li>
+                                            <% } %>
+                                        </ol>
+                                        <label><strong>Base Fare: </strong> <%= state.base_fare %> </label>
+                                        <label><strong>Duration: </strong> <%= state.duration %> </label>
+                                        <label><strong>Source: </strong> <%= state.tour_source %> </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <form method="POST" action="/admin/removestate/<%= state._id %>?_method=DELETE">
+                            <button class="btn-sm delete utility-btns mx-1">
+                                <img src="https://img.icons8.com/dotty/25/undefined/filled-trash.png"/>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %> 
+        </div>
+        <a href="/admin/states/newState">
+            <button type="button" class="btn btn-primary m-3 mx-auto d-block p-2 px-4">
+                Add State +
+            </button>
+        </a>
+    </section>
+</main>

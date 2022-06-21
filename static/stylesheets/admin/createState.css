@@ -1,0 +1,73 @@
+.main-container{
+    width: 60vw;
+    margin: var(--main-sections-margin-pc);
+    box-shadow: var(--def-box-shadow-lg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+#createStateForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-divs{
+    padding: 0 0.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem auto;
+}
+.inputs{
+    margin: 0.5rem 0;
+    border: 1px solid rgb(198, 198, 198);
+    border-radius: 10px;
+    padding: 0.25rem 0.75rem;
+}
+#foodTypeSelector{
+    border: 1px solid rgb(198, 198, 198);
+    border-radius: 10px;
+    padding: 0.25rem 0.75rem;
+}
+.input-label{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+#stateName, #cities, #foods, #tourDuration, #baseFare, #tourSource{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(232, 232, 232);
+    border-radius: 10px;
+}
+.city-input{
+    display: flex;
+    justify-content: space-between;
+}
+.city-input input{
+    align-self: flex-start;
+}
+.city-places{
+    margin-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hotel-input input, .rest-input input{
+    width: 100%;
+}
+.add-btn{
+    border: none;
+    background-color: rgb(255, 220, 137);
+    border-radius: 10px;
+    padding: 0.25rem 1rem;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.add-btn:hover{
+    background-color: rgb(255, 204, 85);
+    box-shadow: 0 0 8px 3px rgba(0, 0, 0, 0.25);
+}

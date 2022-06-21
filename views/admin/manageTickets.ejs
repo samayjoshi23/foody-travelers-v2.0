@@ -1,0 +1,88 @@
+<main class="main-container">
+
+    <section class="admin-buttons">
+        <a href="/admin/dashboard">
+            <button id="dashboard-btn">Admin Dashboard</button>
+        </a>
+        <a href="/admin/users">
+            <button id="user-btn">Manage Registered Users</button>
+        </a>
+        <a href="/admin/tickets">
+            <button id="ticket-btn" disabled>Manage All Tickets</button>
+        </a>
+        <a href="/admin/states">
+            <button id="state-btn">Manage States and Foods</button>
+        </a>
+    </section>
+    
+    <h1 class="container-heading">Tickets Booked</h1>
+    
+    <section class="content-section">
+        <h6 class="section-stats text-center">
+            <% stateTicketCountArray.forEach(state => { %>
+               <span> <%= state.stateName %> : <%= state.ticketCount %> | </span>
+            <% }) %> Total Tickets : <%= ticketCount %>        
+        </h6>
+        <div class="card-collection">
+            <% ticketsData.forEach(ticket => {  %>
+                <div class="user-card">
+                    <div class="user-data d-flex flex-column">
+                        <h4 class="user-name"><%= ticket.state_Name %></h4>
+                        <h5 class="user-email"><%= ticket.date_of_Booking %> </h5>
+                    </div>
+                    <div class="user-options">
+                        <div class="user-modal">
+                            <button type="button" class="btn-sm search utility-btns mx-1" data-bs-toggle="modal" data-bs-target="#Modal<%=ticket._id%>">
+                                <img src="https://img.icons8.com/ios/25/undefined/search--v1.png"/>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="Modal<%=ticket._id%>" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="<%=ticket._id%>Label" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="<%=ticket._id%>Label"><%= ticket.state_Name %></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class=" d-flex flex-column">
+                                        <label><strong>User Id:</strong> <%= ticket.user_Id %></label>
+                                        <label><strong>User Name: </strong> <%= ticket.user_Name %></label>
+                                        <label><strong>Tour Source: </strong> <%= ticket.tour_Source %></label>
+                                        <label><strong>Base Fare: </strong><%= ticket.base_Fare %></label>
+                                        <label><strong>Booking Date: </strong><%= ticket.date_of_Booking %></label>
+                                        <label><strong>Journey Date: </strong><%= ticket.date_of_Journey %> </label>
+                                        <label><strong>Passengers: </strong><%= ticket.no_of_persons %> </label>
+                                        <label><strong>Passengers List: </strong><%= ticket.no_of_persons %> </label>
+                                        <ul class="mx-4">
+                                            <% ticket.passenger_details.forEach(passenger => {  %>
+                                                <li>- <%=passenger.name%> | <%=passenger.age%> | <%=passenger.aadharId%> | <%=passenger.gender%> </li>
+                                            <% }) %> 
+                                        </ul>
+                                        <label><strong>Food Price: </strong><%= ticket.food_Fare %> </label>
+                                        <ul class="mx-4">
+                                            <% ticket.food_Opted.forEach(food => {  %>
+                                                <li>- <%=food.name%> | <%=food.Price%> | <%=food.Qty%> | <%=food.TotalCost%> </li>
+                                            <% }) %> 
+                                        </ul>
+                                        <label><strong>Vehicle Type: </strong><%= ticket.vehicle_Type %> </label>
+                                        <label><strong>Vehicle Fare: </strong><%= ticket.vehicle_Fare%> </label>
+                                        <label><strong>Pickup State: </strong><%= ticket.pickup_State %> </label>
+                                        <label><strong>Pickup City: </strong><%= ticket.pickup_City %> </label>
+                                        <label><strong>Grand Fare: </strong><%= ticket.grand_Fare %> </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <form method="POST" action="/admin/removeticket/<%=ticket._id%>?_method=DELETE">
+                            <button class="btn-sm delete utility-btns mx-1">
+                                <img src="https://img.icons8.com/dotty/25/undefined/filled-trash.png"/>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %> 
+        </div>
+    </section>
+</main>

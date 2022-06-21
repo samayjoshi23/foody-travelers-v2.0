@@ -1,0 +1,43 @@
+<main class="main-container">
+    <section class="admin-buttons">
+        <a href="/admin/dashboard">
+            <button id="dashboard-btn" disabled>Admin Dashboard</button>
+        </a>
+        <a href="/admin/users">
+            <button id="user-btn">Manage Registered Users</button>
+        </a>
+        <a href="/admin/tickets">
+            <button id="ticket-btn">Manage All Tickets</button>
+        </a>
+        <a href="/admin/states">
+            <button id="state-btn">Manage States and Foods</button>
+        </a>
+    </section>
+    
+    <h1 class="container-heading">Manage User Roles</h1>
+
+    <section class="content-section">
+        <div class="card-collection">
+            <% usersData.forEach(oneUserData => {  %>
+                <div class="user-card">
+                    <div class="user-data d-flex flex-column">
+                        <h4 class="user-name"><%= oneUserData.firstName %> <%= oneUserData.lastName %></h4>
+                        <h5 class="user-email"><%= oneUserData.email %> </h5>
+                    </div>
+                    <div class="user-options">
+                        <form action="/admin/updateuser/<%= oneUserData._id %>?_method=PATCH" method="POST">
+                            <select name="role" id="role-selector">
+                                <% for(let role of UserRoles){ %>
+                                    <option value="<%=role%>" <%= oneUserData.role === role ? 'selected': '' %>><%=role%></option>
+                                <% } %>
+                            </select>
+                            <button class="btn-sm edit utility-btns mx-1">
+                                <p>Update </p><img src="https://img.icons8.com/fluency-systems-regular/25/undefined/upload--v1.png"/>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %> 
+        </div>
+    </section>
+</main>
