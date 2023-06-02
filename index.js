@@ -148,8 +148,9 @@ app.use((err, req, res, next) => {
 });
 
 
-
 //  ============== server run =====================
-app.listen(process.env.PORT, () => {
-    console.log(`Serving on port ${process.env.PORT}`)
-});
+
+module.exports = index;
+// app.listen(process.env.PORT, () => {
+//     console.log(`Serving on port ${process.env.PORT}`)
+// });
