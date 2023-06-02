@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const wrapAsync = require('./utils/wrapAsync');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
@@ -46,14 +47,15 @@ app.use(cors());
 app.set('trust proxy', 1);
 
 app.use(session({
-    cookie:{
-        secure: true,
-        maxAge:60000
-    },
-    store: new RedisStore(),
+    store: MongoStore.create({
+        mongoUrl: `mongodb+srv://foody-travelers-v2`,
+        ttl: 14 * 24 * 60 * 60, // = 14 days. Default
+        autoRemove: 'interval',
+        autoRemoveInterval: 60*24*14 // In minutes. Default
+    }),
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: true,
-    resave: false
+    saveUninitialized: false, // don't create session until something stored
+    resave: false, //don't save session if unmodified
 }));
 
 app.use(function(req,res,next){
