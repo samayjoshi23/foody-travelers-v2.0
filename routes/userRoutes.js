@@ -8,8 +8,6 @@ const users = require('../Controllers/UsersControllers')
 // Schema
 const auth = require('../middlewares/auth');
 const isUser = require('../middlewares/isLoggedIn');
-// const State = require('../Models/StateSchema');
-// const Ticket = require('../Models/TicketSchema');
 
 
 router.route('/login')
