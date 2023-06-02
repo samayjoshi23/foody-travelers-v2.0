@@ -71,7 +71,8 @@ app.use('/admin', require('./routes/adminRoutes'));
 app.get('/', isUser, wrapAsync(async (req,res)=>{
     let user = req.user;
     let isUser = req.userData;
-    res.render('home', {isUser, user, title: 'Foody-Travelers - Home',css:'home.css'});
+    // res.render('home', {isUser, user, title: 'Foody-Travelers - Home',css:'home.css'});
+    res.status(200).json({message: "Started App", user, isUser});
 }));
 
 app.get('/about', isUser, wrapAsync(async (req, res) => {
