@@ -6,6 +6,7 @@
 // middleware import
 const AppError = require('../utils/AppError');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 const ticketSchema = new mongoose.Schema({
     user_Id: String,
