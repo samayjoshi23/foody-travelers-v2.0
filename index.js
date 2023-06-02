@@ -42,15 +42,27 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 app.use(cors());
 
 // Init Session ----------
+//-momery unleaked---------
+app.set('trust proxy', 1);
+
 app.use(session({
-    secret: process.env.SESSION_SECRET,
-    cookie: {
-        httpOnly: true,
-        // secure: true
+    cookie:{
+        secure: true,
+        maxAge:60000
     },
-    resave: false,
-    saveUninitialized: false
+    store: new RedisStore(),
+    secret: process.env.SESSION_SECRET,
+    saveUninitialized: true,
+    resave: false
 }));
+
+app.use(function(req,res,next){
+if(!req.session){
+    return next(new Error('Oh no')) //handle error
+}
+next() //otherwise continue
+});
+
 
 app.use(connectFlash());
 
