@@ -12,7 +12,8 @@ const AppError = require('./utils/AppError');
 const expressLayouts = require('express-ejs-layouts');
 
 // mongoose connection -----------
-mongoose.connect(`mongodb://localhost:${process.env.DB_URL}`, { 
+// mongoose.connect(`mongodb://localhost:${process.env.DB_URL}`, { 
+mongoose.connect(`mongodb+srv://${process.env.DB_URL_CLOUD}`, { 
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
