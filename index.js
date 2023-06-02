@@ -10,6 +10,7 @@ const connectFlash = require('connect-flash');
 const isUser = require('./middlewares/isLoggedIn');
 const AppError = require('./utils/AppError');
 const expressLayouts = require('express-ejs-layouts');
+const cors = require('cors');
 
 // mongoose connection -----------
 // mongoose.connect(`mongodb://localhost:${process.env.DB_URL}`, { 
@@ -38,7 +39,7 @@ app.set('layout', './layouts/boilerplate');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/static', express.static(path.join(__dirname, 'static')));
-
+app.use(cors());
 
 // Init Session ----------
 app.use(session({
