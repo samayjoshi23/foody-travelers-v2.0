@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./models/UserSchema");
+const User = require("./Models/UserSchema");
 
 mongoose
   .connect("mongodb://localhost:27017/foody-travelers", {
