@@ -19,7 +19,7 @@ const isLoggedIn = async(req, res, next) => {
             next();
             return;
         }
-        verifyUser = jwt.verify(token, process.env.JWT_SECRET);
+        verifyUser = jwt.verify(token, 'hellobrosamayjoshiishereforyourhelp');
         const loggedInUser = await User.findOne({_id: verifyUser._id});
         
 
