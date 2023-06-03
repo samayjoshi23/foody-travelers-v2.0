@@ -5,4 +5,3 @@ abc.html
 static/images/Places/*.txt
 static/images/*.txt
 .env
-package-lock.json

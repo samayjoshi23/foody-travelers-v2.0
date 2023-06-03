@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const wrapAsync = require('./utils/wrapAsync');
@@ -16,8 +15,8 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // mongoose connection -----------
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const uri = "mongodb+srv://foody-travelers-v2:e8y3x85UGxueTJD@cluster0.ncj37rr.mongodb.net/?retryWrites=true&w=majority";
+const uri = process.env.DB_URL_CLOUD;
+
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -28,13 +27,10 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
-    // Ensures that the client will close when you finish/error
     await client.close();
   }
 }
@@ -61,20 +57,20 @@ app.set('trust proxy', 1);
 app.use(session({
     store: MongoStore.create({
         mongoUrl: uri,
-        ttl: 14 * 24 * 60 * 60, // = 14 days. Default
+        ttl: 14 * 24 * 60 * 60,
         autoRemove: 'interval',
-        autoRemoveInterval: 60*24*14 // In minutes. Default
+        autoRemoveInterval: 60*24*14
     }),
     secret: process.env.SESSION_SECRET,
-    saveUninitialized: false, // don't create session until something stored
-    resave: false, //don't save session if unmodified
+    saveUninitialized: false,
+    resave: false,
 }));
 
 app.use(function(req,res,next){
 if(!req.session){
-    return next(new Error('Oh no')) //handle error
+    return next(new Error('Oh no'))
 }
-next() //otherwise continue
+next()
 });
 
 
@@ -97,8 +93,7 @@ app.use('/admin', require('./routes/adminRoutes'));
 app.get('/', isUser, wrapAsync(async (req,res)=>{
     let user = req.user;
     let isUser = req.userData;
-    // res.render('home', {isUser, user, title: 'Foody-Travelers - Home',css:'home.css'});
-    res.status(200).json({message: "Started App", user, isUser});
+    res.render('home', {isUser, user, title: 'Foody-Travelers - Home',css:'home.css'});
 }));
 
 app.get('/about', isUser, wrapAsync(async (req, res) => {
