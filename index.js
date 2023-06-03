@@ -40,17 +40,6 @@ async function run() {
 }
 run().catch(console.dir);
 
-// mongoose.connect(`mongodb+srv://foody-travelers-v2:fqXnbHWIbQ7yEk2r@cluster0.ncj37rr.mongodb.net/?retryWrites=true&w=majority`, { 
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// }).then(() => {
-//         console.log("CONNECTION OPEN!!!")
-//     })
-//     .catch(err => {
-//         console.log("OH NO ERROR!!!!")
-//         console.log(err)
-//     })
-
 // Use files ----------
 const app = express();
 
@@ -189,7 +178,6 @@ app.use((err, req, res, next) => {
 
 //  ============== server run =====================
 
-module.exports = app;
-// app.listen(process.env.PORT, () => {
-//     console.log(`Serving on port ${process.env.PORT}`)
-// });
+app.listen(process.env.PORT, () => {
+    console.log(`Serving on port ${process.env.PORT}`)
+});
