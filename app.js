@@ -16,6 +16,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const DB_URL_CLOUD = 'mongodb+srv://foody-travelers-v2:e8y3x85UGxueTJD@cluster0.ncj37rr.mongodb.net/?retryWrites=true&w=majority';
 const SESSION_SECRET = 'topsecretofsession';
+const PORT = 3000;
 
 const client = new MongoClient(DB_URL_CLOUD, {
   serverApi: {
@@ -173,6 +174,6 @@ app.use((err, req, res, next) => {
 
 //  ============== server run =====================
 
-app.listen(process.env.PORT, () => {
-    console.log(`Serving on port ${process.env.PORT}`)
+app.listen(PORT, () => {
+    console.log(`Serving on port ${PORT}`)
 });
