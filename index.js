@@ -12,19 +12,44 @@ const isUser = require('./middlewares/isLoggedIn');
 const AppError = require('./utils/AppError');
 const expressLayouts = require('express-ejs-layouts');
 const cors = require('cors');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // mongoose connection -----------
-// mongoose.connect(`mongodb://localhost:${process.env.DB_URL}`, { 
-mongoose.connect(`mongodb+srv://${process.env.DB_URL_CLOUD}`, { 
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-        console.log("CONNECTION OPEN!!!")
-    })
-    .catch(err => {
-        console.log("OH NO ERROR!!!!")
-        console.log(err)
-    })
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const uri = "mongodb+srv://foody-travelers-v2:e8y3x85UGxueTJD@cluster0.ncj37rr.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+
+// mongoose.connect(`mongodb+srv://foody-travelers-v2:fqXnbHWIbQ7yEk2r@cluster0.ncj37rr.mongodb.net/?retryWrites=true&w=majority`, { 
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// }).then(() => {
+//         console.log("CONNECTION OPEN!!!")
+//     })
+//     .catch(err => {
+//         console.log("OH NO ERROR!!!!")
+//         console.log(err)
+//     })
 
 // Use files ----------
 const app = express();
@@ -33,8 +58,6 @@ app.use(express.urlencoded({ extended : true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
-
-
 app.use(expressLayouts)
 app.set('layout', './layouts/boilerplate');
 app.set('view engine', 'ejs');
@@ -48,7 +71,7 @@ app.set('trust proxy', 1);
 
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: `mongodb+srv://foody-travelers-v2`,
+        mongoUrl: uri,
         ttl: 14 * 24 * 60 * 60, // = 14 days. Default
         autoRemove: 'interval',
         autoRemoveInterval: 60*24*14 // In minutes. Default
