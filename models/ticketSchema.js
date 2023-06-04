@@ -93,6 +93,6 @@ const ticketSchema = new mongoose.Schema({
     }
 });
 
-const Ticket = mongoose.model('Ticket', ticketSchema);
+const Ticket = new mongoose.model('Ticket', ticketSchema);
 
 module.exports = Ticket;
