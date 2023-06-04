@@ -3,8 +3,8 @@ const AppError = require('../utils/AppError');
 const mongoose = require('mongoose');
 
 // ---------------- DefaultCode --------------------
-const State = require('../models/StateSchema');
-const Ticket = require('../models/TicketSchema');
+const State = require('../Models/StateSchema');
+const Ticket = require('../Models/TicketSchema');
 
 module.exports.getStates = async (req,res,next)=> {
     let user = req.user;

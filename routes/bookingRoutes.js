@@ -3,7 +3,7 @@ const router = express.Router();
 const wrapAsync = require('../utils/wrapAsync')
 
 // Controller Import
-const tour = require('../controllers/bookingControllers');
+const tour = require('../Controllers/bookingControllers');
 
 // Middleware Import
 const auth = require('../middlewares/auth');
