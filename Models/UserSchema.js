@@ -1,4 +1,3 @@
-console.log(`${__dirname} - UserSchema.js`);
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 

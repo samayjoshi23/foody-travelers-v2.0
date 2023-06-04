@@ -1,6 +1,4 @@
-console.log(`${__dirname} - TicketSchema.js`);
 const mongoose = require('mongoose');
-
 
 const ticketSchema = new mongoose.Schema({
     user_Id: String,

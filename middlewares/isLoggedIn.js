@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User2 = require('./UserSchema2');
+const User = require('../Models/UserSchema');
 
 
 const isLoggedIn = async(req, res, next) => {
@@ -21,7 +21,7 @@ const isLoggedIn = async(req, res, next) => {
             return;
         }
         verifyUser = jwt.verify(token, 'hellobrosamayjoshiishereforyourhelp');
-        const loggedInUser = await User2.findOne({_id: verifyUser._id});
+        const loggedInUser = await User.findOne({_id: verifyUser._id});
         
 
         if(loggedInUser.role === 'admin'){
