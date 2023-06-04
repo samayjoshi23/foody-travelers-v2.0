@@ -5,7 +5,7 @@
     "npm": "8.5.5",
     "node": "16.15.0"
   },
-  "type": "module",
+  "type": "commonjs",
   "description": "",
   "main": "./app.js",
   "scripts": {
