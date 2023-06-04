@@ -14,7 +14,7 @@
         <a href="/">
             <button class="btn home-btn account-btns btn-outline-dark">Home</button>
         </a>
-        <% if (isUser.login === false) { %>
+        <% if (isUser.login === false || isUser.login === undefined) { %>
             <a href="/user/login">
                 <button id="login" class="btn account-btns mx-2">Login/Signup</button>
             </a>

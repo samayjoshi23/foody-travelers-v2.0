@@ -1,4 +1,5 @@
 require('dotenv').config();
+console.log('Into App.js')
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
@@ -7,7 +8,9 @@ const wrapAsync = require('./utils/wrapAsync');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const connectFlash = require('connect-flash');
+console.log('Going to middleware isLoggedIn.js')
 const isUser = require('./middlewares/isLoggedIn');
+console.log('Exited from isLoggedIn.js');
 const AppError = require('./utils/AppError');
 const expressLayouts = require('express-ejs-layouts');
 const cors = require('cors');
@@ -15,6 +18,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // mongoose connection -----------
 const PORT = process.env.PORT || 6060;
+console.log('Port : ' + PORT);
 
 const client = new MongoClient(process.env.DB_URL_CLOUD, {
   serverApi: {
