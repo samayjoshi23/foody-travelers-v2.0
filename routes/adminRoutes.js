@@ -3,7 +3,7 @@ const router = express.Router();
 const wrapAsync = require('../utils/wrapAsync')
 
 // Controller Import
-const admin = require('../Controllers/adminControllers');
+const admin = require('../controllers/adminControllers');
 
 // Middleware Import
 const auth = require('../middlewares/auth');

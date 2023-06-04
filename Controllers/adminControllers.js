@@ -1,7 +1,7 @@
 // Older Code - Schema
-const State = require('../Models/StateSchema');
-const Ticket = require('../Models/TicketSchema');
-const User = require('../Models/UserSchema');
+const State = require('../models/StateSchema');
+const Ticket = require('../models/TicketSchema');
+const User = require('../models/UserSchema');
 
 // middleware import
 const AppError = require('../utils/AppError');

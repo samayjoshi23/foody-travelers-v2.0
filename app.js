@@ -1,3 +1,4 @@
+console.log(`${__dirname} - App.js`);
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
@@ -13,6 +14,8 @@ const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // mongoose connection -----------
+
+
 
 const DB_URL_CLOUD = 'mongodb+srv://foody-travelers-v2:e8y3x85UGxueTJD@cluster0.ncj37rr.mongodb.net/?retryWrites=true&w=majority';
 const SESSION_SECRET = 'topsecretofsession';

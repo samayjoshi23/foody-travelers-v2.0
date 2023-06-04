@@ -1,8 +1,9 @@
+console.log(`${__dirname} - UserController.js`);
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 // Old Schema Module Imports
-const Ticket = require('../Models/TicketSchema');
-const User = require('../Models/UserSchema');
+const Ticket = require('../models/TicketSchema');
+const User = require('../models/UserSchema');
 
 
 // Signup (Post Route) - No Login required

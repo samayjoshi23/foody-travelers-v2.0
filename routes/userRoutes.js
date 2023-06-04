@@ -4,7 +4,7 @@ const { body, validationResult } = require('express-validator');
 const wrapAsync = require('../utils/wrapAsync')
 
 // Controller
-const users = require('../Controllers/UsersControllers')
+const users = require('../controllers/UsersControllers')
 // Schema
 const auth = require('../middlewares/auth');
 const isUser = require('../middlewares/isLoggedIn');

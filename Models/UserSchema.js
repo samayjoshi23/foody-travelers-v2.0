@@ -1,3 +1,4 @@
+console.log(`${__dirname} - UserSchema.js`);
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
@@ -96,6 +97,6 @@ userSchema.methods.generateAuthToken = async function() {
     }
 }
 
-const User = mongoose.model('User', userSchema);
+const User = new mongoose.model('User', userSchema);
 
 module.exports = User;
