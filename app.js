@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
@@ -13,14 +14,9 @@ const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // mongoose connection -----------
+const PORT = process.env.PORT || 6060;
 
-
-
-const DB_URL_CLOUD = 'mongodb+srv://foody-travelers-v2:e8y3x85UGxueTJD@cluster0.ncj37rr.mongodb.net/?retryWrites=true&w=majority';
-const SESSION_SECRET = 'topsecretofsession';
-const PORT = 3000;
-
-const client = new MongoClient(DB_URL_CLOUD, {
+const client = new MongoClient(process.env.DB_URL_CLOUD, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -59,12 +55,12 @@ app.set('trust proxy', 1);
 
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: DB_URL_CLOUD,
+        mongoUrl: process.env.DB_URL_CLOUD,
         ttl: 14 * 24 * 60 * 60,
         autoRemove: 'interval',
         autoRemoveInterval: 60*24*14
     }),
-    secret: SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
 }));
