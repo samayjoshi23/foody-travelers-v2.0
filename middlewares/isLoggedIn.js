@@ -1,6 +1,5 @@
-console.log(`${__dirname} - IsLoggedIn.js`);
 const jwt = require('jsonwebtoken');
-const User = require('./../models/UserSchema');
+const User = require('../models/UserSchema');
 
 
 const isLoggedIn = async(req, res, next) => {
